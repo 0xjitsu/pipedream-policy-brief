@@ -1,0 +1,44 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { SectionWrapper } from "@/components/layout/SectionWrapper";
+import { staggerContainer, fadeInUp } from "@/lib/motion";
+import { antiRecommendations } from "@/data/anti-recs";
+
+export function AntiRecommendations() {
+  return (
+    <SectionWrapper
+      id="anti-recs"
+      title="What MBC Does Not Recommend"
+      subtitle="Proposals considered and rejected on substantive grounds"
+    >
+      <motion.div
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="grid md:grid-cols-2 gap-4"
+      >
+        {antiRecommendations.map((item) => (
+          <motion.div
+            key={item.id}
+            variants={fadeInUp}
+            className="glass p-5 border-l-3 border-l-critical bg-critical/5"
+          >
+            <div className="flex items-start gap-3">
+              <div className="w-8 h-8 rounded-full bg-critical-bg flex items-center justify-center shrink-0">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M4 4L12 12M12 4L4 12" stroke="#EF4444" strokeWidth="2" strokeLinecap="round" />
+                </svg>
+              </div>
+              <div>
+                <h4 className="font-semibold text-white text-sm">{item.title}</h4>
+                <p className="text-sm text-white-50 leading-relaxed mt-2">{item.reason}</p>
+              </div>
+            </div>
+          </motion.div>
+        ))}
+      </motion.div>
+    </SectionWrapper>
+  );
+}

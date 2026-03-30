@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+:root {
+  --navy: #0F1B2D;
+  --navy-light: #162236;
+  --navy-card: #1A2942;
+  --navy-hover: #1E3350;
+  --white: #FFFFFF;
+  --white-90: rgba(255, 255, 255, 0.9);
+  --white-70: rgba(255, 255, 255, 0.7);
+  --white-50: rgba(255, 255, 255, 0.5);
+  --white-20: rgba(255, 255, 255, 0.2);
+  --white-10: rgba(255, 255, 255, 0.1);
+  --white-08: rgba(255, 255, 255, 0.08);
+  --white-05: rgba(255, 255, 255, 0.05);
+
+  --critical: #EF4444;
+  --urgent: #F97316;
+  --important: #F59E0B;
+  --info: #3B82F6;
+  --strategic: #10B981;
+  --purple: #8B5CF6;
+
+  --critical-bg: rgba(239, 68, 68, 0.1);
+  --urgent-bg: rgba(249, 115, 22, 0.1);
+  --important-bg: rgba(245, 158, 11, 0.1);
+  --info-bg: rgba(59, 130, 246, 0.1);
+  --strategic-bg: rgba(16, 185, 129, 0.1);
+  --purple-bg: rgba(139, 92, 246, 0.1);
+}
+
+@theme inline {
+  --color-navy: var(--navy);
+  --color-navy-light: var(--navy-light);
+  --color-navy-card: var(--navy-card);
+  --color-navy-hover: var(--navy-hover);
+
+  --color-white-90: var(--white-90);
+  --color-white-70: var(--white-70);
+  --color-white-50: var(--white-50);
+  --color-white-20: var(--white-20);
+  --color-white-10: var(--white-10);
+  --color-white-08: var(--white-08);
+  --color-white-05: var(--white-05);
+
+  --color-critical: var(--critical);
+  --color-urgent: var(--urgent);
+  --color-important: var(--important);
+  --color-info: var(--info);
+  --color-strategic: var(--strategic);
+  --color-purple: var(--purple);
+
+  --color-critical-bg: var(--critical-bg);
+  --color-urgent-bg: var(--urgent-bg);
+  --color-important-bg: var(--important-bg);
+  --color-info-bg: var(--info-bg);
+  --color-strategic-bg: var(--strategic-bg);
+  --color-purple-bg: var(--purple-bg);
+
+  --font-serif: var(--font-playfair);
+  --font-sans: var(--font-dm-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--navy);
+  color: var(--white-90);
+  font-family: var(--font-dm-sans), system-ui, sans-serif;
+}
+
+/* Glass card utility */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+}
+
+.glass-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+@media (hover: hover) {
+  .glass-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--navy);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+}
+
+/* Print styles */
+@media print {
+  body {
+    background: white !important;
+    color: #1a1a1a !important;
+  }
+  .glass {
+    background: white !important;
+    backdrop-filter: none !important;
+    border: 1px solid #e5e5e5 !important;
+  }
+  nav, .scroll-progress, .no-print {
+    display: none !important;
+  }
+  section {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  canvas {
+    max-height: 300px !important;
+  }
+}
