@@ -5,7 +5,7 @@ import { SectionWrapper } from "@/components/layout/SectionWrapper";
 import { ExpandableCard } from "@/components/ui/ExpandableCard";
 import { ChannelRadarChart } from "@/components/charts/ChannelRadarChart";
 import { FiscalCostChart } from "@/components/charts/FiscalCostChart";
-import { channels, sequencingRecommendation } from "@/data/channels";
+import { channels, sequencingRecommendation, channelContext } from "@/data/channels";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
 
 const tagColorMap: Record<string, string> = {
@@ -88,7 +88,6 @@ function ChannelContent({ channel }: { channel: (typeof channels)[0] }) {
           <div className="space-y-0">
             {channel.roadmap.map((step, i) => (
               <div key={i} className="flex gap-4 pb-4 relative">
-                {/* Timeline line */}
                 {i < channel.roadmap!.length - 1 && (
                   <div className="absolute left-[7px] top-[18px] w-0.5 h-full bg-strategic/30" />
                 )}
@@ -129,9 +128,78 @@ export function DistributionChannels() {
     <SectionWrapper
       id="channels"
       title="Distribution Channels"
-      subtitle="Three mechanisms for delivering discounted fuel to target populations"
+      subtitle="How should the government deliver fuel relief to those who need it most?"
     >
-      {/* Charts row */}
+      {/* Context block — the problem */}
+      <motion.div
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="mb-8"
+      >
+        <div className="glass p-6 space-y-4">
+          <p className="text-sm md:text-base text-white-70 leading-relaxed">
+            {channelContext.problem}
+          </p>
+
+          {/* Who's affected — scale metrics */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {channelContext.scale.map((group) => (
+              <div key={group.label} className="glass p-3 text-center">
+                <div className="font-mono text-lg md:text-xl font-bold text-white">{group.count}</div>
+                <div className="text-xs text-white-50 mt-1">{group.label}</div>
+                <a
+                  href={group.sourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[10px] text-info/70 hover:text-info transition-colors"
+                >
+                  {group.source} →
+                </a>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-sm text-white-50 leading-relaxed border-t border-white-08 pt-4">
+            {channelContext.question}
+          </p>
+        </div>
+      </motion.div>
+
+      {/* Comparison charts — zoom out view */}
+      <motion.div
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="mb-2"
+      >
+        <h3 className="font-serif text-lg font-semibold text-white mb-1">At a Glance</h3>
+        <p className="text-xs text-white-50 mb-4">
+          Side-by-side evaluation of the three channels across six criteria and their fiscal impact.
+          Data from{" "}
+          <a
+            href={channelContext.sources.senateHearing.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-info/80 hover:text-info transition-colors underline underline-offset-2"
+          >
+            {channelContext.sources.senateHearing.label}
+          </a>{" "}
+          and{" "}
+          <a
+            href={channelContext.sources.dof.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-info/80 hover:text-info transition-colors underline underline-offset-2"
+          >
+            {channelContext.sources.dof.label}
+          </a>{" "}
+          estimates.
+        </p>
+      </motion.div>
+
       <div className="grid md:grid-cols-2 gap-6 mb-8">
         <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
           <ChannelRadarChart />
@@ -141,7 +209,21 @@ export function DistributionChannels() {
         </motion.div>
       </div>
 
-      {/* Channel cards */}
+      {/* Channel detail cards — zoom in */}
+      <motion.div
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="mb-2"
+      >
+        <h3 className="font-serif text-lg font-semibold text-white mb-1">Channel Details</h3>
+        <p className="text-xs text-white-50 mb-4">
+          Click each channel to see how it works, its advantages, risks, and fiscal cost.
+          Channel 2 (targeted) is expanded by default as the recommended primary mechanism.
+        </p>
+      </motion.div>
+
       <motion.div
         variants={staggerContainer}
         initial="hidden"
@@ -174,6 +256,35 @@ export function DistributionChannels() {
           Sequencing Recommendation
         </h4>
         <p className="text-sm text-white-70 leading-relaxed">{sequencingRecommendation}</p>
+        <p className="text-[10px] text-white-20 mt-3">
+          Sources:{" "}
+          <a
+            href={channelContext.sources.senateHearing.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white-20 hover:text-white-50 underline underline-offset-2 transition-colors"
+          >
+            {channelContext.sources.senateHearing.label}
+          </a>
+          {" · "}
+          <a
+            href={channelContext.sources.doe.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white-20 hover:text-white-50 underline underline-offset-2 transition-colors"
+          >
+            {channelContext.sources.doe.label}
+          </a>
+          {" · "}
+          <a
+            href={channelContext.sources.dof.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white-20 hover:text-white-50 underline underline-offset-2 transition-colors"
+          >
+            {channelContext.sources.dof.label}
+          </a>
+        </p>
       </motion.div>
     </SectionWrapper>
   );

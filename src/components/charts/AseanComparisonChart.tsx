@@ -86,7 +86,11 @@ export function AseanComparisonChart() {
       <div className="h-[280px] md:h-[320px]">
         <Bar data={data} options={options} />
       </div>
-      <p className="text-[10px] text-white-20 mt-3">Source: GlobalPetrolPrices.com; converted at current FX rates (Mar 2026)</p>
+      <p className="text-[10px] text-white-20 mt-3">
+        Source:{" "}
+        <a href="https://www.globalpetrolprices.com/Philippines/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-white-50 transition-colors">GlobalPetrolPrices.com</a>
+        {"; converted at current FX rates (Mar 2026)"}
+      </p>
     </div>
   );
 }

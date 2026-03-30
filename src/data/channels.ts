@@ -108,3 +108,34 @@ export const channels: ChannelData[] = [
 
 export const sequencingRecommendation =
   "Deploy Channel 2 as primary within 2–3 weeks. Hold Channel 1 (wholesale) as immediate fallback for commercial consumers not on the whitelist. Prepare Channel 3 (ayuda) for humanitarian-scale deployment if the crisis extends beyond 60 days. All three channels leverage existing digital fuel distribution infrastructure with 442+ stations across 16 regions.";
+
+export const channelContext = {
+  problem:
+    "With diesel prices surging past ₱130/L (+136% from pre-crisis levels), millions of Filipino workers, farmers, and fisherfolk who depend on affordable fuel face an immediate livelihood crisis. Public utility vehicle (PUV) operators, agricultural producers, and fishing communities are being priced out of essential economic activity.",
+  scale: [
+    { label: "PUV Drivers", count: "~180,000", source: "DOTR", sourceUrl: "https://dotr.gov.ph/" },
+    { label: "Farmers", count: "~5.5M", source: "DA", sourceUrl: "https://www.da.gov.ph/" },
+    { label: "Fisherfolk", count: "~1.9M", source: "BFAR", sourceUrl: "https://www.bfar.da.gov.ph/" },
+    { label: "Affected Households", count: "~12M", source: "DSWD", sourceUrl: "https://www.dswd.gov.ph/" },
+  ],
+  question:
+    "The central policy question is not whether to intervene, but how. Three distribution mechanisms exist, each with fundamentally different trade-offs in speed, fiscal cost, targeting accuracy, and corruption risk.",
+  sources: {
+    senateHearing: {
+      label: "Senate Energy Committee Hearing (Mar 2026)",
+      url: "https://senate.gov.ph/press_release/2026/",
+    },
+    doe: {
+      label: "DOE Weekly Supply Monitoring",
+      url: "https://www.doe.gov.ph/downstream-oil",
+    },
+    dof: {
+      label: "Department of Finance",
+      url: "https://www.dof.gov.ph/",
+    },
+    uplift: {
+      label: "UPLIFT Committee Report",
+      url: "https://www.officialgazette.gov.ph/",
+    },
+  },
+};

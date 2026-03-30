@@ -10,21 +10,22 @@ export function SupplyChart() {
     labels: supplyDepletion.labels,
     datasets: [
       {
+        // Actual data — bright cyan-blue, solid, prominent (ground truth)
         label: "Actual",
         data: supplyDepletion.actual,
-        borderColor: "#EF4444",
+        borderColor: "#38BDF8",
         backgroundColor: (ctx: ScriptableContext<"line">) => {
           const chart = ctx.chart;
           const { ctx: canvasCtx, chartArea } = chart;
-          if (!chartArea) return "rgba(239, 68, 68, 0.1)";
+          if (!chartArea) return "rgba(56, 189, 248, 0.1)";
           const gradient = canvasCtx.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
-          gradient.addColorStop(0, "rgba(239, 68, 68, 0.25)");
-          gradient.addColorStop(1, "rgba(239, 68, 68, 0.02)");
+          gradient.addColorStop(0, "rgba(56, 189, 248, 0.25)");
+          gradient.addColorStop(1, "rgba(56, 189, 248, 0.02)");
           return gradient;
         },
         borderWidth: 3,
         pointRadius: 5,
-        pointBackgroundColor: "#EF4444",
+        pointBackgroundColor: "#38BDF8",
         pointBorderColor: "#0F1B2D",
         pointBorderWidth: 2,
         pointHoverRadius: 7,
@@ -33,22 +34,23 @@ export function SupplyChart() {
         spanGaps: false,
       },
       {
+        // Projected — amber/orange, dashed (uncertainty, forecast)
         label: "Projected (no new procurement)",
         data: supplyDepletion.projected,
-        borderColor: "#EF4444",
+        borderColor: "#F59E0B",
         backgroundColor: (ctx: ScriptableContext<"line">) => {
           const chart = ctx.chart;
           const { ctx: canvasCtx, chartArea } = chart;
-          if (!chartArea) return "rgba(239, 68, 68, 0.05)";
+          if (!chartArea) return "rgba(245, 158, 11, 0.05)";
           const gradient = canvasCtx.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
-          gradient.addColorStop(0, "rgba(239, 68, 68, 0.12)");
-          gradient.addColorStop(1, "rgba(239, 68, 68, 0.01)");
+          gradient.addColorStop(0, "rgba(245, 158, 11, 0.15)");
+          gradient.addColorStop(1, "rgba(245, 158, 11, 0.01)");
           return gradient;
         },
-        borderWidth: 2,
+        borderWidth: 2.5,
         borderDash: [8, 4],
-        pointRadius: 3,
-        pointBackgroundColor: "#EF4444",
+        pointRadius: 4,
+        pointBackgroundColor: "#F59E0B",
         pointBorderColor: "#0F1B2D",
         pointBorderWidth: 2,
         fill: true,
@@ -56,10 +58,11 @@ export function SupplyChart() {
         spanGaps: false,
       },
       {
+        // Minimum requirement — red, the danger threshold
         label: "Minimum requirement (15 days)",
         data: Array(supplyDepletion.labels.length).fill(supplyDepletion.minimum),
-        borderColor: "rgba(255,255,255,0.3)",
-        borderWidth: 1,
+        borderColor: "rgba(239, 68, 68, 0.6)",
+        borderWidth: 1.5,
         borderDash: [4, 4],
         pointRadius: 0,
         fill: false,
@@ -137,7 +140,12 @@ export function SupplyChart() {
       <div className="h-[300px] md:h-[350px]">
         <Line data={data} options={options} />
       </div>
-      <p className="text-[10px] text-white-20 mt-3">Source: DOE weekly supply monitoring reports; Senate Energy Committee testimony (Mar 2026)</p>
+      <p className="text-[10px] text-white-20 mt-3">
+        Source:{" "}
+        <a href="https://www.doe.gov.ph/downstream-oil" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-white-50 transition-colors">DOE weekly supply monitoring reports</a>
+        {"; "}
+        <a href="https://senate.gov.ph/press_release/2026/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-white-50 transition-colors">Senate Energy Committee testimony (Mar 2026)</a>
+      </p>
     </div>
   );
 }

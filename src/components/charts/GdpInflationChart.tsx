@@ -124,7 +124,12 @@ export function GdpInflationChart() {
       <div className="h-[280px] md:h-[320px]">
         <Line data={data} options={options} />
       </div>
-      <p className="text-[10px] text-white-20 mt-3">Source: NEDA projections; BSP inflation forecast models</p>
+      <p className="text-[10px] text-white-20 mt-3">
+        Source:{" "}
+        <a href="https://neda.gov.ph/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-white-50 transition-colors">NEDA projections</a>
+        {"; "}
+        <a href="https://www.bsp.gov.ph/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-white-50 transition-colors">BSP inflation forecast models</a>
+      </p>
     </div>
   );
 }
