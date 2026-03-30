@@ -3,6 +3,7 @@
 import "@/lib/chart-defaults";
 import { Bar } from "react-chartjs-2";
 import { stationsByRegion } from "@/data/infrastructure";
+import type { ChartOptions } from "chart.js";
 
 const islandColors: Record<string, string> = {
   luzon: "#3B82F6",
@@ -11,13 +12,17 @@ const islandColors: Record<string, string> = {
 };
 
 export function StationBarChart() {
+  const maxCount = Math.max(...stationsByRegion.map((s) => s.count));
+
   const data = {
     labels: stationsByRegion.map((s) => s.region),
     datasets: [
       {
         label: "Stations",
         data: stationsByRegion.map((s) => s.count),
-        backgroundColor: stationsByRegion.map((s) => islandColors[s.island] + "B3"),
+        backgroundColor: stationsByRegion.map(
+          (s) => islandColors[s.island] + "B3"
+        ),
         borderColor: stationsByRegion.map((s) => islandColors[s.island]),
         borderWidth: 1,
         borderRadius: 3,
@@ -25,12 +30,17 @@ export function StationBarChart() {
     ],
   };
 
-  const options = {
+  const options: ChartOptions<"bar"> = {
     indexAxis: "y" as const,
     scales: {
       x: {
-        title: { display: true, text: "Number of Stations", color: "rgba(255,255,255,0.5)" },
+        title: {
+          display: true,
+          text: "Number of Stations",
+          color: "rgba(255,255,255,0.5)",
+        },
         grid: { color: "rgba(255,255,255,0.05)" },
+        max: Math.ceil(maxCount * 1.15),
       },
       y: {
         grid: { display: false },
@@ -39,16 +49,46 @@ export function StationBarChart() {
     },
     plugins: {
       legend: { display: false },
+      datalabels: {
+        display: true,
+        anchor: "end" as const,
+        align: "right" as const,
+        color: "rgba(255,255,255,0.6)",
+        font: { size: 10, family: "var(--font-geist-mono)" },
+        formatter: (value: number) => value.toLocaleString(),
+      },
+      tooltip: {
+        callbacks: {
+          label: (ctx) => {
+            const region = stationsByRegion[ctx.dataIndex];
+            return `${region.count} stations (${region.island.charAt(0).toUpperCase() + region.island.slice(1)})`;
+          },
+        },
+      },
     },
   };
 
   return (
     <div className="glass p-5">
-      <h3 className="font-serif text-base font-semibold text-white mb-1">Station Distribution by Region</h3>
+      <h3 className="font-serif text-base font-semibold text-white mb-1">
+        Station Distribution by Region
+      </h3>
       <p className="text-xs text-white-50 mb-4">
-        <span className="inline-block w-2.5 h-2.5 rounded-sm mr-1" style={{ backgroundColor: "#3B82F6" }} /> Luzon{" "}
-        <span className="inline-block w-2.5 h-2.5 rounded-sm mr-1 ml-3" style={{ backgroundColor: "#10B981" }} /> Visayas{" "}
-        <span className="inline-block w-2.5 h-2.5 rounded-sm mr-1 ml-3" style={{ backgroundColor: "#F97316" }} /> Mindanao
+        <span
+          className="inline-block w-2.5 h-2.5 rounded-sm mr-1"
+          style={{ backgroundColor: "#3B82F6" }}
+        />{" "}
+        Luzon{" "}
+        <span
+          className="inline-block w-2.5 h-2.5 rounded-sm mr-1 ml-3"
+          style={{ backgroundColor: "#10B981" }}
+        />{" "}
+        Visayas{" "}
+        <span
+          className="inline-block w-2.5 h-2.5 rounded-sm mr-1 ml-3"
+          style={{ backgroundColor: "#F97316" }}
+        />{" "}
+        Mindanao
       </p>
       <div className="h-[420px] md:h-[480px]">
         <Bar data={data} options={options} />

@@ -14,6 +14,7 @@ import {
   Legend,
 } from "chart.js";
 import annotationPlugin from "chartjs-plugin-annotation";
+import ChartDataLabels from "chartjs-plugin-datalabels";
 
 ChartJS.register(
   CategoryScale,
@@ -26,8 +27,12 @@ ChartJS.register(
   Filler,
   Tooltip,
   Legend,
-  annotationPlugin
+  annotationPlugin,
+  ChartDataLabels
 );
+
+// Disable datalabels globally — enable per-chart
+ChartJS.defaults.plugins.datalabels = { display: false } as never;
 
 // Global dark theme defaults
 ChartJS.defaults.color = "rgba(255, 255, 255, 0.7)";

@@ -3,6 +3,7 @@
 import "@/lib/chart-defaults";
 import { Line } from "react-chartjs-2";
 import { supplyDepletion } from "@/data/crisis-overview";
+import type { ChartOptions, ScriptableContext } from "chart.js";
 
 export function SupplyChart() {
   const data = {
@@ -12,10 +13,21 @@ export function SupplyChart() {
         label: "Actual",
         data: supplyDepletion.actual,
         borderColor: "#EF4444",
-        backgroundColor: "rgba(239, 68, 68, 0.1)",
+        backgroundColor: (ctx: ScriptableContext<"line">) => {
+          const chart = ctx.chart;
+          const { ctx: canvasCtx, chartArea } = chart;
+          if (!chartArea) return "rgba(239, 68, 68, 0.1)";
+          const gradient = canvasCtx.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
+          gradient.addColorStop(0, "rgba(239, 68, 68, 0.25)");
+          gradient.addColorStop(1, "rgba(239, 68, 68, 0.02)");
+          return gradient;
+        },
         borderWidth: 3,
-        pointRadius: 4,
+        pointRadius: 5,
         pointBackgroundColor: "#EF4444",
+        pointBorderColor: "#0F1B2D",
+        pointBorderWidth: 2,
+        pointHoverRadius: 7,
         fill: true,
         tension: 0.3,
         spanGaps: false,
@@ -24,11 +36,21 @@ export function SupplyChart() {
         label: "Projected (no new procurement)",
         data: supplyDepletion.projected,
         borderColor: "#EF4444",
-        backgroundColor: "rgba(239, 68, 68, 0.05)",
+        backgroundColor: (ctx: ScriptableContext<"line">) => {
+          const chart = ctx.chart;
+          const { ctx: canvasCtx, chartArea } = chart;
+          if (!chartArea) return "rgba(239, 68, 68, 0.05)";
+          const gradient = canvasCtx.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
+          gradient.addColorStop(0, "rgba(239, 68, 68, 0.12)");
+          gradient.addColorStop(1, "rgba(239, 68, 68, 0.01)");
+          return gradient;
+        },
         borderWidth: 2,
         borderDash: [8, 4],
         pointRadius: 3,
         pointBackgroundColor: "#EF4444",
+        pointBorderColor: "#0F1B2D",
+        pointBorderWidth: 2,
         fill: true,
         tension: 0.3,
         spanGaps: false,
@@ -45,7 +67,7 @@ export function SupplyChart() {
     ],
   };
 
-  const options = {
+  const options: ChartOptions<"line"> = {
     scales: {
       y: {
         min: 0,
@@ -64,31 +86,46 @@ export function SupplyChart() {
             type: "line" as const,
             xMin: supplyDepletion.todayIndex,
             xMax: supplyDepletion.todayIndex,
-            borderColor: "rgba(255,255,255,0.4)",
+            borderColor: "rgba(255,255,255,0.5)",
             borderWidth: 2,
             borderDash: [6, 3],
             label: {
               display: true,
               content: "Today (Mar 30)",
               position: "start" as const,
-              backgroundColor: "rgba(15, 27, 45, 0.9)",
-              color: "rgba(255,255,255,0.8)",
-              font: { size: 11 },
-              padding: 4,
+              backgroundColor: "rgba(245, 158, 11, 0.9)",
+              color: "#fff",
+              font: { size: 11, weight: "bold" as const },
+              padding: 6,
             },
           },
           dangerZone: {
             type: "box" as const,
             yMin: 0,
             yMax: supplyDepletion.minimum,
-            backgroundColor: "rgba(239, 68, 68, 0.06)",
+            backgroundColor: "rgba(239, 68, 68, 0.08)",
             borderWidth: 0,
+            label: {
+              display: true,
+              content: "CRITICAL ZONE",
+              position: { x: "end" as const, y: "center" as const },
+              color: "rgba(239, 68, 68, 0.5)",
+              font: { size: 10, weight: "bold" as const },
+            },
           },
         },
       },
       legend: {
         position: "bottom" as const,
         labels: { padding: 20 },
+      },
+      tooltip: {
+        callbacks: {
+          label: (ctx) => {
+            if (ctx.parsed.y === null) return "";
+            return `${ctx.dataset.label}: ${ctx.parsed.y} days`;
+          },
+        },
       },
     },
   };

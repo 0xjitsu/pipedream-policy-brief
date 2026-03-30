@@ -3,6 +3,7 @@
 import "@/lib/chart-defaults";
 import { Line } from "react-chartjs-2";
 import { gdpInflation } from "@/data/crisis-overview";
+import type { ChartOptions, ScriptableContext } from "chart.js";
 
 export function GdpInflationChart() {
   const data = {
@@ -12,10 +13,21 @@ export function GdpInflationChart() {
         label: "GDP Growth (%)",
         data: gdpInflation.gdp,
         borderColor: "#3B82F6",
-        backgroundColor: "rgba(59, 130, 246, 0.1)",
+        backgroundColor: (ctx: ScriptableContext<"line">) => {
+          const chart = ctx.chart;
+          const { ctx: canvasCtx, chartArea } = chart;
+          if (!chartArea) return "rgba(59, 130, 246, 0.1)";
+          const gradient = canvasCtx.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
+          gradient.addColorStop(0, "rgba(59, 130, 246, 0.2)");
+          gradient.addColorStop(1, "rgba(59, 130, 246, 0.01)");
+          return gradient;
+        },
         borderWidth: 2.5,
-        pointRadius: 4,
+        pointRadius: 5,
         pointBackgroundColor: "#3B82F6",
+        pointBorderColor: "#0F1B2D",
+        pointBorderWidth: 2,
+        pointHoverRadius: 7,
         fill: true,
         tension: 0.3,
       },
@@ -23,17 +35,28 @@ export function GdpInflationChart() {
         label: "Inflation (%)",
         data: gdpInflation.inflation,
         borderColor: "#EF4444",
-        backgroundColor: "rgba(239, 68, 68, 0.1)",
+        backgroundColor: (ctx: ScriptableContext<"line">) => {
+          const chart = ctx.chart;
+          const { ctx: canvasCtx, chartArea } = chart;
+          if (!chartArea) return "rgba(239, 68, 68, 0.1)";
+          const gradient = canvasCtx.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
+          gradient.addColorStop(0, "rgba(239, 68, 68, 0.2)");
+          gradient.addColorStop(1, "rgba(239, 68, 68, 0.01)");
+          return gradient;
+        },
         borderWidth: 2.5,
-        pointRadius: 4,
+        pointRadius: 5,
         pointBackgroundColor: "#EF4444",
+        pointBorderColor: "#0F1B2D",
+        pointBorderWidth: 2,
+        pointHoverRadius: 7,
         fill: true,
         tension: 0.3,
       },
     ],
   };
 
-  const options = {
+  const options: ChartOptions<"line"> = {
     scales: {
       y: {
         min: 0,
@@ -53,17 +76,31 @@ export function GdpInflationChart() {
             type: "line" as const,
             xMin: gdpInflation.crossoverIndex,
             xMax: gdpInflation.crossoverIndex,
-            borderColor: "rgba(245, 158, 11, 0.6)",
+            borderColor: "rgba(245, 158, 11, 0.7)",
             borderWidth: 2,
             borderDash: [6, 3],
             label: {
               display: true,
-              content: "We are here",
+              content: "⚠ We are here",
               position: "start" as const,
-              backgroundColor: "rgba(245, 158, 11, 0.9)",
+              backgroundColor: "rgba(245, 158, 11, 0.95)",
               color: "#fff",
               font: { size: 11, weight: "bold" as const },
-              padding: 4,
+              padding: 6,
+            },
+          },
+          stagflationZone: {
+            type: "box" as const,
+            xMin: gdpInflation.crossoverIndex,
+            xMax: gdpInflation.labels.length - 1,
+            backgroundColor: "rgba(239, 68, 68, 0.04)",
+            borderWidth: 0,
+            label: {
+              display: true,
+              content: "Stagflation Risk Zone",
+              position: { x: "center" as const, y: "start" as const },
+              color: "rgba(239, 68, 68, 0.4)",
+              font: { size: 10, weight: "bold" as const },
             },
           },
         },
@@ -71,6 +108,11 @@ export function GdpInflationChart() {
       legend: {
         position: "bottom" as const,
         labels: { padding: 20 },
+      },
+      tooltip: {
+        callbacks: {
+          label: (ctx) => `${ctx.dataset.label}: ${ctx.parsed.y}%`,
+        },
       },
     },
   };
