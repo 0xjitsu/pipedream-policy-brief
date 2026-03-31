@@ -24,7 +24,8 @@ interface StationMapProps {
 export function StationMap({ stations }: StationMapProps) {
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<L.Map | null>(null);
-  const markersRef = useRef<L.CircleMarker[]>([]);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const clusterRef = useRef<any>(null);
 
   // Count stations by status for legend
   const counts: Record<StationStatus, number> = {
@@ -45,6 +46,9 @@ export function StationMap({ stations }: StationMapProps) {
     async function initMap() {
       const L = (await import("leaflet")).default;
       await import("leaflet/dist/leaflet.css");
+      await import("leaflet.markercluster/dist/MarkerCluster.css");
+      await import("leaflet.markercluster/dist/MarkerCluster.Default.css");
+      await import("leaflet.markercluster");
 
       if (cancelled || !mapRef.current) return;
 
@@ -57,32 +61,86 @@ export function StationMap({ stations }: StationMapProps) {
           attributionControl: true,
         });
 
-        L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
-          attribution:
-            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
-          subdomains: "abcd",
-          maxZoom: 19,
-        }).addTo(mapInstanceRef.current);
+        L.tileLayer(
+          "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+          {
+            attribution:
+              '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+            subdomains: "abcd",
+            maxZoom: 19,
+          }
+        ).addTo(mapInstanceRef.current);
       }
 
-      // Clear existing markers
-      for (const marker of markersRef.current) {
-        marker.remove();
-      }
-      markersRef.current = [];
-
-      // Add new markers
       const map = mapInstanceRef.current;
+
+      // Remove old cluster group if it exists
+      if (clusterRef.current) {
+        map.removeLayer(clusterRef.current);
+        clusterRef.current = null;
+      }
+
+      // Create cluster group with custom icons
+      const cluster = L.markerClusterGroup({
+        maxClusterRadius: 60,
+        spiderfyOnMaxZoom: true,
+        showCoverageOnHover: false,
+        zoomToBoundsOnClick: true,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        iconCreateFunction: (clusterObj: any) => {
+          const count = clusterObj.getChildCount();
+          let color: string;
+          let size: number;
+          let className: string;
+
+          if (count > 500) {
+            color = "#EF4444";
+            size = 48;
+            className = "cluster-large";
+          } else if (count > 100) {
+            color = "#F59E0B";
+            size = 40;
+            className = "cluster-medium";
+          } else {
+            color = "#3B82F6";
+            size = 32;
+            className = "cluster-small";
+          }
+
+          return L.divIcon({
+            html: `<div style="
+              background:${color};
+              width:${size}px;
+              height:${size}px;
+              border-radius:50%;
+              display:flex;
+              align-items:center;
+              justify-content:center;
+              color:#fff;
+              font-weight:700;
+              font-size:${count > 999 ? 10 : 12}px;
+              font-family:ui-monospace,monospace;
+              box-shadow:0 2px 8px rgba(0,0,0,0.4),0 0 0 3px rgba(255,255,255,0.1);
+              border:2px solid rgba(255,255,255,0.2);
+            ">${count > 999 ? `${(count / 1000).toFixed(1)}k` : count}</div>`,
+            className: className,
+            iconSize: L.point(size, size),
+          });
+        },
+      });
+
+      // Add markers in batch for performance
+      const markers: L.CircleMarker[] = [];
       for (const station of stations) {
         const color = STATUS_COLORS[station.status];
         const marker = L.circleMarker([station.lat, station.lng], {
-          radius: 8,
+          radius: 6,
           fillColor: color,
           color: color,
-          weight: 2,
+          weight: 1.5,
           opacity: 0.9,
-          fillOpacity: 0.6,
-        }).addTo(map);
+          fillOpacity: 0.7,
+        });
 
         const sourceLink = station.sourceUrl
           ? `<a href="${station.sourceUrl}" target="_blank" rel="noopener noreferrer" style="color:#38BDF8;text-decoration:underline;font-size:11px;">View source</a>`
@@ -102,8 +160,12 @@ export function StationMap({ stations }: StationMapProps) {
           { className: "dark-popup" }
         );
 
-        markersRef.current.push(marker);
+        markers.push(marker);
       }
+
+      cluster.addLayers(markers);
+      map.addLayer(cluster);
+      clusterRef.current = cluster;
     }
 
     initMap();
@@ -132,9 +194,9 @@ export function StationMap({ stations }: StationMapProps) {
       />
 
       {/* Glass legend overlay */}
-      <div className="absolute bottom-4 right-4 z-[1000] glass p-3 rounded-lg min-w-[140px]">
-        <div className="text-[10px] font-semibold uppercase tracking-wider text-white-50 mb-2">
-          Status
+      <div className="absolute bottom-4 right-4 z-[1000] glass p-3 rounded-lg min-w-[160px]">
+        <div className="text-[10px] font-semibold uppercase tracking-wider text-white-50 mb-1.5">
+          {stations.length.toLocaleString()} stations
         </div>
         {(Object.keys(STATUS_COLORS) as StationStatus[]).map((status) => (
           <div key={status} className="flex items-center gap-2 py-0.5">
@@ -143,12 +205,14 @@ export function StationMap({ stations }: StationMapProps) {
               style={{ backgroundColor: STATUS_COLORS[status] }}
             />
             <span className="text-xs text-white-70">{STATUS_LABELS[status]}</span>
-            <span className="text-xs text-white-30 ml-auto font-mono">{counts[status]}</span>
+            <span className="text-xs text-white-20 ml-auto font-mono">
+              {counts[status].toLocaleString()}
+            </span>
           </div>
         ))}
       </div>
 
-      {/* Dark popup styles */}
+      {/* Dark popup + cluster styles */}
       <style jsx global>{`
         .dark-popup .leaflet-popup-content-wrapper {
           background: rgba(15, 27, 45, 0.95);
@@ -169,6 +233,22 @@ export function StationMap({ stations }: StationMapProps) {
         }
         .leaflet-control-attribution a {
           color: rgba(255, 255, 255, 0.4) !important;
+        }
+        /* Hide default markercluster styles — we use custom divIcons */
+        .marker-cluster-small,
+        .marker-cluster-medium,
+        .marker-cluster-large {
+          background: transparent !important;
+        }
+        .marker-cluster-small div,
+        .marker-cluster-medium div,
+        .marker-cluster-large div {
+          background: transparent !important;
+        }
+        .cluster-small,
+        .cluster-medium,
+        .cluster-large {
+          background: transparent !important;
         }
       `}</style>
     </div>
