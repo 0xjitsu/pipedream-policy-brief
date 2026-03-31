@@ -10,6 +10,7 @@ import { PolicyPillars } from "@/components/sections/PolicyPillars";
 import { AntiRecommendations } from "@/components/sections/AntiRecommendations";
 import { ActionTimeline } from "@/components/sections/ActionTimeline";
 import { Infrastructure } from "@/components/sections/Infrastructure";
+import { NewsFeed } from "@/components/sections/NewsFeed";
 
 export default function Home() {
   return (
@@ -49,6 +50,8 @@ export default function Home() {
         <ActionTimeline />
         <div className="border-t border-white-08" />
         <Infrastructure />
+        <div className="border-t border-white-08" />
+        <NewsFeed />
       </main>
 
       <Footer />

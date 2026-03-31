@@ -11,6 +11,7 @@ const sections = [
   { id: "anti-recs", label: "Not Recommended" },
   { id: "timeline", label: "Action Timeline" },
   { id: "infrastructure", label: "Infrastructure" },
+  { id: "news", label: "Live News" },
 ];
 
 export function Nav() {

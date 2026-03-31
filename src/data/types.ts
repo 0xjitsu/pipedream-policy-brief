@@ -85,6 +85,18 @@ export interface TimelineItem {
   items: { action: string; agency: string }[];
 }
 
+export type NewsSeverity = "red" | "yellow" | "green";
+export type NewsSourceType = "news" | "government" | "social" | "market";
+
+export interface NewsEvent {
+  date: string;
+  headline: string;
+  severity: NewsSeverity;
+  source: string;
+  sourceUrl: string;
+  sourceType: NewsSourceType;
+}
+
 export interface RegionStation {
   region: string;
   count: number;
