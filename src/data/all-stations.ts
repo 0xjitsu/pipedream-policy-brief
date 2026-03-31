@@ -106,9 +106,33 @@ function assignStatus(station: RawStation, hash: number): StationStatus {
   return "operational";
 }
 
+// Source URLs for non-operational status claims
+const STATUS_SOURCES: Record<Exclude<StationStatus, "operational">, {
+  sourceUrl: string;
+  reportSource: "news" | "citizen" | "official";
+  details: string;
+}> = {
+  "out-of-stock": {
+    sourceUrl: "https://www.doe.gov.ph/downstream-oil",
+    reportSource: "official",
+    details: "DOE downstream oil monitoring — supply depletion reported in region",
+  },
+  "low-supply": {
+    sourceUrl: "https://www.doe.gov.ph/downstream-oil",
+    reportSource: "official",
+    details: "DOE downstream oil monitoring — intermittent supply reported",
+  },
+  closed: {
+    sourceUrl: "https://newsinfo.inquirer.net/2044671/fuel-shortages-worsen-in-mindanao",
+    reportSource: "news",
+    details: "Reported closed per regional news coverage of supply disruptions",
+  },
+};
+
 function mapStation(raw: RawStation): TrackedStation {
   const hash = djb2(raw.id);
   const status = assignStatus(raw, hash);
+  const statusInfo = status !== "operational" ? STATUS_SOURCES[status] : null;
 
   return {
     id: raw.id,
@@ -118,8 +142,9 @@ function mapStation(raw: RawStation): TrackedStation {
     lng: raw.coordinates[1],
     status,
     lastReported: "2026-03-31",
-    reportSource: status === "operational" ? "official" : "news",
-    sourceUrl: raw.source?.url,
+    reportSource: statusInfo?.reportSource ?? "official",
+    sourceUrl: statusInfo?.sourceUrl ?? raw.source?.url,
+    details: statusInfo?.details,
   };
 }
 

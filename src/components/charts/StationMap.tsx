@@ -142,12 +142,16 @@ export function StationMap({ stations }: StationMapProps) {
           fillOpacity: 0.7,
         });
 
+        const sourceLabel = station.status === "operational"
+          ? "Location source"
+          : station.reportSource === "official" ? "DOE report" : "News report";
+
         const sourceLink = station.sourceUrl
-          ? `<a href="${station.sourceUrl}" target="_blank" rel="noopener noreferrer" style="color:#38BDF8;text-decoration:underline;font-size:11px;">View source</a>`
+          ? `<a href="${station.sourceUrl}" target="_blank" rel="noopener noreferrer" style="color:#38BDF8;text-decoration:underline;font-size:11px;">${sourceLabel} &rarr;</a>`
           : "";
 
         marker.bindPopup(
-          `<div style="font-family:system-ui;min-width:180px;">
+          `<div style="font-family:system-ui;min-width:200px;">
             <div style="font-weight:600;font-size:13px;margin-bottom:4px;">${station.name}</div>
             <div style="font-size:11px;color:#999;margin-bottom:6px;">${station.brand}</div>
             <span style="display:inline-block;padding:2px 8px;border-radius:9999px;font-size:10px;font-weight:600;color:#fff;background:${color};">

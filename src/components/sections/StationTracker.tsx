@@ -44,6 +44,7 @@ const STAT_CARDS: {
   valueKey: keyof typeof trackerStats;
   accent?: string;
   border?: string;
+  sourceUrl?: string;
 }[] = [
   { label: "Total Tracked", valueKey: "totalTracked" },
   {
@@ -51,24 +52,28 @@ const STAT_CARDS: {
     valueKey: "outOfStock",
     accent: "text-[#EF4444]",
     border: "border-l-[#EF4444]",
+    sourceUrl: "https://www.doe.gov.ph/downstream-oil",
   },
   {
     label: "Low Supply",
     valueKey: "lowSupply",
     accent: "text-[#F59E0B]",
     border: "border-l-[#F59E0B]",
+    sourceUrl: "https://www.doe.gov.ph/downstream-oil",
   },
   {
     label: "Closed",
     valueKey: "closed",
     accent: "text-[#6B7280]",
     border: "border-l-[#6B7280]",
+    sourceUrl: "https://newsinfo.inquirer.net/2044671/fuel-shortages-worsen-in-mindanao",
   },
   {
     label: "Operational",
     valueKey: "operational",
     accent: "text-[#10B981]",
     border: "border-l-[#10B981]",
+    sourceUrl: "https://www.doe.gov.ph/downstream-oil",
   },
 ];
 
@@ -122,7 +127,15 @@ export function StationTracker() {
                 ? (trackerStats[card.valueKey] as number).toLocaleString()
                 : trackerStats[card.valueKey]}
             </div>
-            <div className="text-xs text-white-50 mt-1">{card.label}</div>
+            <div className="text-xs text-white-50 mt-1">
+              {card.sourceUrl ? (
+                <a href={card.sourceUrl} target="_blank" rel="noopener noreferrer" className="hover:underline hover:underline-offset-2 transition-colors">
+                  {card.label} <span className="text-white-20">&rarr;</span>
+                </a>
+              ) : (
+                card.label
+              )}
+            </div>
           </motion.div>
         ))}
       </motion.div>
