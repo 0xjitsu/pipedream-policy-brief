@@ -35,8 +35,13 @@ export const pillars: PillarData[] = [
     title: "Accelerate fiscal intervention",
     urgency: "urgent",
     rationale:
-      "RA 12316 authorizes excise tax suspension but implementation targets April 12–13. The $80/bbl threshold is breached. Every day of delay costs billions.",
+      "Maintaining fuel excise taxes is not merely a fiscal necessity — it is a critical market signal. RA 12316 authorizes suspension, but as MBC Chairman Edgar Chua emphasizes, suspending these taxes creates a broad artificial subsidy that overstimulates demand when global supplies are precarious. Depressing prices artificially risks triggering the very shortages we seek to avoid by masking true scarcity. The ₱20B+ annual excise revenue also funds the targeted relief and infrastructure programs that are the real solutions.",
     recommendations: [
+      {
+        title: "Guard excise revenue for hyper-targeted digital relief",
+        detail:
+          "Deploy direct fuel vouchers via GCash, PayMaya, and PriceLOCQ to PUV drivers, small-scale farmers, and fisherfolk. Digital delivery ensures zero leakage and immediate verification — no intermediaries, no blanket subsidies.",
+      },
       {
         title: "DBCC must convene this week; excise suspension by April 1",
         detail:
