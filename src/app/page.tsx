@@ -28,7 +28,7 @@ export default function Home() {
             Navigating the Energy Emergency
           </h1>
           <p className="mt-4 text-base md:text-lg text-white-50 max-w-2xl mx-auto">
-            Policy recommendations for the Philippine fuel crisis
+            Supply security, market stability, and targeted relief for the Philippine fuel crisis
           </p>
           <p className="mt-3 text-xs text-white-20 font-mono">
             March 30, 2026 · Submitted to UPLIFT Committee, DOE, and DOF
