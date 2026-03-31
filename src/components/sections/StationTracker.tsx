@@ -77,6 +77,56 @@ const STAT_CARDS: {
   },
 ];
 
+const TRACKER_SOURCES: {
+  category: string;
+  source: string;
+  url: string | null;
+  details: string;
+}[] = [
+  {
+    category: "Station locations",
+    source: "OpenStreetMap Contributors (Overpass API)",
+    url: "https://overpass-turbo.eu/",
+    details: "10,469 fuel POIs queried via amenity=fuel within PH boundaries",
+  },
+  {
+    category: "Brand classification",
+    source: "DOE — Licensed Fuel Retail Outlets (LFRO)",
+    url: "https://www.doe.gov.ph/downstream-oil",
+    details: "Petron, Shell, Caltex, Phoenix, SeaOil, Unioil + independents with valid COC",
+  },
+  {
+    category: "Status monitoring",
+    source: "DOE — Oil Supply/Demand Reports",
+    url: "https://doe.gov.ph/articles/group/reports-information-resources?category=Downstream+Oil+and+Natural+Gas&display_type=Card",
+    details: "Weekly supply inventory and days-of-supply data by region",
+  },
+  {
+    category: "Disruption reports",
+    source: "Philippine Inquirer — Fuel shortages in Mindanao",
+    url: "https://newsinfo.inquirer.net/2044671/fuel-shortages-worsen-in-mindanao",
+    details: "Verified regional station closures and out-of-stock reports",
+  },
+  {
+    category: "Fuel pricing",
+    source: "DOE — Oil Monitor (weekly SRP)",
+    url: "https://doe.gov.ph/oil-monitor",
+    details: "Suggested retail prices updated every Tuesday by OIMB",
+  },
+  {
+    category: "Map tiles",
+    source: "CARTO — CartoDB DarkMatter",
+    url: "https://carto.com/basemaps/",
+    details: "Zero-API-key dark-themed OpenStreetMap base layer",
+  },
+  {
+    category: "Crowd-source",
+    source: "Coming soon",
+    url: null,
+    details: "Citizen-submitted station status via mobile reporting",
+  },
+];
+
 export function StationTracker() {
   const [statusFilter, setStatusFilter] = useState<StatusFilter>("all");
   const [brandFilter, setBrandFilter] = useState<string>("all");
@@ -244,7 +294,7 @@ export function StationTracker() {
         <StationMap stations={filteredStations} />
       </motion.div>
 
-      {/* Data sources callout */}
+      {/* Data Sources & Attribution */}
       <motion.div
         variants={fadeInUp}
         initial="hidden"
@@ -252,21 +302,45 @@ export function StationTracker() {
         viewport={{ once: true }}
         className="glass p-6 border-l-3 border-l-info bg-info/5"
       >
-        <h4 className="text-xs font-semibold uppercase tracking-wider text-info mb-2">
-          Data Sources
+        <h4 className="text-xs font-semibold uppercase tracking-wider text-info mb-3">
+          Data Sources & Attribution
         </h4>
-        <p className="text-sm text-white-70 leading-relaxed">
-          Station locations sourced from OpenStreetMap (10,469 stations). Status data compiled from{" "}
-          <a
-            href="https://www.doe.gov.ph/downstream-oil"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-info underline underline-offset-2"
-          >
-            DOE downstream oil monitoring
-          </a>{" "}
-          and verified news reports. Crowd-sourced citizen reporting coming soon.
-        </p>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-white-08">
+                <th className="text-left text-[10px] uppercase tracking-wider text-white-30 font-semibold pb-2 pr-4">Category</th>
+                <th className="text-left text-[10px] uppercase tracking-wider text-white-30 font-semibold pb-2 pr-4">Source</th>
+                <th className="text-left text-[10px] uppercase tracking-wider text-white-30 font-semibold pb-2">Details</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-white-05">
+              {TRACKER_SOURCES.map((src) => (
+                <tr key={src.category} className="group">
+                  <td className="py-2.5 pr-4 text-white-50 whitespace-nowrap">{src.category}</td>
+                  <td className="py-2.5 pr-4">
+                    {src.url ? (
+                      <a
+                        href={src.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-info hover:underline underline-offset-2 transition-colors"
+                      >
+                        {src.source} <span className="text-white-20">→</span>
+                      </a>
+                    ) : (
+                      <span className="text-white-30 italic">{src.source}</span>
+                    )}
+                  </td>
+                  <td className="py-2.5 text-white-40 text-xs">{src.details}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div className="mt-3 pt-3 border-t border-white-05 text-[10px] text-white-30">
+          Last updated: {new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
+        </div>
       </motion.div>
     </SectionWrapper>
   );
