@@ -9,9 +9,15 @@ import { AseanComparisonChart } from "@/components/charts/AseanComparisonChart";
 import { metrics, senateFindings } from "@/data/crisis-overview";
 import { staggerContainer, fadeInUp } from "@/lib/motion";
 
+const situationDate = new Date().toLocaleDateString("en-US", {
+  month: "long",
+  day: "numeric",
+  year: "numeric",
+});
+
 export function CrisisOverview() {
   return (
-    <SectionWrapper id="crisis" title="Crisis Overview" subtitle="Philippine fuel supply emergency — March 30, 2026">
+    <SectionWrapper id="crisis" title="Crisis Overview" subtitle={`Philippine fuel supply emergency — ${situationDate}`}>
       {/* Metric cards */}
       <motion.div
         variants={staggerContainer}

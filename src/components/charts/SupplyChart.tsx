@@ -94,7 +94,7 @@ export function SupplyChart() {
             borderDash: [6, 3],
             label: {
               display: true,
-              content: "Today (Mar 30)",
+              content: supplyDepletion.todayLabel,
               position: "start" as const,
               backgroundColor: "rgba(245, 158, 11, 0.9)",
               color: "#fff",

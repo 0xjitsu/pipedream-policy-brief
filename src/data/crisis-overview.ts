@@ -37,15 +37,52 @@ export const metrics: MetricCardData[] = [
   },
 ];
 
+/** Compute a fractional x-axis index for "today" so the vertical marker
+ *  lands precisely between weekly data points. Falls back to the last
+ *  actual-data index if the current date is outside the label range. */
+function computeTodayIndex(labels: string[]): { index: number; label: string } {
+  const now = new Date();
+  const year = now.getFullYear();
+
+  // Parse "Mon DD" labels into Date objects (all in the current year)
+  const dates = labels.map((l) => new Date(`${l}, ${year}`));
+
+  // Format today's date as "Mon DD" (e.g. "Mar 31")
+  const todayLabel = now.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+
+  // If today is before the first label, clamp to 0
+  if (now <= dates[0]) return { index: 0, label: todayLabel };
+
+  // If today is after the last label, clamp to last index
+  if (now >= dates[dates.length - 1])
+    return { index: dates.length - 1, label: todayLabel };
+
+  // Find the two labels that bracket today and interpolate
+  for (let i = 0; i < dates.length - 1; i++) {
+    if (now >= dates[i] && now <= dates[i + 1]) {
+      const span = dates[i + 1].getTime() - dates[i].getTime();
+      const elapsed = now.getTime() - dates[i].getTime();
+      return { index: i + elapsed / span, label: todayLabel };
+    }
+  }
+
+  return { index: 0, label: todayLabel };
+}
+
+const _supplyLabels = [
+  "Feb 28", "Mar 7", "Mar 14", "Mar 20", "Mar 27",
+  "Apr 3", "Apr 10", "Apr 17", "Apr 24", "May 1",
+];
+
+const _today = computeTodayIndex(_supplyLabels);
+
 export const supplyDepletion = {
-  labels: [
-    "Feb 28", "Mar 7", "Mar 14", "Mar 20", "Mar 27",
-    "Apr 3", "Apr 10", "Apr 17", "Apr 24", "May 1",
-  ],
+  labels: _supplyLabels,
   actual: [57, 53, 49, 45, 42, null, null, null, null, null],
   projected: [null, null, null, null, 42, 38, 34, 30, 26, 22],
   minimum: 15,
-  todayIndex: 4, // Mar 27 is closest to Mar 30
+  todayIndex: _today.index,
+  todayLabel: `Today (${_today.label})`,
 };
 
 export const gdpInflation = {
