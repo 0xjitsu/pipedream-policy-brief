@@ -62,6 +62,7 @@ export const channels: ChannelData[] = [
       "PLB generates parameterized fuel codes per beneficiary: driver name, plate number, fuel type, volume limit, validity period, and designated stations",
       "Drivers present fuel codes at any PLB-equipped station — verified in real time against the platform, no physical cards needed",
       "Fuel redeemed is deducted from pre-purchased balance at a locked price, protecting against further price increases during the subsidy period",
+      "For beneficiaries without station access: direct fuel vouchers via GCash or PayMaya, redeemable at participating stations — maximizing reach with zero physical infrastructure build",
       "Government reimburses stations for the subsidy differential via PLB's existing settlement module (weekly cycle)",
       "UPLIFT committee receives real-time dashboard visibility on all redemptions, balances, and fiscal exposure across all sectors and regions",
     ],
@@ -74,6 +75,7 @@ export const channels: ChannelData[] = [
       "Sector-specific calibration — different subsidy levels for PUV drivers vs. farmers vs. fisherfolk",
       "Extensible to other fuel brands beyond Seaoil — Shell, Petron, Caltex, and independent operators can be onboarded through API integration",
       "Preserves market pricing for non-subsidized consumers, maintaining oil company viability",
+      "Compatible with existing fintech wallets (GCash 93M users, PayMaya 60M users) — no app installation needed for SMS voucher redemption",
     ],
     risks: [
       "Requires whitelist compilation speed from government agencies — this is the primary bottleneck, not the platform",
@@ -165,7 +167,7 @@ export const channels: ChannelData[] = [
 ];
 
 export const sequencingRecommendation =
-  "Deploy Channel 2 as primary within 2–3 weeks using PriceLOCQ for Business (PLB) infrastructure already operational at 450+ stations. Extend PLB to additional fuel brands through API integration for national multi-provider coverage. Hold Channel 1 (wholesale) as immediate fallback for commercial consumers not on the whitelist. Prepare Channel 3 (ayuda) for humanitarian-scale deployment if the crisis extends beyond 60 days.";
+  "Deploy Channel 2 as primary within 2–3 weeks using PriceLOCQ for Business (PLB) infrastructure already operational at 450+ stations, supplemented by GCash/PayMaya fuel vouchers for digital-first delivery. Extend PLB to additional fuel brands through API integration for national multi-provider coverage. Revenue from maintained excise taxes funds the subsidy — making the fiscal model self-sustaining. Hold Channel 1 (wholesale) as immediate fallback for commercial consumers not on the whitelist. Prepare Channel 3 (ayuda) for humanitarian-scale deployment if the crisis extends beyond 60 days.";
 
 export const channelContext = {
   problem:
