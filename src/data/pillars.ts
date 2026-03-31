@@ -12,21 +12,25 @@ export const pillars: PillarData[] = [
         title: "Scale PNOC procurement and G2G arrangements",
         detail:
           "Pursue Russia waiver (India model), China, and ASEAN G2G deals. Establish supply coordination desk within UPLIFT.",
+        sourceUrl: "https://pnoc.com.ph/",
       },
       {
         title: "Streamline importation processes",
         detail:
           "Single-window clearance across all agencies. Relax fuel specs temporarily. 24-hour customs turnaround for fuel.",
+        sourceUrl: "https://www.doe.gov.ph/",
       },
       {
         title: "Validate alternative supply sources within 72 hours",
         detail:
           "DOE must verify Rotterdam/Petronas supply data raised in Senate. Commission independent Argus benchmark verification.",
+        sourceUrl: "https://senate.gov.ph/press_release/2026/",
       },
       {
         title: "Audit power sector fuel exposure and activate alternate capacity",
         detail:
           "Assess power generation supply mix dependency on diesel/oil. Identify available capacity from coal, natural gas, and renewable sources. Fast-track grid dispatch from non-oil generators to reduce diesel demand from the power sector.",
+        sourceUrl: "https://www.doe.gov.ph/",
       },
     ],
   },
@@ -41,21 +45,25 @@ export const pillars: PillarData[] = [
         title: "Guard excise revenue for hyper-targeted digital relief",
         detail:
           "Deploy direct fuel vouchers via GCash, PayMaya, and PriceLOCQ to PUV drivers, small-scale farmers, and fisherfolk. Digital delivery ensures zero leakage and immediate verification — no intermediaries, no blanket subsidies.",
+        sourceUrl: "https://www.doe.gov.ph/downstream-oil",
       },
       {
         title: "DBCC must convene this week; excise suspension by April 1",
         detail:
           "Establish refund mechanism for inventory with already-paid excise. Emergency publication to compress 15-day window.",
+        sourceUrl: "https://www.dof.gov.ph/",
       },
       {
         title: "Phased VAT relief tied to price triggers",
         detail:
           "Suspend on diesel when Dubai crude exceeds $100/bbl; reinstate below $80 for 30 days. Remove VAT upon importation per IPPCA.",
+        sourceUrl: "https://www.dof.gov.ph/",
       },
       {
         title: "Cap excise/VAT at $50/bbl equivalent",
         detail:
           "Progressive cushion per Petron recommendation: higher prices = more government absorption.",
+        sourceUrl: "https://senate.gov.ph/press_release/2026/",
       },
     ],
   },
@@ -70,11 +78,13 @@ export const pillars: PillarData[] = [
         title: "Mandatory cost unbundling at the pump",
         detail:
           "Weekly breakdowns: base cost, freight, insurance, cargo premium, excise, VAT, margin. Addresses Senate concerns constructively.",
+        sourceUrl: "https://www.doe.gov.ph/downstream-oil",
       },
       {
         title: "Strengthen DOE enforcement without overreach",
         detail:
           "Accelerate show-cause investigations. Verify tax relief pass-through. Keep Section 14E as credible deterrent only.",
+        sourceUrl: "https://www.doe.gov.ph/",
       },
     ],
   },
@@ -89,21 +99,25 @@ export const pillars: PillarData[] = [
         title: "Implement demand destruction across power and transport",
         detail:
           "Power sector: activate interruptible load programs (ILP), enforce brownout schedules for non-essential facilities, accelerate renewable energy dispatch. Transport: expand WFH mandates, consolidate government fleet operations, promote ride-sharing and route optimization via digital fleet platforms.",
+        sourceUrl: "https://www.doe.gov.ph/",
       },
       {
         title: "Structured transport demand reduction",
         detail:
           "Mandate WFH for government. Reduce non-essential hours. Promote digital fleet management for route optimization and fuel hedging via platforms like PriceLOCQ for Business.",
+        sourceUrl: "https://dotr.gov.ph/",
       },
       {
         title: "Fix the transport subsidy disconnect",
         detail:
           "Streamline ₱5,000 disbursement. Consider automatic fare triggers tied to fuel price movements.",
+        sourceUrl: "https://dotr.gov.ph/",
       },
       {
         title: "Protect employment",
         detail:
           "Unemployment at 5.8%. Temporary wage subsidies for fuel-intensive sectors. Activate business continuity plans.",
+        sourceUrl: "https://www.dole.gov.ph/",
       },
     ],
   },
@@ -118,16 +132,19 @@ export const pillars: PillarData[] = [
         title: "Strategic Petroleum Reserve",
         detail:
           "90-day stockpile at Mariveles, Bataan (₱54B at $60/bbl). PPP with PNOC as anchor.",
+        sourceUrl: "https://pnoc.com.ph/",
       },
       {
         title: "Accelerate energy diversification",
         detail:
           "Fast-track 40% RE by 2030. Grid modernization via BOT. Dual-fuel power plants. South China Sea development.",
+        sourceUrl: "https://www.doe.gov.ph/",
       },
       {
         title: "Diversify supply permanently",
         detail:
           "Standing agreements with Russia, US, Nigeria, Angola, Latin America. ASEAN mutual supply assurance.",
+        sourceUrl: "https://www.dfa.gov.ph/",
       },
     ],
   },

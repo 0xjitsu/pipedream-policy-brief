@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { SectionWrapper } from "@/components/layout/SectionWrapper";
 import { StationBarChart } from "@/components/charts/StationBarChart";
 import { ProgressBar } from "@/components/charts/ProgressBar";
-import { fuelAvailability, islandGroups, infrastructureCallout } from "@/data/infrastructure";
+import { fuelAvailability, islandGroups, infrastructureCallout, infrastructureSource } from "@/data/infrastructure";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
 
 const islandColor: Record<string, string> = {
@@ -81,6 +81,11 @@ export function Infrastructure() {
         </h4>
         <p className="text-sm text-white-70 leading-relaxed">{infrastructureCallout}</p>
       </motion.div>
+
+      <p className="text-[10px] text-white-20 mt-3">
+        Source: <a href={infrastructureSource.url} target="_blank" rel="noopener noreferrer"
+          className="underline underline-offset-2 hover:text-white-50 transition-colors">{infrastructureSource.label}</a>
+      </p>
     </SectionWrapper>
   );
 }

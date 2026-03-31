@@ -32,5 +32,10 @@ export const islandGroups: IslandGroup[] = [
   { name: "Mindanao", stations: 101, percentage: "23%", regions: "Northern Mindanao, Davao, SOCCSKSARGEN, Caraga, Zamboanga, ARMM" },
 ];
 
+export const infrastructureSource = {
+  label: "DOE Downstream Oil Monitoring",
+  url: "https://www.doe.gov.ph/downstream-oil",
+};
+
 export const infrastructureCallout =
   "450+ PriceLOCQ-equipped stations across 16 regions represent proven, operational distribution infrastructure. The PriceLOCQ for Business platform already provides verified driver identity, parameterized fuel allocation, real-time tracking, and price protection through forward purchasing. This existing infrastructure can be extended to stations of other fuel brands through API integration, creating a consolidated national fuel distribution network supporting all three government channels.";

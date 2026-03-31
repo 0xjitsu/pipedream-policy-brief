@@ -57,6 +57,7 @@ export interface RadarMetric {
 export interface PillarRecommendation {
   title: string;
   detail: string;
+  sourceUrl?: string;
 }
 
 export interface PillarData {
@@ -86,7 +87,7 @@ export interface ScenarioData {
 export interface TimelineItem {
   period: string;
   urgency: Urgency;
-  items: { action: string; agency: string }[];
+  items: { action: string; agency: string; sourceUrl?: string }[];
 }
 
 export type NewsSeverity = "red" | "yellow" | "green";

@@ -56,9 +56,16 @@ export function ActionTimeline() {
                 {period.items.map((item, ii) => (
                   <div key={ii} className="glass p-3 flex items-start justify-between gap-4">
                     <p className="text-sm text-white-70">{item.action}</p>
-                    <span className="text-xs text-white-50 font-mono shrink-0 bg-white-05 px-2 py-0.5 rounded">
-                      {item.agency}
-                    </span>
+                    {item.sourceUrl ? (
+                      <a href={item.sourceUrl} target="_blank" rel="noopener noreferrer"
+                         className="text-xs text-white-50 hover:text-white-70 underline underline-offset-2 transition-colors font-mono shrink-0 bg-white-05 px-2 py-0.5 rounded">
+                        {item.agency}
+                      </a>
+                    ) : (
+                      <span className="text-xs text-white-50 font-mono shrink-0 bg-white-05 px-2 py-0.5 rounded">
+                        {item.agency}
+                      </span>
+                    )}
                   </div>
                 ))}
               </div>
