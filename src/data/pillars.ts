@@ -59,7 +59,7 @@ export const pillars: PillarData[] = [
     title: "Price transparency and anti-profiteering",
     urgency: "important",
     rationale:
-      "Public trust is eroding. Mandatory transparency is the antidote to both real and perceived abuse — without the destructive consequences of re-regulation.",
+      "Public trust is eroding — driving legislative proposals like SB 2011 (Aquino) to impose price caps. Mandatory transparency is the better response: it addresses the same public anger without the destructive consequences of re-regulation. Prove that markets are working fairly, and the political pressure for caps dissipates.",
     recommendations: [
       {
         title: "Mandatory cost unbundling at the pump",

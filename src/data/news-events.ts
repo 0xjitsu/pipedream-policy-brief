@@ -3,6 +3,14 @@ import type { NewsEvent } from "./types";
 export const fallbackNewsEvents: NewsEvent[] = [
   {
     date: "Mar 30, 2026",
+    headline: "Sen. Aquino files SB 2011 to classify gasoline and diesel as basic necessities under the Price Act, enabling 30-day price caps during emergencies",
+    severity: "red",
+    source: "Inquirer",
+    sourceUrl: "https://newsinfo.inquirer.net/2203735/bam-aquino-pushes-bill-to-allow-govt-to-cap-gasoline-diesel-prices",
+    sourceType: "government",
+  },
+  {
+    date: "Mar 30, 2026",
     headline: "Dubai crude hits $112/bbl as Hormuz transit delays persist",
     severity: "red",
     source: "Reuters",

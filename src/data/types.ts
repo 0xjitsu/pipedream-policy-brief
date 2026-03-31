@@ -105,6 +105,7 @@ export interface RegionStation {
 
 export interface FuelAvailability {
   name: string;
+  brandName: string;
   available: number;
   total: number;
 }

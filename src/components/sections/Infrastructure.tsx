@@ -39,7 +39,7 @@ export function Infrastructure() {
             <h3 className="font-serif text-base font-semibold text-white mb-4">Fuel Availability</h3>
             <div className="space-y-4">
               {fuelAvailability.map((fuel) => (
-                <ProgressBar key={fuel.name} label={fuel.name} value={fuel.available} total={fuel.total} />
+                <ProgressBar key={fuel.name} label={fuel.name} sublabel={fuel.brandName} value={fuel.available} total={fuel.total} />
               ))}
             </div>
           </motion.div>

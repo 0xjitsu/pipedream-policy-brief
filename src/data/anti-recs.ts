@@ -12,9 +12,9 @@ export const antiRecommendations: AntiRecData[] = [
   },
   {
     id: 2,
-    title: "Price caps without corresponding subsidies",
+    title: "Price caps without corresponding subsidies (SB 2011)",
     reason:
-      "Oil companies cannot absorb losses without business stoppage. Caps without fiscal backstop cause the exact shortages we're trying to prevent.",
+      "Sen. Aquino's SB 2011 proposes classifying gasoline and diesel as basic necessities under RA 7581 (Price Act), enabling 30-day price freezes during emergencies. While well-intentioned, price caps without a fiscal backstop cause the exact shortages we're trying to prevent — oil companies cannot absorb losses without business stoppage. The bill also conflicts with RA 8479 (Oil Deregulation Law), creating legal uncertainty that deters private supply investment at precisely the wrong moment.",
   },
   {
     id: 3,

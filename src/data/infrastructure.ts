@@ -20,10 +20,10 @@ export const stationsByRegion: RegionStation[] = [
 ];
 
 export const fuelAvailability: FuelAvailability[] = [
-  { name: "Exceed Diesel", available: 420, total: 442 },
-  { name: "Extreme U (Gasoline 91)", available: 418, total: 442 },
-  { name: "Extreme 95 (Gasoline 95)", available: 342, total: 442 },
-  { name: "Extreme 97 (Premium)", available: 86, total: 442 },
+  { name: "Diesel", brandName: "Exceed Diesel", available: 420, total: 442 },
+  { name: "Gasoline 91 (Regular)", brandName: "Extreme U", available: 418, total: 442 },
+  { name: "Gasoline 95 (Mid-grade)", brandName: "Extreme 95", available: 342, total: 442 },
+  { name: "Gasoline 97 (Premium)", brandName: "Extreme 97", available: 86, total: 442 },
 ];
 
 export const islandGroups: IslandGroup[] = [
