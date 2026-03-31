@@ -10,30 +10,35 @@ export const metrics: MetricCardData[] = [
     gaugeMax: 65,
     gaugeValue: 45,
     gaugeColor: "#F59E0B",
+    sourceUrl: "https://www.doe.gov.ph/downstream-oil",
   },
   {
     label: "Diesel Pump Price",
     value: "₱130+/L",
     delta: "+136%",
     deltaLabel: "from ₱55 pre-crisis",
+    sourceUrl: "https://www.doe.gov.ph/downstream-oil",
   },
   {
     label: "Stations Closed",
     value: "425",
     delta: "2.93%",
     deltaLabel: "of 14,485 total",
+    sourceUrl: "https://www.doe.gov.ph/downstream-oil",
   },
   {
     label: "Crude Oil",
     value: "$115+/bbl",
     delta: "+59%",
     deltaLabel: "from $72 pre-war",
+    sourceUrl: "https://www.reuters.com/business/energy/",
   },
   {
     label: "Peso Rate",
     value: "₱60+/$1",
     delta: "Weakening",
     deltaLabel: "currency pressure",
+    sourceUrl: "https://www.bsp.gov.ph/",
   },
 ];
 
@@ -99,12 +104,12 @@ export const aseanComparison = {
 };
 
 export const senateFindings: SenateFindings[] = [
-  { text: "Supply beyond April is unconfirmed", source: "Chevron, PIP, IPPCA", critical: true },
-  { text: "Cargo premiums surged 120%+; product premiums at $40 (was <$1)", source: "Shell, Chevron", critical: true },
-  { text: "Alternative supply at lower prices may exist (needs DOE verification)", source: "Sen. Marcoleta", critical: true },
-  { text: "Excise tax suspension implementation too slow (earliest April 12–13)", source: "DOF", critical: true },
-  { text: "PNOC secured initial supply: 150KB arrived, 300KB more in April", source: "PNOC", critical: false },
-  { text: "Regional refineries declaring force majeure and export bans", source: "Shell, Petron", critical: true },
-  { text: "Replacement cost methodology drives current pump prices", source: "Petron, Chevron", critical: false },
-  { text: "DOE issued show-cause orders for suspected profiteering", source: "DOE", critical: false },
+  { text: "Supply beyond April is unconfirmed", source: "Chevron, PIP, IPPCA", sourceUrl: "https://senate.gov.ph/press_release/2026/", critical: true },
+  { text: "Cargo premiums surged 120%+; product premiums at $40 (was <$1)", source: "Shell, Chevron", sourceUrl: "https://senate.gov.ph/press_release/2026/", critical: true },
+  { text: "Alternative supply at lower prices may exist (needs DOE verification)", source: "Sen. Marcoleta", sourceUrl: "https://senate.gov.ph/press_release/2026/", critical: true },
+  { text: "Excise tax suspension implementation too slow (earliest April 12–13)", source: "DOF", sourceUrl: "https://www.dof.gov.ph/", critical: true },
+  { text: "PNOC secured initial supply: 150KB arrived, 300KB more in April", source: "PNOC", sourceUrl: "https://pnoc.com.ph/", critical: false },
+  { text: "Regional refineries declaring force majeure and export bans", source: "Shell, Petron", sourceUrl: "https://senate.gov.ph/press_release/2026/", critical: true },
+  { text: "Replacement cost methodology drives current pump prices", source: "Petron, Chevron", sourceUrl: "https://senate.gov.ph/press_release/2026/", critical: false },
+  { text: "DOE issued show-cause orders for suspected profiteering", source: "DOE", sourceUrl: "https://www.doe.gov.ph/", critical: false },
 ];

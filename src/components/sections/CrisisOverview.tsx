@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo } from "react";
 import { motion } from "framer-motion";
 import { SectionWrapper } from "@/components/layout/SectionWrapper";
 import { MetricCard } from "@/components/ui/MetricCard";
@@ -7,7 +8,9 @@ import { SupplyChart } from "@/components/charts/SupplyChart";
 import { GdpInflationChart } from "@/components/charts/GdpInflationChart";
 import { AseanComparisonChart } from "@/components/charts/AseanComparisonChart";
 import { metrics, senateFindings } from "@/data/crisis-overview";
+import { useMarketData } from "@/hooks/useMarketData";
 import { staggerContainer, fadeInUp } from "@/lib/motion";
+import type { MetricCardData } from "@/data/types";
 
 const situationDate = new Date().toLocaleDateString("en-US", {
   month: "long",
@@ -16,6 +19,34 @@ const situationDate = new Date().toLocaleDateString("en-US", {
 });
 
 export function CrisisOverview() {
+  const { oilPrice, pesoRate } = useMarketData();
+
+  const liveMetrics: MetricCardData[] = useMemo(() => {
+    return metrics.map((m) => {
+      if (m.label === "Crude Oil" && oilPrice) {
+        return {
+          ...m,
+          value: `$${oilPrice.value}/bbl`,
+          delta: oilPrice.delta || m.delta,
+          deltaLabel: `via ${oilPrice.source}`,
+          sourceUrl: oilPrice.sourceUrl,
+          isLive: true,
+        };
+      }
+      if (m.label === "Peso Rate" && pesoRate) {
+        return {
+          ...m,
+          value: `₱${pesoRate.value}/$1`,
+          delta: pesoRate.delta || m.delta,
+          deltaLabel: `via ${pesoRate.source}`,
+          sourceUrl: pesoRate.sourceUrl,
+          isLive: true,
+        };
+      }
+      return m;
+    });
+  }, [oilPrice, pesoRate]);
+
   return (
     <SectionWrapper id="crisis" title="Crisis Overview" subtitle={`Philippine fuel supply emergency — ${situationDate}`}>
       {/* Metric cards */}
@@ -26,7 +57,7 @@ export function CrisisOverview() {
         viewport={{ once: true }}
         className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 mb-8"
       >
-        {metrics.map((m) => (
+        {liveMetrics.map((m) => (
           <MetricCard key={m.label} data={m} />
         ))}
       </motion.div>
@@ -66,7 +97,7 @@ export function CrisisOverview() {
               <div className="flex-1 min-w-0">
                 <p className="text-sm text-white-90 leading-relaxed">{f.text}</p>
                 <div className="flex items-center gap-2 mt-2">
-                  <span className="text-xs text-white-50">{f.source}</span>
+                  <a href={f.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-xs text-white-50 hover:text-white-70 underline underline-offset-2 transition-colors">{f.source}</a>
                   {f.critical && (
                     <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-critical-bg text-critical border border-critical/30">
                       Action needed

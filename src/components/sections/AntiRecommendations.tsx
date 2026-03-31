@@ -47,6 +47,11 @@ export function AntiRecommendations() {
               <div>
                 <h4 className="font-semibold text-white text-sm">{item.title}</h4>
                 <p className="text-sm text-white-50 leading-relaxed mt-2">{item.reason}</p>
+                {item.sourceUrl && (
+                  <a href={item.sourceUrl} target="_blank" rel="noopener noreferrer" className="inline-block mt-2 text-xs text-white-30 hover:text-white-50 underline underline-offset-2 transition-colors">
+                    Source &rarr;
+                  </a>
+                )}
               </div>
             </div>
           </motion.div>
