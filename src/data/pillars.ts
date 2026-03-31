@@ -6,7 +6,7 @@ export const pillars: PillarData[] = [
     title: "Secure supply now",
     urgency: "critical",
     rationale:
-      "Supply beyond May is unconfirmed. PNOC's successful procurement of 150,000 barrels proves government-facilitated supply works. This must be scaled using the ₱20 billion Malampaya fund.",
+      "We must distinguish between a price disruption and a supply collapse. While high prices are a burden, a scenario where fuel is unavailable at any price — due to disincentivized imports — would be catastrophic. Preserving a deregulated environment ensures all market players have the incentive to secure and move product into the country. Supply beyond May is unconfirmed. PNOC's successful procurement of 150,000 barrels proves government-facilitated supply works. This must be scaled using the ₱20 billion Malampaya fund.",
     recommendations: [
       {
         title: "Scale PNOC procurement and G2G arrangements",
