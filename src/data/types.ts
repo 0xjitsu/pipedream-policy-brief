@@ -9,11 +9,14 @@ export interface MetricCardData {
   gaugeMax?: number;
   gaugeValue?: number;
   gaugeColor?: string;
+  sourceUrl?: string;
+  isLive?: boolean;
 }
 
 export interface SenateFindings {
   text: string;
   source: string;
+  sourceUrl: string;
   critical: boolean;
 }
 
@@ -68,6 +71,7 @@ export interface AntiRecData {
   id: number;
   title: string;
   reason: string;
+  sourceUrl?: string;
 }
 
 export interface ScenarioData {
@@ -115,4 +119,19 @@ export interface IslandGroup {
   stations: number;
   percentage: string;
   regions: string;
+}
+
+export type StationStatus = "operational" | "low-supply" | "out-of-stock" | "closed";
+
+export interface TrackedStation {
+  id: string;
+  name: string;
+  brand: string;
+  lat: number;
+  lng: number;
+  status: StationStatus;
+  lastReported: string;
+  reportSource: "news" | "citizen" | "official";
+  sourceUrl?: string;
+  details?: string;
 }
