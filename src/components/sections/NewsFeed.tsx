@@ -1,10 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { SectionWrapper } from "@/components/layout/SectionWrapper";
 import { useNewsFeed } from "@/hooks/useNewsFeed";
-import { staggerContainer, fadeInUp } from "@/lib/motion";
 import type { NewsSeverity, NewsSourceType } from "@/data/types";
 
 const SEVERITY_COLORS: Record<NewsSeverity, string> = {
@@ -123,19 +121,19 @@ export function NewsFeed() {
       </div>
 
       {/* Timeline */}
-      <motion.div
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        className="relative"
-      >
+      <div className="relative">
         {/* Vertical line */}
         <div className="absolute left-[15px] md:left-[19px] top-0 bottom-0 w-0.5 bg-white-08" />
 
         <div className="space-y-3">
           {filtered.map((event, i) => (
-            <motion.div key={`${event.source}-${event.date}-${i}`} variants={fadeInUp} className="relative pl-10 md:pl-12">
+            <div
+              key={`${event.source}-${event.date}-${i}`}
+              className="relative pl-10 md:pl-12"
+              style={{
+                animation: `newsItemIn 0.3s ease-out ${i * 50}ms both`,
+              }}
+            >
               {/* Severity dot */}
               <div
                 className={`absolute left-[8px] md:left-[12px] top-3 w-3 h-3 rounded-full ${SEVERITY_COLORS[event.severity]} ${SEVERITY_GLOW[event.severity]}`}
@@ -161,14 +159,14 @@ export function NewsFeed() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
 
           {filtered.length === 0 && (
             <p className="text-sm text-white-30 text-center py-8">No events match the selected filters.</p>
           )}
         </div>
-      </motion.div>
+      </div>
     </SectionWrapper>
   );
 }
