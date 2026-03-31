@@ -1,5 +1,8 @@
 import type { AntiRecData } from "./types";
 
+export const antiRecContext =
+  "Several proposals have been raised in Senate hearings and public discourse. MBC has evaluated each and determined they would cause more harm than the problem they aim to solve. These are not theoretical concerns — each carries specific, quantifiable risks to fiscal stability, investment climate, and fuel supply continuity.";
+
 export const antiRecommendations: AntiRecData[] = [
   {
     id: 1,

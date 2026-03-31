@@ -45,14 +45,37 @@ export function PolicyPillars() {
             accentColor={urgencyAccent[pillar.urgency]}
             defaultExpanded={pillar.id <= 2}
           >
-            <ul className="space-y-2.5">
-              {pillar.recommendations.map((rec, i) => (
-                <li key={i} className="flex gap-3 text-sm text-white-70 leading-relaxed">
-                  <span className="text-white-30 shrink-0">→</span>
-                  <span>{rec}</span>
-                </li>
-              ))}
-            </ul>
+            <div className="space-y-5">
+              {/* Rationale */}
+              <div className="glass px-4 py-3 border-l-2" style={{ borderLeftColor: urgencyAccent[pillar.urgency] }}>
+                <span className="text-xs font-semibold uppercase tracking-wider text-white-50">Rationale: </span>
+                <span className="text-sm text-white-70 leading-relaxed">{pillar.rationale}</span>
+              </div>
+
+              {/* Recommendations */}
+              <div>
+                <h4 className="text-xs font-semibold uppercase tracking-wider text-white-50 mb-3">Recommendations</h4>
+                <div className="space-y-3">
+                  {pillar.recommendations.map((rec, i) => (
+                    <div key={i} className="flex gap-3">
+                      <span
+                        className="font-mono text-xs font-bold shrink-0 mt-0.5 w-5 h-5 rounded-full flex items-center justify-center"
+                        style={{
+                          backgroundColor: `${urgencyAccent[pillar.urgency]}15`,
+                          color: urgencyAccent[pillar.urgency],
+                        }}
+                      >
+                        {i + 1}
+                      </span>
+                      <div>
+                        <div className="text-sm font-semibold text-white">{rec.title}</div>
+                        <p className="text-sm text-white-50 leading-relaxed mt-0.5">{rec.detail}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </ExpandableCard>
         ))}
       </motion.div>

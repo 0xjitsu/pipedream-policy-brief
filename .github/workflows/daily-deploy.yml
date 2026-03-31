@@ -1,0 +1,23 @@
+name: Daily Deploy
+
+on:
+  schedule:
+    # Run at 00:00 UTC daily (08:00 PHT)
+    - cron: '0 0 * * *'
+  workflow_dispatch: # Allow manual trigger from GitHub UI
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Vercel Deploy Hook
+        env:
+          DEPLOY_HOOK_URL: ${{ secrets.VERCEL_DEPLOY_HOOK }}
+        run: |
+          response=$(curl -s -o /dev/null -w "%{http_code}" -X POST "$DEPLOY_HOOK_URL")
+          if [ "$response" -eq 200 ] || [ "$response" -eq 201 ]; then
+            echo "Deploy triggered successfully (HTTP $response)"
+          else
+            echo "Deploy trigger failed (HTTP $response)"
+            exit 1
+          fi

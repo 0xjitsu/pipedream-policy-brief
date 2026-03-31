@@ -5,6 +5,7 @@ import { useScrollSpy } from "@/hooks/useScrollSpy";
 
 const sections = [
   { id: "crisis", label: "Crisis Overview" },
+  { id: "scenarios", label: "Scenarios" },
   { id: "channels", label: "Distribution Channels" },
   { id: "pillars", label: "Policy Pillars" },
   { id: "anti-recs", label: "Not Recommended" },

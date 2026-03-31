@@ -4,6 +4,7 @@ import { Nav } from "@/components/layout/Nav";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import { Footer } from "@/components/layout/Footer";
 import { CrisisOverview } from "@/components/sections/CrisisOverview";
+import { EconomicScenarios } from "@/components/sections/EconomicScenarios";
 import { DistributionChannels } from "@/components/sections/DistributionChannels";
 import { PolicyPillars } from "@/components/sections/PolicyPillars";
 import { AntiRecommendations } from "@/components/sections/AntiRecommendations";
@@ -36,6 +37,8 @@ export default function Home() {
 
       <main>
         <CrisisOverview />
+        <div className="border-t border-white-08" />
+        <EconomicScenarios />
         <div className="border-t border-white-08" />
         <DistributionChannels />
         <div className="border-t border-white-08" />

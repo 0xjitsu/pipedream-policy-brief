@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { SectionWrapper } from "@/components/layout/SectionWrapper";
 import { staggerContainer, fadeInUp } from "@/lib/motion";
-import { antiRecommendations } from "@/data/anti-recs";
+import { antiRecommendations, antiRecContext } from "@/data/anti-recs";
 
 export function AntiRecommendations() {
   return (
@@ -12,6 +12,19 @@ export function AntiRecommendations() {
       title="What MBC Does Not Recommend"
       subtitle="Proposals considered and rejected on substantive grounds"
     >
+      {/* Context paragraph */}
+      <motion.div
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="mb-6"
+      >
+        <p className="text-sm md:text-base text-white-70 leading-relaxed glass p-5">
+          {antiRecContext}
+        </p>
+      </motion.div>
+
       <motion.div
         variants={staggerContainer}
         initial="hidden"

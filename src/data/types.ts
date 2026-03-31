@@ -17,19 +17,31 @@ export interface SenateFindings {
   critical: boolean;
 }
 
+export interface ProvenPlatform {
+  name: string;
+  operator: string;
+  url: string;
+  stationCount: string;
+  capabilities: string[];
+  scalabilityNote: string;
+}
+
 export interface ChannelData {
   id: number;
   name: string;
   tag: string;
   tagColor: string;
+  summary: string;
   how: string | string[];
   advantages: string[];
   risks: string[];
   fiscalEstimate: string;
   readiness: string;
+  prerequisites?: string[];
   whenToDeploy?: string;
   roadmap?: { week: string; task: string }[];
   platformRequirements?: string[];
+  provenPlatform?: ProvenPlatform;
 }
 
 export interface RadarMetric {
@@ -39,17 +51,32 @@ export interface RadarMetric {
   ayuda: number;
 }
 
+export interface PillarRecommendation {
+  title: string;
+  detail: string;
+}
+
 export interface PillarData {
   id: number;
   title: string;
   urgency: Urgency;
-  recommendations: string[];
+  rationale: string;
+  recommendations: PillarRecommendation[];
 }
 
 export interface AntiRecData {
   id: number;
   title: string;
   reason: string;
+}
+
+export interface ScenarioData {
+  price: string;
+  label: string;
+  gdp: string;
+  inflation: string;
+  severity: number;
+  color: string;
 }
 
 export interface TimelineItem {

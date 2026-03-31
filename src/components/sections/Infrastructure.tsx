@@ -18,7 +18,7 @@ export function Infrastructure() {
     <SectionWrapper
       id="infrastructure"
       title="Infrastructure & Station Coverage"
-      subtitle="442 digitally-equipped fuel stations across 16 regions"
+      subtitle="450+ PriceLOCQ-equipped stations powering targeted fuel distribution"
     >
       <div className="grid lg:grid-cols-2 gap-6 mb-8">
         {/* Station bar chart */}

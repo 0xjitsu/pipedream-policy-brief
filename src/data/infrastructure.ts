@@ -33,4 +33,4 @@ export const islandGroups: IslandGroup[] = [
 ];
 
 export const infrastructureCallout =
-  "442 digitally-equipped fuel stations across 16 regions represent existing distribution infrastructure for targeted subsidy programs. Digital fleet management platforms enable: verified driver identity, controlled fuel allocation per vehicle, real-time consumption tracking, and price protection through forward purchasing. This infrastructure supports all three government distribution channels under consideration.";
+  "450+ PriceLOCQ-equipped stations across 16 regions represent proven, operational distribution infrastructure. The PriceLOCQ for Business platform already provides verified driver identity, parameterized fuel allocation, real-time tracking, and price protection through forward purchasing. This existing infrastructure can be extended to stations of other fuel brands through API integration, creating a consolidated national fuel distribution network supporting all three government channels.";
