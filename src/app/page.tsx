@@ -11,6 +11,7 @@ import { AntiRecommendations } from "@/components/sections/AntiRecommendations";
 import { ActionTimeline } from "@/components/sections/ActionTimeline";
 import { Infrastructure } from "@/components/sections/Infrastructure";
 import { NewsFeed } from "@/components/sections/NewsFeed";
+import { StationTracker } from "@/components/sections/StationTracker";
 
 export default function Home() {
   return (
@@ -50,6 +51,8 @@ export default function Home() {
         <ActionTimeline />
         <div className="border-t border-white-08" />
         <Infrastructure />
+        <div className="border-t border-white-08" />
+        <StationTracker />
         <div className="border-t border-white-08" />
         <NewsFeed />
       </main>
