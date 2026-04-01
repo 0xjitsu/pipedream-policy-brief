@@ -183,7 +183,7 @@ export const channelContext = {
   sources: {
     senateHearing: {
       label: "Senate Energy Committee Hearing (Mar 2026)",
-      url: "https://senate.gov.ph/press_release/2026/",
+      url: "https://www.philstar.com/business/2026/03/27/2517009/philippines-fuel-supply-guaranteed-only-until-may-oil-firms-say",
     },
     doe: {
       label: "DOE Weekly Supply Monitoring",
@@ -191,7 +191,7 @@ export const channelContext = {
     },
     dof: {
       label: "Department of Finance",
-      url: "https://www.dof.gov.ph/",
+      url: "https://www.dof.gov.ph/govt-readies-plans-to-protect-filipinos-from-sudden-price-hikes-amid-conflict-in-the-middle-east/",
     },
     uplift: {
       label: "UPLIFT Committee Report",

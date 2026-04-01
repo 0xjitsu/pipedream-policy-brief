@@ -33,7 +33,7 @@ export function ProcessFlow({ steps, accentColor }: ProcessFlowProps) {
                 >
                   {i + 1}
                 </div>
-                <p className="text-xs text-white-70 leading-relaxed mt-1.5 line-clamp-3">
+                <p className="text-xs text-white-70 leading-relaxed mt-1.5">
                   {step}
                 </p>
               </div>

@@ -120,12 +120,12 @@ export const aseanComparison = {
 };
 
 export const senateFindings: SenateFindings[] = [
-  { text: "Supply beyond April is unconfirmed", source: "Chevron, PIP, IPPCA", sourceUrl: "https://senate.gov.ph/press_release/2026/", critical: true },
-  { text: "Cargo premiums surged 120%+; product premiums at $40 (was <$1)", source: "Shell, Chevron", sourceUrl: "https://senate.gov.ph/press_release/2026/", critical: true },
-  { text: "Alternative supply at lower prices may exist (needs DOE verification)", source: "Sen. Marcoleta", sourceUrl: "https://senate.gov.ph/press_release/2026/", critical: true },
-  { text: "Excise tax suspension implementation too slow (earliest April 12–13)", source: "DOF", sourceUrl: "https://www.dof.gov.ph/", critical: true },
-  { text: "PNOC secured initial supply: 150KB arrived, 300KB more in April", source: "PNOC", sourceUrl: "https://pnoc.com.ph/", critical: false },
-  { text: "Regional refineries declaring force majeure and export bans", source: "Shell, Petron", sourceUrl: "https://senate.gov.ph/press_release/2026/", critical: true },
-  { text: "Replacement cost methodology drives current pump prices", source: "Petron, Chevron", sourceUrl: "https://senate.gov.ph/press_release/2026/", critical: false },
+  { text: "Supply beyond April is unconfirmed", source: "Chevron, PIP, IPPCA", sourceUrl: "https://www.philstar.com/business/2026/03/27/2517009/philippines-fuel-supply-guaranteed-only-until-may-oil-firms-say", critical: true },
+  { text: "Cargo premiums surged 120%+; product premiums at $40 (was <$1)", source: "Shell, Chevron", sourceUrl: "https://tribune.net.ph/2026/03/27/pbbm-big-3-clash-over-oil-inventory", critical: true },
+  { text: "Alternative supply at lower prices may exist (needs DOE verification)", source: "Sen. Marcoleta", sourceUrl: "https://www.gmanetwork.com/news/topstories/nation/981531/doe-faces-criticism-from-marcoleta-over-lax-fuel-price-monitoring/story/", critical: true },
+  { text: "Excise tax suspension implementation too slow (earliest April 12–13)", source: "DOF", sourceUrl: "https://newsinfo.inquirer.net/2202073/dof-price-cuts-due-to-fuel-tax-law-felt-by-mid-april", critical: true },
+  { text: "PNOC secured initial supply: 150KB arrived, 300KB more in April", source: "PNOC", sourceUrl: "https://www.bworldonline.com/the-nation/2026/03/29/739486/philippines-to-take-delivery-of-1-04m-barrels-of-diesel-to-boost-fuel-supply/", critical: false },
+  { text: "Regional refineries declaring force majeure and export bans", source: "Shell, Petron", sourceUrl: "https://tribune.net.ph/2026/03/27/pbbm-big-3-clash-over-oil-inventory", critical: true },
+  { text: "Replacement cost methodology drives current pump prices", source: "Petron, Chevron", sourceUrl: "https://www.philstar.com/headlines/2026/03/28/2517316/senators-hold-abusive-oil-companies-accountable", critical: true },
   { text: "DOE issued show-cause orders for suspected profiteering", source: "DOE", sourceUrl: "https://doe.gov.ph/articles/group/liquid-fuels?category=Oil+Monitor&display_type=Card", critical: false },
 ];

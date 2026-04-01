@@ -144,7 +144,7 @@ export function SupplyChart() {
         Source:{" "}
         <a href="https://doe.gov.ph/articles/group/reports-information-resources?category=Downstream+Oil+and+Natural+Gas&display_type=Card" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-white-50 transition-colors">DOE weekly supply monitoring reports</a>
         {"; "}
-        <a href="https://senate.gov.ph/press_release/2026/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-white-50 transition-colors">Senate Energy Committee testimony (Mar 2026)</a>
+        <a href="https://www.philstar.com/business/2026/03/27/2517009/philippines-fuel-supply-guaranteed-only-until-may-oil-firms-say" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-white-50 transition-colors">Senate Energy Committee testimony (Mar 2026)</a>
       </p>
     </div>
   );

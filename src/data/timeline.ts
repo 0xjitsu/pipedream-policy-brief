@@ -5,7 +5,7 @@ export const timeline: TimelineItem[] = [
     period: "This Week",
     urgency: "critical",
     items: [
-      { action: "Convene DBCC, approve excise tax suspension", agency: "DOF/DBCC", sourceUrl: "https://www.dof.gov.ph/" },
+      { action: "Convene DBCC, approve excise tax suspension", agency: "DOF/DBCC", sourceUrl: "https://newsinfo.inquirer.net/2202073/dof-price-cuts-due-to-fuel-tax-law-felt-by-mid-april" },
       { action: "Validate alternative supply data (Rotterdam, Petronas)", agency: "DOE", sourceUrl: "https://doe.gov.ph/articles/group/reports-information-resources?category=Downstream+Oil+and+Natural+Gas&display_type=Card" },
       { action: "Finalize beneficiary whitelists for Channel 2", agency: "DOTR/DA/DSWD", sourceUrl: "https://dotr.gov.ph/" },
       { action: "Convene UPLIFT committee", agency: "Office of the President", sourceUrl: "https://www.officialgazette.gov.ph/" },
@@ -29,7 +29,7 @@ export const timeline: TimelineItem[] = [
     period: "Week 2–3",
     urgency: "urgent",
     items: [
-      { action: "Channel 2 pilot launch: NCR + priority provinces", agency: "DOE/PNOC", sourceUrl: "https://pnoc.com.ph/" },
+      { action: "Channel 2 pilot launch: NCR + priority provinces", agency: "DOE/PNOC", sourceUrl: "https://www.bworldonline.com/the-nation/2026/03/29/739486/philippines-to-take-delivery-of-1-04m-barrels-of-diesel-to-boost-fuel-supply/" },
     ],
   },
   {
@@ -58,7 +58,7 @@ export const timeline: TimelineItem[] = [
     period: "Q2 2026",
     urgency: "strategic",
     items: [
-      { action: "SPR feasibility study completed", agency: "DOE/PNOC", sourceUrl: "https://pnoc.com.ph/" },
+      { action: "SPR feasibility study completed", agency: "DOE/PNOC", sourceUrl: "https://www.enerdata.net/publications/daily-energy-news/philippines-sets-usd330m-emergency-fund-secure-fuel-supply.html" },
       { action: "Channel 1 and 3 contingency plans finalized", agency: "DOE", sourceUrl: "https://doe.gov.ph/articles/group/reports-information-resources?category=Downstream+Oil+and+Natural+Gas&display_type=Card" },
     ],
   },

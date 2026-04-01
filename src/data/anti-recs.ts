@@ -9,7 +9,7 @@ export const antiRecommendations: AntiRecData[] = [
     title: "Full re-regulation of the oil industry",
     reason:
       "Requires ₱17B in government subsidies at $50/bbl per Petron Senate testimony. More critically, re-regulation disincentivizes the very market players — from major refiners to smaller traders — who currently have the incentive to secure and move product into the country. In a supply crisis, the deregulated market is our best mechanism for attracting imports.",
-    sourceUrl: "https://senate.gov.ph/press_release/2026/",
+    sourceUrl: "https://www.philstar.com/business/2026/03/27/2517009/philippines-fuel-supply-guaranteed-only-until-may-oil-firms-say",
   },
   {
     id: 2,
@@ -30,6 +30,6 @@ export const antiRecommendations: AntiRecData[] = [
     title: "Simultaneous removal of both excise tax and VAT",
     reason:
       "Economic planning secretary warned of 'triple whammy': budget deficit + reduced spending + GDP contraction. As MBC Chairman Edgar Chua notes, broad tax relief has the same effect as a fuel subsidy — maintaining demand higher than it would otherwise be at a time when supply is in question. The companies MBC represents do not need subsidies; they need supply. Fiscal interventions must be sequenced, targeted, and reversible.",
-    sourceUrl: "https://www.dof.gov.ph/",
+    sourceUrl: "https://www.dof.gov.ph/govt-readies-plans-to-protect-filipinos-from-sudden-price-hikes-amid-conflict-in-the-middle-east/",
   },
 ];

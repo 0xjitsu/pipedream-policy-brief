@@ -12,7 +12,7 @@ export const pillars: PillarData[] = [
         title: "Scale PNOC procurement and G2G arrangements",
         detail:
           "Pursue Russia waiver (India model), China, and ASEAN G2G deals. Establish supply coordination desk within UPLIFT.",
-        sourceUrl: "https://pnoc.com.ph/",
+        sourceUrl: "https://www.bworldonline.com/the-nation/2026/03/29/739486/philippines-to-take-delivery-of-1-04m-barrels-of-diesel-to-boost-fuel-supply/",
       },
       {
         title: "Streamline importation processes",
@@ -24,7 +24,7 @@ export const pillars: PillarData[] = [
         title: "Validate alternative supply sources within 72 hours",
         detail:
           "DOE must verify Rotterdam/Petronas supply data raised in Senate. Commission independent Argus benchmark verification.",
-        sourceUrl: "https://senate.gov.ph/press_release/2026/",
+        sourceUrl: "https://www.gmanetwork.com/news/topstories/nation/981531/doe-faces-criticism-from-marcoleta-over-lax-fuel-price-monitoring/story/",
       },
       {
         title: "Audit power sector fuel exposure and activate alternate capacity",
@@ -51,19 +51,19 @@ export const pillars: PillarData[] = [
         title: "DBCC must convene this week; excise suspension by April 1",
         detail:
           "Establish refund mechanism for inventory with already-paid excise. Emergency publication to compress 15-day window.",
-        sourceUrl: "https://www.dof.gov.ph/",
+        sourceUrl: "https://newsinfo.inquirer.net/2202073/dof-price-cuts-due-to-fuel-tax-law-felt-by-mid-april",
       },
       {
         title: "Phased VAT relief tied to price triggers",
         detail:
           "Suspend on diesel when Dubai crude exceeds $100/bbl; reinstate below $80 for 30 days. Remove VAT upon importation per IPPCA.",
-        sourceUrl: "https://www.dof.gov.ph/",
+        sourceUrl: "https://www.dof.gov.ph/govt-readies-plans-to-protect-filipinos-from-sudden-price-hikes-amid-conflict-in-the-middle-east/",
       },
       {
         title: "Cap excise/VAT at $50/bbl equivalent",
         detail:
           "Progressive cushion per Petron recommendation: higher prices = more government absorption.",
-        sourceUrl: "https://senate.gov.ph/press_release/2026/",
+        sourceUrl: "https://www.philstar.com/business/2026/03/27/2517009/philippines-fuel-supply-guaranteed-only-until-may-oil-firms-say",
       },
     ],
   },
@@ -132,7 +132,7 @@ export const pillars: PillarData[] = [
         title: "Strategic Petroleum Reserve",
         detail:
           "90-day stockpile at Mariveles, Bataan (₱54B at $60/bbl). PPP with PNOC as anchor.",
-        sourceUrl: "https://pnoc.com.ph/",
+        sourceUrl: "https://www.enerdata.net/publications/daily-energy-news/philippines-sets-usd330m-emergency-fund-secure-fuel-supply.html",
       },
       {
         title: "Accelerate energy diversification",
