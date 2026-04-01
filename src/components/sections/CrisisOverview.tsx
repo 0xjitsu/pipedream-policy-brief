@@ -70,7 +70,7 @@ export function CrisisOverview() {
       {/* Two-column: GDP/Inflation + ASEAN comparison */}
       <div className="grid md:grid-cols-2 gap-6 mb-8">
         <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-          <GdpInflationChart />
+          <GdpInflationChart currentOilPrice={oilPrice?.value} />
         </motion.div>
         <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
           <AseanComparisonChart />

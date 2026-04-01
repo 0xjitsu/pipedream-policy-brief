@@ -3,9 +3,35 @@
 import { motion } from "framer-motion";
 import { SectionWrapper } from "@/components/layout/SectionWrapper";
 import { scenarios, scenarioContext } from "@/data/scenarios";
+import { useMarketData } from "@/hooks/useMarketData";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
 
+// Parse scenario midpoint prices for matching
+const SCENARIO_PRICES: Record<string, number> = {
+  "$80–85/bbl": 82.5,
+  "$100/bbl": 100,
+  "$130/bbl": 130,
+  "$150/bbl": 150,
+  "$200/bbl": 200,
+};
+
+// Find the closest scenario to the current oil price
+function findClosestScenario(price: number): string {
+  let closest = "$130/bbl";
+  let minDiff = Infinity;
+  for (const [label, mid] of Object.entries(SCENARIO_PRICES)) {
+    const diff = Math.abs(price - mid);
+    if (diff < minDiff) {
+      minDiff = diff;
+      closest = label;
+    }
+  }
+  return closest;
+}
+
 export function EconomicScenarios() {
+  const { oilPrice } = useMarketData();
+  const currentScenario = oilPrice?.value ? findClosestScenario(oilPrice.value) : "$130/bbl";
   return (
     <SectionWrapper
       id="scenarios"
@@ -34,7 +60,7 @@ export function EconomicScenarios() {
         className="space-y-3"
       >
         {scenarios.map((s) => {
-          const isCurrentRange = s.price === "$130/bbl";
+          const isCurrentRange = s.price === currentScenario;
           return (
             <motion.div
               key={s.price}
@@ -110,11 +136,15 @@ export function EconomicScenarios() {
       >
         <p className="text-[10px] text-white-20">
           Sources:{" "}
-          <a href="https://neda.gov.ph/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-white-50 transition-colors">NEDA</a>
+          <a href="https://business.inquirer.net/567526/dbcc-cuts-targets-gdp-for-2026-now-at-5-6" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-white-50 transition-colors">DBCC/NEDA</a>
           {" · "}
-          <a href="https://www.bsp.gov.ph/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-white-50 transition-colors">BSP</a>
+          <a href="https://www.bsp.gov.ph/Price%20Stability/MonetaryPolicyReport/EconomicOutlook-February2026.pdf" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-white-50 transition-colors">BSP Monetary Policy Report</a>
           {" · "}
-          Wood Mackenzie · MUFG · ING forecasts
+          <a href="https://think.ing.com/articles/oil-price-shock-raises-inflation-and-policy-risks-in-philippines/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-white-50 transition-colors">ING Research</a>
+          {" · "}
+          <a href="https://www.mufgresearch.com/fx/philippines-strait-of-hormuz-closure-impact-of-higher-oil-prices-and-more-9-march-2026/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-white-50 transition-colors">MUFG</a>
+          {" · "}
+          Wood Mackenzie
         </p>
       </motion.div>
     </SectionWrapper>

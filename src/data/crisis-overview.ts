@@ -38,7 +38,7 @@ export const metrics: MetricCardData[] = [
     value: "₱60+/$1",
     delta: "Weakening",
     deltaLabel: "currency pressure",
-    sourceUrl: "https://www.bsp.gov.ph/",
+    sourceUrl: "https://www.bsp.gov.ph/SitePages/Statistics/ExchangeRate.aspx",
   },
 ];
 
@@ -96,6 +96,22 @@ export const gdpInflation = {
   inflation: [2.8, 3.5, 4.2, 5.0, 6.5, 8.0, 8.6],
   crossoverIndex: 3,
 };
+
+// Oil price thresholds matching gdpInflation.labels x-axis
+export const OIL_PRICE_THRESHOLDS = [72, 82.5, 100, 115, 130, 150, 200];
+
+/** Compute fractional x-axis index for a given oil price */
+export function computeOilPriceIndex(currentPrice: number): number {
+  const t = OIL_PRICE_THRESHOLDS;
+  if (currentPrice <= t[0]) return 0;
+  if (currentPrice >= t[t.length - 1]) return t.length - 1;
+  for (let i = 0; i < t.length - 1; i++) {
+    if (currentPrice >= t[i] && currentPrice <= t[i + 1]) {
+      return i + (currentPrice - t[i]) / (t[i + 1] - t[i]);
+    }
+  }
+  return 3; // fallback
+}
 
 export const aseanComparison = {
   countries: ["Philippines", "Singapore", "Thailand", "Malaysia", "Vietnam"],

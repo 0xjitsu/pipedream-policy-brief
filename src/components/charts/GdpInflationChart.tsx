@@ -2,10 +2,11 @@
 
 import "@/lib/chart-defaults";
 import { Line } from "react-chartjs-2";
-import { gdpInflation } from "@/data/crisis-overview";
+import { gdpInflation, computeOilPriceIndex } from "@/data/crisis-overview";
 import type { ChartOptions, ScriptableContext } from "chart.js";
 
-export function GdpInflationChart() {
+export function GdpInflationChart({ currentOilPrice }: { currentOilPrice?: number }) {
+  const dynamicIndex = currentOilPrice ? computeOilPriceIndex(currentOilPrice) : gdpInflation.crossoverIndex;
   const data = {
     labels: gdpInflation.labels,
     datasets: [
@@ -74,14 +75,14 @@ export function GdpInflationChart() {
         annotations: {
           crossover: {
             type: "line" as const,
-            xMin: gdpInflation.crossoverIndex,
-            xMax: gdpInflation.crossoverIndex,
+            xMin: dynamicIndex,
+            xMax: dynamicIndex,
             borderColor: "rgba(245, 158, 11, 0.7)",
             borderWidth: 2,
             borderDash: [6, 3],
             label: {
               display: true,
-              content: "⚠ We are here",
+              content: currentOilPrice ? `⚠ We are here ($${Math.round(currentOilPrice)}/bbl)` : "⚠ We are here",
               position: "start" as const,
               backgroundColor: "rgba(245, 158, 11, 0.95)",
               color: "#fff",
@@ -91,7 +92,7 @@ export function GdpInflationChart() {
           },
           stagflationZone: {
             type: "box" as const,
-            xMin: gdpInflation.crossoverIndex,
+            xMin: dynamicIndex,
             xMax: gdpInflation.labels.length - 1,
             backgroundColor: "rgba(239, 68, 68, 0.04)",
             borderWidth: 0,
@@ -124,12 +125,30 @@ export function GdpInflationChart() {
       <div className="h-[280px] md:h-[320px]">
         <Line data={data} options={options} />
       </div>
-      <p className="text-[10px] text-white-20 mt-3">
-        Source:{" "}
-        <a href="https://neda.gov.ph/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-white-50 transition-colors">NEDA projections</a>
-        {"; "}
-        <a href="https://www.bsp.gov.ph/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-white-50 transition-colors">BSP inflation forecast models</a>
-      </p>
+      {/* Sources & Methodology */}
+      <div className="mt-4 pt-3 border-t border-white-05">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5 text-[10px]">
+          <div className="flex justify-between">
+            <span className="text-white-30">GDP projections</span>
+            <a href="https://business.inquirer.net/567526/dbcc-cuts-targets-gdp-for-2026-now-at-5-6" target="_blank" rel="noopener noreferrer" className="text-white-40 hover:text-white-60 underline underline-offset-2 transition-colors">DBCC/NEDA →</a>
+          </div>
+          <div className="flex justify-between">
+            <span className="text-white-30">Inflation model</span>
+            <a href="https://www.bsp.gov.ph/Price%20Stability/MonetaryPolicyReport/EconomicOutlook-February2026.pdf" target="_blank" rel="noopener noreferrer" className="text-white-40 hover:text-white-60 underline underline-offset-2 transition-colors">BSP MPR Feb 2026 →</a>
+          </div>
+          <div className="flex justify-between">
+            <span className="text-white-30">Impact analysis</span>
+            <a href="https://think.ing.com/articles/oil-price-shock-raises-inflation-and-policy-risks-in-philippines/" target="_blank" rel="noopener noreferrer" className="text-white-40 hover:text-white-60 underline underline-offset-2 transition-colors">ING Research →</a>
+          </div>
+          <div className="flex justify-between">
+            <span className="text-white-30">Oil price data</span>
+            <a href="https://finance.yahoo.com/quote/BZ=F/" target="_blank" rel="noopener noreferrer" className="text-white-40 hover:text-white-60 underline underline-offset-2 transition-colors">Yahoo Finance (live) →</a>
+          </div>
+        </div>
+        <p className="text-[9px] text-white-15 mt-2">
+          Methodology: Each $10/bbl oil increase → −0.2pp GDP, +0.6pp inflation (ING Research, Mar 2026)
+        </p>
+      </div>
     </div>
   );
 }

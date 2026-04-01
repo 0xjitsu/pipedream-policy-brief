@@ -78,7 +78,7 @@ export const fallbackNewsEvents: NewsEvent[] = [
     headline: "Bangko Sentral flags fuel-driven inflation risk, holds rates steady",
     severity: "yellow",
     source: "BSP",
-    sourceUrl: "https://www.bsp.gov.ph",
+    sourceUrl: "https://manilastandard.net/business/economy-trade/314720440/bsp-raises-2026-inflation-forecast-to-5-1-on-oil-risks.html",
     sourceType: "government",
   },
   {
