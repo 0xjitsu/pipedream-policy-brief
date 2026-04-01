@@ -34,7 +34,7 @@ export const islandGroups: IslandGroup[] = [
 
 export const infrastructureSource = {
   label: "DOE Downstream Oil Monitoring",
-  url: "https://www.doe.gov.ph/downstream-oil",
+  url: "https://legacy.doe.gov.ph/downstream-oil/lfro-with-valid-coc-lfo",
 };
 
 export const infrastructureCallout =

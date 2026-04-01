@@ -187,7 +187,7 @@ export const channelContext = {
     },
     doe: {
       label: "DOE Weekly Supply Monitoring",
-      url: "https://www.doe.gov.ph/downstream-oil",
+      url: "https://legacy.doe.gov.ph/downstream-oil/lfro-with-valid-coc-lfo",
     },
     dof: {
       label: "Department of Finance",

@@ -142,7 +142,7 @@ export function SupplyChart() {
       </div>
       <p className="text-[10px] text-white-20 mt-3">
         Source:{" "}
-        <a href="https://www.doe.gov.ph/downstream-oil" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-white-50 transition-colors">DOE weekly supply monitoring reports</a>
+        <a href="https://doe.gov.ph/articles/group/reports-information-resources?category=Downstream+Oil+and+Natural+Gas&display_type=Card" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-white-50 transition-colors">DOE weekly supply monitoring reports</a>
         {"; "}
         <a href="https://senate.gov.ph/press_release/2026/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-white-50 transition-colors">Senate Energy Committee testimony (Mar 2026)</a>
       </p>

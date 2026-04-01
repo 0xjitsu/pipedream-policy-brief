@@ -6,7 +6,7 @@ export const timeline: TimelineItem[] = [
     urgency: "critical",
     items: [
       { action: "Convene DBCC, approve excise tax suspension", agency: "DOF/DBCC", sourceUrl: "https://www.dof.gov.ph/" },
-      { action: "Validate alternative supply data (Rotterdam, Petronas)", agency: "DOE", sourceUrl: "https://www.doe.gov.ph/" },
+      { action: "Validate alternative supply data (Rotterdam, Petronas)", agency: "DOE", sourceUrl: "https://doe.gov.ph/articles/group/reports-information-resources?category=Downstream+Oil+and+Natural+Gas&display_type=Card" },
       { action: "Finalize beneficiary whitelists for Channel 2", agency: "DOTR/DA/DSWD", sourceUrl: "https://dotr.gov.ph/" },
       { action: "Convene UPLIFT committee", agency: "Office of the President", sourceUrl: "https://www.officialgazette.gov.ph/" },
     ],
@@ -43,8 +43,8 @@ export const timeline: TimelineItem[] = [
     period: "By April 30",
     urgency: "important",
     items: [
-      { action: "Channel 2 national rollout", agency: "DOE", sourceUrl: "https://www.doe.gov.ph/" },
-      { action: "Mandatory cost unbundling at all stations", agency: "DOE", sourceUrl: "https://www.doe.gov.ph/" },
+      { action: "Channel 2 national rollout", agency: "DOE", sourceUrl: "https://legacy.doe.gov.ph/downstream-oil/lfro-with-valid-coc-lfo" },
+      { action: "Mandatory cost unbundling at all stations", agency: "DOE", sourceUrl: "https://doe.gov.ph/articles/group/liquid-fuels?category=Oil+Monitor&display_type=Card" },
     ],
   },
   {
@@ -59,7 +59,7 @@ export const timeline: TimelineItem[] = [
     urgency: "strategic",
     items: [
       { action: "SPR feasibility study completed", agency: "DOE/PNOC", sourceUrl: "https://pnoc.com.ph/" },
-      { action: "Channel 1 and 3 contingency plans finalized", agency: "DOE", sourceUrl: "https://www.doe.gov.ph/" },
+      { action: "Channel 1 and 3 contingency plans finalized", agency: "DOE", sourceUrl: "https://doe.gov.ph/articles/group/reports-information-resources?category=Downstream+Oil+and+Natural+Gas&display_type=Card" },
     ],
   },
 ];

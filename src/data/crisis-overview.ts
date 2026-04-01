@@ -10,21 +10,21 @@ export const metrics: MetricCardData[] = [
     gaugeMax: 65,
     gaugeValue: 45,
     gaugeColor: "#F59E0B",
-    sourceUrl: "https://www.doe.gov.ph/downstream-oil",
+    sourceUrl: "https://legacy.doe.gov.ph/downstream-oil/lfro-with-valid-coc-lfo",
   },
   {
     label: "Diesel Pump Price",
     value: "₱130+/L",
     delta: "+136%",
     deltaLabel: "from ₱55 pre-crisis",
-    sourceUrl: "https://www.doe.gov.ph/downstream-oil",
+    sourceUrl: "https://legacy.doe.gov.ph/downstream-oil/lfro-with-valid-coc-lfo",
   },
   {
     label: "Stations Closed",
     value: "425",
     delta: "2.93%",
     deltaLabel: "of 14,485 total",
-    sourceUrl: "https://www.doe.gov.ph/downstream-oil",
+    sourceUrl: "https://legacy.doe.gov.ph/downstream-oil/lfro-with-valid-coc-lfo",
   },
   {
     label: "Crude Oil",
@@ -111,5 +111,5 @@ export const senateFindings: SenateFindings[] = [
   { text: "PNOC secured initial supply: 150KB arrived, 300KB more in April", source: "PNOC", sourceUrl: "https://pnoc.com.ph/", critical: false },
   { text: "Regional refineries declaring force majeure and export bans", source: "Shell, Petron", sourceUrl: "https://senate.gov.ph/press_release/2026/", critical: true },
   { text: "Replacement cost methodology drives current pump prices", source: "Petron, Chevron", sourceUrl: "https://senate.gov.ph/press_release/2026/", critical: false },
-  { text: "DOE issued show-cause orders for suspected profiteering", source: "DOE", sourceUrl: "https://www.doe.gov.ph/", critical: false },
+  { text: "DOE issued show-cause orders for suspected profiteering", source: "DOE", sourceUrl: "https://doe.gov.ph/articles/group/liquid-fuels?category=Oil+Monitor&display_type=Card", critical: false },
 ];

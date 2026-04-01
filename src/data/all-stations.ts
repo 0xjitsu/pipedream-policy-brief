@@ -113,12 +113,12 @@ const STATUS_SOURCES: Record<Exclude<StationStatus, "operational">, {
   details: string;
 }> = {
   "out-of-stock": {
-    sourceUrl: "https://www.doe.gov.ph/downstream-oil",
+    sourceUrl: "https://legacy.doe.gov.ph/downstream-oil/lfro-with-valid-coc-lfo",
     reportSource: "official",
     details: "DOE downstream oil monitoring — supply depletion reported in region",
   },
   "low-supply": {
-    sourceUrl: "https://www.doe.gov.ph/downstream-oil",
+    sourceUrl: "https://legacy.doe.gov.ph/downstream-oil/lfro-with-valid-coc-lfo",
     reportSource: "official",
     details: "DOE downstream oil monitoring — intermittent supply reported",
   },

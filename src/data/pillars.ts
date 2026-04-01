@@ -18,7 +18,7 @@ export const pillars: PillarData[] = [
         title: "Streamline importation processes",
         detail:
           "Single-window clearance across all agencies. Relax fuel specs temporarily. 24-hour customs turnaround for fuel.",
-        sourceUrl: "https://www.doe.gov.ph/",
+        sourceUrl: "https://doe.gov.ph/articles/group/reports-information-resources?category=Downstream+Oil+and+Natural+Gas&display_type=Card",
       },
       {
         title: "Validate alternative supply sources within 72 hours",
@@ -30,7 +30,7 @@ export const pillars: PillarData[] = [
         title: "Audit power sector fuel exposure and activate alternate capacity",
         detail:
           "Assess power generation supply mix dependency on diesel/oil. Identify available capacity from coal, natural gas, and renewable sources. Fast-track grid dispatch from non-oil generators to reduce diesel demand from the power sector.",
-        sourceUrl: "https://www.doe.gov.ph/",
+        sourceUrl: "https://doe.gov.ph/articles/group/reports-information-resources?category=Downstream+Oil+and+Natural+Gas&display_type=Card",
       },
     ],
   },
@@ -45,7 +45,7 @@ export const pillars: PillarData[] = [
         title: "Guard excise revenue for hyper-targeted digital relief",
         detail:
           "Deploy direct fuel vouchers via GCash, PayMaya, and PriceLOCQ to PUV drivers, small-scale farmers, and fisherfolk. Digital delivery ensures zero leakage and immediate verification — no intermediaries, no blanket subsidies.",
-        sourceUrl: "https://www.doe.gov.ph/downstream-oil",
+        sourceUrl: "https://legacy.doe.gov.ph/downstream-oil/lfro-with-valid-coc-lfo",
       },
       {
         title: "DBCC must convene this week; excise suspension by April 1",
@@ -78,13 +78,13 @@ export const pillars: PillarData[] = [
         title: "Mandatory cost unbundling at the pump",
         detail:
           "Weekly breakdowns: base cost, freight, insurance, cargo premium, excise, VAT, margin. Addresses Senate concerns constructively.",
-        sourceUrl: "https://www.doe.gov.ph/downstream-oil",
+        sourceUrl: "https://legacy.doe.gov.ph/downstream-oil/lfro-with-valid-coc-lfo",
       },
       {
         title: "Strengthen DOE enforcement without overreach",
         detail:
           "Accelerate show-cause investigations. Verify tax relief pass-through. Keep Section 14E as credible deterrent only.",
-        sourceUrl: "https://www.doe.gov.ph/",
+        sourceUrl: "https://doe.gov.ph/articles/group/liquid-fuels?category=Oil+Monitor&display_type=Card",
       },
     ],
   },
@@ -99,7 +99,7 @@ export const pillars: PillarData[] = [
         title: "Implement demand destruction across power and transport",
         detail:
           "Power sector: activate interruptible load programs (ILP), enforce brownout schedules for non-essential facilities, accelerate renewable energy dispatch. Transport: expand WFH mandates, consolidate government fleet operations, promote ride-sharing and route optimization via digital fleet platforms.",
-        sourceUrl: "https://www.doe.gov.ph/",
+        sourceUrl: "https://doe.gov.ph/articles/group/reports-information-resources?category=Downstream+Oil+and+Natural+Gas&display_type=Card",
       },
       {
         title: "Structured transport demand reduction",
@@ -138,7 +138,7 @@ export const pillars: PillarData[] = [
         title: "Accelerate energy diversification",
         detail:
           "Fast-track 40% RE by 2030. Grid modernization via BOT. Dual-fuel power plants. South China Sea development.",
-        sourceUrl: "https://www.doe.gov.ph/",
+        sourceUrl: "https://doe.gov.ph/articles/group/reports-information-resources?category=Downstream+Oil+and+Natural+Gas&display_type=Card",
       },
       {
         title: "Diversify supply permanently",

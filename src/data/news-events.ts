@@ -22,7 +22,7 @@ export const fallbackNewsEvents: NewsEvent[] = [
     headline: "DOE orders 15-day fuel inventory reporting for all downstream players",
     severity: "yellow",
     source: "DOE Philippines",
-    sourceUrl: "https://www.doe.gov.ph",
+    sourceUrl: "https://doe.gov.ph/articles/group/reports-information-resources?category=Downstream+Oil+and+Natural+Gas&display_type=Card",
     sourceType: "government",
   },
   {

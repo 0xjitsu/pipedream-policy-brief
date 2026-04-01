@@ -52,14 +52,14 @@ const STAT_CARDS: {
     valueKey: "outOfStock",
     accent: "text-[#EF4444]",
     border: "border-l-[#EF4444]",
-    sourceUrl: "https://www.doe.gov.ph/downstream-oil",
+    sourceUrl: "https://legacy.doe.gov.ph/downstream-oil/lfro-with-valid-coc-lfo",
   },
   {
     label: "Low Supply",
     valueKey: "lowSupply",
     accent: "text-[#F59E0B]",
     border: "border-l-[#F59E0B]",
-    sourceUrl: "https://www.doe.gov.ph/downstream-oil",
+    sourceUrl: "https://legacy.doe.gov.ph/downstream-oil/lfro-with-valid-coc-lfo",
   },
   {
     label: "Closed",
@@ -73,7 +73,7 @@ const STAT_CARDS: {
     valueKey: "operational",
     accent: "text-[#10B981]",
     border: "border-l-[#10B981]",
-    sourceUrl: "https://www.doe.gov.ph/downstream-oil",
+    sourceUrl: "https://legacy.doe.gov.ph/downstream-oil/lfro-with-valid-coc-lfo",
   },
 ];
 
@@ -86,13 +86,13 @@ const TRACKER_SOURCES: {
   {
     category: "Station locations",
     source: "OpenStreetMap Contributors (Overpass API)",
-    url: "https://overpass-turbo.eu/",
+    url: "https://wiki.openstreetmap.org/wiki/Philippines",
     details: "10,469 fuel POIs queried via amenity=fuel within PH boundaries",
   },
   {
     category: "Brand classification",
     source: "DOE — Licensed Fuel Retail Outlets (LFRO)",
-    url: "https://www.doe.gov.ph/downstream-oil",
+    url: "https://legacy.doe.gov.ph/downstream-oil/lfro-with-valid-coc-lfo",
     details: "Petron, Shell, Caltex, Phoenix, SeaOil, Unioil + independents with valid COC",
   },
   {
@@ -110,7 +110,7 @@ const TRACKER_SOURCES: {
   {
     category: "Fuel pricing",
     source: "DOE — Oil Monitor (weekly SRP)",
-    url: "https://doe.gov.ph/oil-monitor",
+    url: "https://doe.gov.ph/articles/group/liquid-fuels?category=Oil+Monitor&display_type=Card",
     details: "Suggested retail prices updated every Tuesday by OIMB",
   },
   {
