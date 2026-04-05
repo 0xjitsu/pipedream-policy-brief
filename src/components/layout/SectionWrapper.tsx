@@ -14,7 +14,7 @@ interface SectionWrapperProps {
 
 export function SectionWrapper({ id, title, icon, subtitle, children, className = "" }: SectionWrapperProps) {
   return (
-    <section id={id} className={`scroll-mt-20 py-12 md:py-16 ${className}`}>
+    <section id={id} className={`scroll-mt-24 py-12 md:py-16 ${className}`}>
       <motion.div
         variants={staggerContainer}
         initial="hidden"

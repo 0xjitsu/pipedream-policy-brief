@@ -68,7 +68,7 @@ export function Ticker() {
   const tickerContent = [...merged, ...merged];
 
   return (
-    <div className="overflow-hidden border-b border-white-08 bg-navy/95 backdrop-blur-sm ticker-mask">
+    <div className="fixed top-14 left-0 right-0 z-40 overflow-hidden border-b border-white-08 bg-navy/95 backdrop-blur-sm ticker-mask">
       <div className="flex ticker-animate whitespace-nowrap py-1.5">
         {tickerContent.map((item, i) => (
           <span key={i} className="mx-3 inline-flex items-center gap-1.5 text-[10px] font-mono">

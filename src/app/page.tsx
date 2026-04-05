@@ -56,7 +56,7 @@ export default function Home() {
       <Ticker />
 
       {/* Hero header */}
-      <header className="pt-24 pb-8 md:pt-28 md:pb-12 border-b border-white-08">
+      <header className="pt-[88px] pb-8 md:pt-[96px] md:pb-12 border-b border-white-08">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-xs font-semibold tracking-[0.3em] uppercase text-white-50 mb-4">
             Pipedream · Policy Brief
