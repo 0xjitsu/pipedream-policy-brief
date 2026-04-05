@@ -63,6 +63,67 @@ all 34+ sources for auditability.
 - USD/PHP: Frankfurter/ECB API (polled every 10 min)
 - News: Al Jazeera RSS + Google News RSS + Reddit r/Philippines (polled every 5 min)
 
+## Quality Standards (from April 2026 audit)
+
+Every commit should maintain these standards. Run `/web-design-guidelines` before major releases.
+
+### SEO (target: Lighthouse 100)
+
+| Requirement | Implementation |
+|-------------|---------------|
+| `metadataBase` in layout.tsx | Resolves canonical URLs and OG image paths |
+| `export const viewport` (separate from metadata) | Next.js 16 requires separate Viewport export |
+| `themeColor` in viewport | Match navy `#0F1B2D` for browser chrome |
+| Meta description 150–160 chars | Optimal SERP display length |
+| `robots.ts` + `sitemap.ts` | Required for Lighthouse SEO 100 |
+| JSON-LD structured data | `Report` schema in page.tsx |
+| Preconnect hints | For all external API domains in `<head>` |
+
+### Accessibility (target: Lighthouse 90+)
+
+| Requirement | Why |
+|-------------|-----|
+| Skip navigation link | First focusable element, links to `#crisis` |
+| `focus-visible` ring (global CSS) | Sky-400 ring on all interactive elements |
+| `prefers-reduced-motion` media query | Disables all animations and smooth scroll |
+| `color-scheme: dark` on `<html>` | Informs browser of dark theme for native controls |
+| WCAG AA contrast (4.5:1 minimum) | `text-white-70` for body text, never `text-white-50` for readable content |
+| `aria-hidden="true"` on decorative SVGs | All icon SVGs that aren't interactive |
+| `aria-label` on nav, charts, selects | Landmark and form element labeling |
+| Touch targets 44px minimum | `min-h-[44px]` on all buttons and filter pills |
+| Chart text alternatives | `role="img" aria-label="..."` on chart wrappers |
+
+### Performance (target: Lighthouse 90+)
+
+| Requirement | Why |
+|-------------|-----|
+| LCP section statically imported | First visible section must NOT use `dynamic()` |
+| Loading skeletons on dynamic imports | `animate-pulse bg-white-05` placeholders prevent CLS |
+| `optimizePackageImports` in next.config | Tree-shake framer-motion, chart.js, react-chartjs-2 |
+| Error boundary (`src/app/error.tsx`) | Glass-themed error UI with retry button |
+| Cache-Control on API error responses | `s-maxage=60` prevents thundering herd on upstream failures |
+| Preconnect/dns-prefetch hints | For CARTO, Yahoo Finance, Frankfurter API |
+
+### Design System
+
+| Token | Value | Usage |
+|-------|-------|-------|
+| `text-white-90` | rgba(255,255,255,0.9) | Primary emphasis text |
+| `text-white-70` | rgba(255,255,255,0.7) | Standard body text (WCAG AA safe) |
+| `text-white-50` | rgba(255,255,255,0.5) | Supplementary labels only (fails AA on its own) |
+| `text-white-20` | rgba(255,255,255,0.2) | Decorative timestamps, dividers |
+| `.glass` | blur(12px) + white/5 bg + white/8 border | All card containers |
+| `.glass-hover` | translateY(-2px) + shadow on hover | Interactive cards ONLY |
+| `.glass-static` | Prevents hover lift | Full-width non-interactive containers |
+
+### Session Retrospective
+
+#### 2026-04-05 — Full Audit & Hardening
+
+- **What worked:** Parallel 4-agent audit (guidelines, SEO, perf, design) surfaced 50+ issues efficiently
+- **What struggled:** `text-white-50` used pervasively for body text — WCAG AA failure not caught until audit
+- **Rules added:** Never use `text-white-50` for readable body text. Static import for LCP sections. Always include robots.ts + sitemap.ts from day one. Define ALL color tokens upfront — don't let undefined tokens accumulate.
+
 ## Potential Data Source Upgrades (require API keys or partnerships)
 
 | Source | Data | Cost | Notes |
