@@ -1,0 +1,63 @@
+# Pipedream Policy Brief
+
+> Interactive policy dashboard for the Philippine energy crisis (March 2026). Live market data, 10K+ station tracker, economic scenarios, and policy recommendations.
+
+## About
+
+This is an open-source policy intelligence dashboard analyzing the Philippine fuel supply emergency. It tracks live crude oil prices, peso exchange rates, fuel station availability, and provides policy recommendations for government decision-makers.
+
+Published: March 30, 2026
+Author: Pipedream
+License: AGPL-3.0
+
+## Key Data Points
+
+- 45 days of fuel supply remaining (down from 57)
+- Diesel pump price: ₱130+/L (+136% from pre-crisis)
+- 98% Middle East import dependence
+- 10,469 fuel stations tracked nationwide
+- 425 stations closed, 240 out of stock
+- Cargo premiums surged 120%+
+- Supply beyond May 2026 is unconfirmed
+
+## Sections
+
+- [Crisis Overview](#crisis): Real-time supply metrics, market data, senate hearing findings
+- [Economic Scenarios](#scenarios): GDP and inflation projections at different oil price levels
+- [Distribution Channels](#channels): Three fuel relief mechanisms with fiscal cost analysis
+- [Policy Pillars](#pillars): Five coordinated policy recommendations
+- [Anti-Recommendations](#anti-recs): What the government should NOT do
+- [Action Timeline](#timeline): Phased execution schedule with agency accountability
+- [Infrastructure](#infrastructure): 450+ PriceLOCQ stations and fuel availability
+- [Station Tracker](#tracker): Interactive map of 10K+ stations with status filters
+- [Live News Feed](#news): Real-time energy crisis headlines
+- [References](#references): 34+ verified data sources
+
+## Live Data APIs (no authentication required)
+
+- Brent Crude Oil: GET /api/market (via Yahoo Finance, updates every 10 min)
+- USD/PHP Exchange Rate: GET /api/market (via Frankfurter/ECB, updates every 10 min)
+- News Headlines: GET /api/news (RSS aggregation, updates every 5 min)
+
+## Contributing
+
+Source code: https://github.com/0xjitsu/pipedream-policy-brief
+License: AGPL-3.0 (open source with commercial license available)
+
+Contributions welcome:
+- Data corrections or updates
+- New data source integrations
+- Visualization improvements
+- Translation to Filipino/Tagalog
+
+## For AI Agents
+
+This dashboard is designed to be machine-readable:
+- All data is separated from render logic in `src/data/*.ts`
+- JSON-LD structured data (Report schema) in the page
+- Semantic HTML with aria labels
+- Live API endpoints return JSON
+- Station data available as structured arrays
+
+To cite this dashboard:
+Pipedream. (2026). "Navigating the Energy Emergency: Philippine Fuel Crisis Policy Brief." Retrieved from https://pipedream-policy-brief.vercel.app

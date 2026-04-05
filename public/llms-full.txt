@@ -1,0 +1,354 @@
+# Pipedream Policy Brief
+
+> Interactive policy dashboard for the Philippine energy crisis (March 2026). Live market data, 10K+ station tracker, economic scenarios, and policy recommendations.
+
+## About
+
+This is an open-source policy intelligence dashboard analyzing the Philippine fuel supply emergency. It tracks live crude oil prices, peso exchange rates, fuel station availability, and provides policy recommendations for government decision-makers.
+
+Published: March 30, 2026
+Author: Pipedream
+License: AGPL-3.0
+
+## Key Data Points
+
+- 45 days of fuel supply remaining (down from 57)
+- Diesel pump price: ₱130+/L (+136% from pre-crisis)
+- 98% Middle East import dependence
+- 10,469 fuel stations tracked nationwide
+- 425 stations closed, 240 out of stock
+- Cargo premiums surged 120%+
+- Supply beyond May 2026 is unconfirmed
+
+## Sections
+
+- [Crisis Overview](#crisis): Real-time supply metrics, market data, senate hearing findings
+- [Economic Scenarios](#scenarios): GDP and inflation projections at different oil price levels
+- [Distribution Channels](#channels): Three fuel relief mechanisms with fiscal cost analysis
+- [Policy Pillars](#pillars): Five coordinated policy recommendations
+- [Anti-Recommendations](#anti-recs): What the government should NOT do
+- [Action Timeline](#timeline): Phased execution schedule with agency accountability
+- [Infrastructure](#infrastructure): 450+ PriceLOCQ stations and fuel availability
+- [Station Tracker](#tracker): Interactive map of 10K+ stations with status filters
+- [Live News Feed](#news): Real-time energy crisis headlines
+- [References](#references): 34+ verified data sources
+
+## Live Data APIs (no authentication required)
+
+- Brent Crude Oil: GET /api/market (via Yahoo Finance, updates every 10 min)
+- USD/PHP Exchange Rate: GET /api/market (via Frankfurter/ECB, updates every 10 min)
+- News Headlines: GET /api/news (RSS aggregation, updates every 5 min)
+
+## Contributing
+
+Source code: https://github.com/0xjitsu/pipedream-policy-brief
+License: AGPL-3.0 (open source with commercial license available)
+
+Contributions welcome:
+- Data corrections or updates
+- New data source integrations
+- Visualization improvements
+- Translation to Filipino/Tagalog
+
+## For AI Agents
+
+This dashboard is designed to be machine-readable:
+- All data is separated from render logic in `src/data/*.ts`
+- JSON-LD structured data (Report schema) in the page
+- Semantic HTML with aria labels
+- Live API endpoints return JSON
+- Station data available as structured arrays
+
+To cite this dashboard:
+Pipedream. (2026). "Navigating the Energy Emergency: Philippine Fuel Crisis Policy Brief." Retrieved from https://pipedream-policy-brief.vercel.app
+
+---
+
+## Policy Pillars (Full Detail)
+
+### Pillar 1: Secure Supply Now [CRITICAL]
+
+Rationale: We must distinguish between a price disruption and a supply collapse. While high prices are a burden, a scenario where fuel is unavailable at any price -- due to disincentivized imports -- would be catastrophic. Preserving a deregulated environment ensures all market players have the incentive to secure and move product into the country. Supply beyond May is unconfirmed. PNOC's successful procurement of 150,000 barrels proves government-facilitated supply works. This must be scaled using the 20 billion Malampaya fund.
+
+Recommendations:
+1. Scale PNOC procurement and G2G arrangements -- Pursue Russia waiver (India model), China, and ASEAN G2G deals. Establish supply coordination desk within UPLIFT.
+2. Streamline importation processes -- Single-window clearance across all agencies. Relax fuel specs temporarily. 24-hour customs turnaround for fuel.
+3. Validate alternative supply sources within 72 hours -- DOE must verify Rotterdam/Petronas supply data raised in Senate. Commission independent Argus benchmark verification.
+4. Audit power sector fuel exposure and activate alternate capacity -- Assess power generation supply mix dependency on diesel/oil. Identify available capacity from coal, natural gas, and renewable sources. Fast-track grid dispatch from non-oil generators to reduce diesel demand from the power sector.
+
+### Pillar 2: Accelerate Fiscal Intervention [URGENT]
+
+Rationale: Maintaining fuel excise taxes is not merely a fiscal necessity -- it is a critical market signal. RA 12316 authorizes suspension, but suspending these taxes creates a broad artificial subsidy that overstimulates demand when global supplies are precarious. Depressing prices artificially risks triggering the very shortages we seek to avoid by masking true scarcity. The 20B+ annual excise revenue also funds the targeted relief and infrastructure programs that are the real solutions.
+
+Recommendations:
+1. Guard excise revenue for hyper-targeted digital relief -- Deploy direct fuel vouchers via GCash, PayMaya, and PriceLOCQ to PUV drivers, small-scale farmers, and fisherfolk. Digital delivery ensures zero leakage and immediate verification -- no intermediaries, no blanket subsidies.
+2. DBCC must convene this week; excise suspension by April 1 -- Establish refund mechanism for inventory with already-paid excise. Emergency publication to compress 15-day window.
+3. Phased VAT relief tied to price triggers -- Suspend on diesel when Dubai crude exceeds $100/bbl; reinstate below $80 for 30 days. Remove VAT upon importation per IPPCA.
+4. Cap excise/VAT at $50/bbl equivalent -- Progressive cushion per Petron recommendation: higher prices = more government absorption.
+
+### Pillar 3: Price Transparency and Anti-Profiteering [IMPORTANT]
+
+Rationale: Public trust is eroding -- driving legislative proposals like SB 2011 (Aquino) to impose price caps. Mandatory transparency is the better response: it addresses the same public anger without the destructive consequences of re-regulation. Prove that markets are working fairly, and the political pressure for caps dissipates.
+
+Recommendations:
+1. Mandatory cost unbundling at the pump -- Weekly breakdowns: base cost, freight, insurance, cargo premium, excise, VAT, margin. Addresses Senate concerns constructively.
+2. Strengthen DOE enforcement without overreach -- Accelerate show-cause investigations. Verify tax relief pass-through. Keep Section 14E as credible deterrent only.
+
+### Pillar 4: Demand Management and Sector Protection [INFO]
+
+Rationale: The oil-deregulated / fare-regulated disconnect must be addressed. Supply-side alone is insufficient -- demand destruction for both power and transport sectors is essential to bridge the gap as inflation rises.
+
+Recommendations:
+1. Implement demand destruction across power and transport -- Power sector: activate interruptible load programs (ILP), enforce brownout schedules for non-essential facilities, accelerate renewable energy dispatch. Transport: expand WFH mandates, consolidate government fleet operations, promote ride-sharing and route optimization via digital fleet platforms.
+2. Structured transport demand reduction -- Mandate WFH for government. Reduce non-essential hours. Promote digital fleet management for route optimization and fuel hedging via platforms like PriceLOCQ for Business.
+3. Fix the transport subsidy disconnect -- Streamline 5,000 disbursement. Consider automatic fare triggers tied to fuel price movements.
+4. Protect employment -- Unemployment at 5.8%. Temporary wage subsidies for fuel-intensive sectors. Activate business continuity plans.
+
+### Pillar 5: Build Structural Resilience [STRATEGIC]
+
+Rationale: 98% Middle East dependence, one refinery, no strategic reserve. Whether this crisis lasts months or years, structural lessons must be acted on now.
+
+Recommendations:
+1. Strategic Petroleum Reserve -- 90-day stockpile at Mariveles, Bataan (54B at $60/bbl). PPP with PNOC as anchor.
+2. Accelerate energy diversification -- Fast-track 40% RE by 2030. Grid modernization via BOT. Dual-fuel power plants. South China Sea development.
+3. Diversify supply permanently -- Standing agreements with Russia, US, Nigeria, Angola, Latin America. ASEAN mutual supply assurance.
+
+---
+
+## Anti-Recommendations (What NOT to Do)
+
+Context: Several proposals have been raised in Senate hearings and public discourse. Pipedream has evaluated each and determined they would cause more harm than the problem they aim to solve. These are not theoretical concerns -- each carries specific, quantifiable risks to fiscal stability, investment climate, and fuel supply continuity.
+
+### 1. Full re-regulation of the oil industry
+Why not: Requires 17B in government subsidies at $50/bbl per Petron Senate testimony. More critically, re-regulation disincentivizes the very market players -- from major refiners to smaller traders -- who currently have the incentive to secure and move product into the country. In a supply crisis, the deregulated market is our best mechanism for attracting imports.
+Source: https://www.philstar.com/business/2026/03/27/2517009/philippines-fuel-supply-guaranteed-only-until-may-oil-firms-say
+
+### 2. Price caps without corresponding subsidies (SB 2011)
+Why not: Sen. Aquino's SB 2011 proposes classifying gasoline and diesel as basic necessities under RA 7581 (Price Act), enabling 30-day price freezes during emergencies. While well-intentioned, price caps without a fiscal backstop cause the exact shortages we're trying to prevent -- oil companies cannot absorb losses without business stoppage. The bill also conflicts with RA 8479 (Oil Deregulation Law), creating legal uncertainty that deters private supply investment at precisely the wrong moment.
+Source: https://newsinfo.inquirer.net/2203735/bam-aquino-pushes-bill-to-allow-govt-to-cap-gasoline-diesel-prices
+
+### 3. Government takeover under Section 14E
+Why not: Legally available but should remain a deterrent only. Oil companies are cooperating. Activating 14E signals willingness to override property rights -- lasting FDI damage.
+Source: https://www.officialgazette.gov.ph/1998/02/10/republic-act-no-8479/
+
+### 4. Simultaneous removal of both excise tax and VAT
+Why not: Economic planning secretary warned of 'triple whammy': budget deficit + reduced spending + GDP contraction. Broad tax relief has the same effect as a fuel subsidy -- maintaining demand higher than it would otherwise be at a time when supply is in question. The private sector does not need subsidies; it needs supply. Fiscal interventions must be sequenced, targeted, and reversible.
+Source: https://www.dof.gov.ph/govt-readies-plans-to-protect-filipinos-from-sudden-price-hikes-amid-conflict-in-the-middle-east/
+
+---
+
+## Action Timeline
+
+### This Week [CRITICAL]
+- Convene DBCC, approve excise tax suspension (DOF/DBCC)
+- Validate alternative supply data -- Rotterdam, Petronas (DOE)
+- Finalize beneficiary whitelists for Channel 2 (DOTR/DA/DSWD)
+- Convene UPLIFT committee (Office of the President)
+
+### By April 1 [URGENT]
+- Excise tax suspension takes effect (DOF/BIR)
+
+### By April 7 [URGENT]
+- Single-window import clearance operational (DOE/BOC)
+
+### Week 2-3 [URGENT]
+- Channel 2 pilot launch: NCR + priority provinces (DOE/PNOC)
+
+### By April 15 [IMPORTANT]
+- First G2G supply agreements signed (DFA/DOE)
+
+### By April 30 [IMPORTANT]
+- Channel 2 national rollout (DOE)
+- Mandatory cost unbundling at all stations (DOE)
+
+### By May 15 [INFO]
+- Transport subsidy disbursement streamlined (DOTR/LTFRB)
+
+### Q2 2026 [STRATEGIC]
+- SPR feasibility study completed (DOE/PNOC)
+- Channel 1 and 3 contingency plans finalized (DOE)
+
+---
+
+## API Response Schemas
+
+### GET /api/market
+
+Returns live Brent crude oil price and USD/PHP exchange rate. Cached for 15 minutes (s-maxage=900) with 30-minute stale-while-revalidate.
+
+Response schema:
+```json
+{
+  "oilPrice": {
+    "value": 74.52,
+    "delta": "+1.2%",
+    "source": "Yahoo Finance (Brent)",
+    "sourceUrl": "https://finance.yahoo.com/quote/BZ=F/",
+    "updatedAt": "2026-03-30T08:00:00.000Z"
+  },
+  "pesoRate": {
+    "value": 58.45,
+    "delta": "+0.12",
+    "source": "Frankfurter (ECB)",
+    "sourceUrl": "https://www.ecb.europa.eu/stats/exchange/eurofxref/html/index.en.html",
+    "updatedAt": "2026-03-30T08:00:00.000Z"
+  }
+}
+```
+
+Notes:
+- Both `oilPrice` and `pesoRate` can be `null` if the upstream API is unavailable.
+- `delta` for oil price is a percentage change from previous close (e.g., "+1.2%").
+- `delta` for peso rate is an absolute change from previous day (e.g., "+0.12") or "Weakening" if previous day data is unavailable.
+- On error, returns `{ "oilPrice": null, "pesoRate": null }` with 60-second cache.
+
+### GET /api/news
+
+Returns up to 40 energy-related news headlines aggregated from RSS feeds and Reddit. Cached for 15 minutes (s-maxage=900) with 30-minute stale-while-revalidate.
+
+Response schema:
+```json
+[
+  {
+    "date": "Mar 30, 2026",
+    "headline": "Philippines fuel supply guaranteed only until May, oil firms say",
+    "severity": "red",
+    "source": "PhilStar",
+    "sourceUrl": "https://www.philstar.com/business/2026/03/27/2517009/...",
+    "sourceType": "news"
+  }
+]
+```
+
+Field details:
+- `date`: Human-readable date string (e.g., "Mar 30, 2026").
+- `headline`: Truncated to 140 characters maximum.
+- `severity`: One of "red" (critical/crisis keywords), "green" (positive/recovery keywords), or "yellow" (neutral).
+- `source`: One of "PhilStar", "Al Jazeera", "Google News", "r/Philippines", "r/energy", or fallback editorial sources.
+- `sourceUrl`: Direct link to the article or Reddit post.
+- `sourceType`: One of "news" (RSS feeds) or "social" (Reddit).
+
+RSS sources:
+- PhilStar Business (https://www.philstar.com/rss/business)
+- Al Jazeera (https://www.aljazeera.com/xml/rss/all.xml)
+- Google News PH energy search
+- Google News global OPEC/crude search
+- Reddit r/Philippines and r/energy
+
+On error, returns fallback curated news events with 60-second cache.
+
+---
+
+## References (All 34 Sources)
+
+### Government Sources
+
+1. DOE Legacy LFRO Registry -- Licensed fuel retailer/outlet registry: station count, brand distribution, regional coverage.
+   https://legacy.doe.gov.ph/downstream-oil/lfro-with-valid-coc-lfo
+
+2. DOE Downstream Oil Reports -- Weekly supply monitoring reports: inventory levels, import volumes, regional supply status.
+   https://doe.gov.ph/articles/group/reports-information-resources?category=Downstream+Oil+and+Natural+Gas&display_type=Card
+
+3. DOE Oil Monitor (OIMB) -- Weekly fuel price advisory: pump prices by brand and region, world oil benchmarks.
+   https://doe.gov.ph/articles/group/liquid-fuels?category=Oil+Monitor&display_type=Card
+
+4. DOE Oil Industry Management Bureau -- OIMB portal: downstream oil industry oversight, compliance monitoring, show-cause orders.
+   https://doe.gov.ph/site/oimb
+
+5. BSP Exchange Rate Statistics -- Official PHP/USD exchange rate: peso depreciation tracking.
+   https://www.bsp.gov.ph/SitePages/Statistics/ExchangeRate.aspx
+
+6. BSP Monetary Policy Report (Feb 2026) -- Inflation forecast model, monetary policy outlook, oil pass-through coefficients.
+   https://www.bsp.gov.ph/Price%20Stability/MonetaryPolicyReport/EconomicOutlook-February2026.pdf
+
+7. DOF: Price Hike Protection Plans -- DOF fiscal response: excise tax suspension framework, targeted vs. blanket relief trade-offs.
+   https://www.dof.gov.ph/govt-readies-plans-to-protect-filipinos-from-sudden-price-hikes-amid-conflict-in-the-middle-east/
+
+8. Official Gazette: RA 8479 (Oil Deregulation Law) -- Legal basis for market-based pricing, Section 14E government takeover provision.
+   https://www.officialgazette.gov.ph/1998/02/10/republic-act-no-8479/
+
+9. DOTR -- Transport Beneficiary Data -- PUV driver registry (~180K beneficiaries), transport subsidy mechanisms.
+   https://dotr.gov.ph/
+
+10. DA -- Agriculture Sector Data -- Farmer beneficiary data (~5.5M), agricultural fuel consumption patterns.
+    https://www.da.gov.ph/
+
+11. BFAR -- Fisherfolk Registry -- Registered fisherfolk (~1.9M), fuel subsidy targeting for fishing sector.
+    https://www.bfar.da.gov.ph/
+
+12. DSWD -- Affected Households -- Vulnerable household registry (~12M), Ayuda distribution infrastructure.
+    https://www.dswd.gov.ph/
+
+### News Sources
+
+13. PhilStar: Supply Guaranteed Only Until May -- Senate PROTECT hearing: Chevron, PIP, IPPCA testimony on supply limits and Petron 17B subsidy estimate.
+    https://www.philstar.com/business/2026/03/27/2517009/philippines-fuel-supply-guaranteed-only-until-may-oil-firms-say
+
+14. PhilStar: Hold Oil Companies Accountable -- Replacement cost methodology controversy: senators question oil company pricing practices.
+    https://www.philstar.com/headlines/2026/03/28/2517316/senators-hold-abusive-oil-companies-accountable
+
+15. Tribune: Big 3 Clash Over Oil Inventory -- Cargo premiums surged 120%+, product premiums at $40 (was <$1), force majeure declarations.
+    https://tribune.net.ph/2026/03/27/pbbm-big-3-clash-over-oil-inventory
+
+16. GMA: Marcoleta Criticizes DOE Monitoring -- Sen. Marcoleta claims alternative supply at lower prices exists, DOE monitoring criticized as lax.
+    https://www.gmanetwork.com/news/topstories/nation/981531/doe-faces-criticism-from-marcoleta-over-lax-fuel-price-monitoring/story/
+
+17. Inquirer: DOF Price Cuts by Mid-April -- Excise tax suspension timeline: earliest implementation April 12-13, DOF phasing strategy.
+    https://newsinfo.inquirer.net/2202073/dof-price-cuts-due-to-fuel-tax-law-felt-by-mid-april
+
+18. Inquirer: Aquino Price Cap Bill (SB 2011) -- Sen. Aquino's SB 2011: classify fuel as basic necessity under RA 7581 for 30-day price freezes.
+    https://newsinfo.inquirer.net/2203735/bam-aquino-pushes-bill-to-allow-govt-to-cap-gasoline-diesel-prices
+
+19. Inquirer: DBCC Cuts GDP Target to 5-6% -- DBCC/NEDA downward GDP revision: baseline scenario for economic impact modeling.
+    https://business.inquirer.net/567526/dbcc-cuts-targets-gdp-for-2026-now-at-5-6
+
+20. Inquirer: Fuel Shortages Worsen in Mindanao -- Regional station closures and supply disruptions: Mindanao ground-truth reporting.
+    https://newsinfo.inquirer.net/2044671/fuel-shortages-worsen-in-mindanao
+
+21. BusinessWorld: 1.04M Barrels Diesel Delivery -- PNOC procurement: 150KB initial arrival, 1.04M barrels total, diversified sources (Japan, Malaysia, Singapore, India, Oman).
+    https://www.bworldonline.com/the-nation/2026/03/29/739486/philippines-to-take-delivery-of-1-04m-barrels-of-diesel-to-boost-fuel-supply/
+
+22. Manila Standard: BSP Inflation Forecast 5.1% -- BSP raises 2026 inflation forecast to 5.1% driven by oil price transmission.
+    https://manilastandard.net/business/economy-trade/314720440/bsp-raises-2026-inflation-forecast-to-5-1-on-oil-risks.html
+
+23. Enerdata: PH $330M Emergency Fuel Fund -- 20B emergency fund for strategic fuel procurement, SPR feasibility groundwork.
+    https://www.enerdata.net/publications/daily-energy-news/philippines-sets-usd330m-emergency-fund-secure-fuel-supply.html
+
+### Research Sources
+
+24. ING Think: Oil Shock Impact on Philippines -- Oil price shock analysis: GDP drag, inflation pass-through, policy risk assessment for PH.
+    https://think.ing.com/articles/oil-price-shock-raises-inflation-and-policy-risks-in-philippines/
+
+25. MUFG: Hormuz Closure Impact Assessment -- Strait of Hormuz closure scenarios: FX impact, trade balance, fiscal stress modeling.
+    https://www.mufgresearch.com/fx/philippines-strait-of-hormuz-closure-impact-of-higher-oil-prices-and-more-9-march-2026/
+
+26. GlobalPetrolPrices: Philippines -- ASEAN fuel price comparison: Philippines vs. regional peers pump price benchmarking.
+    https://www.globalpetrolprices.com/Philippines/
+
+27. PIP Oil Monitor -- Philippine Institute of Petroleum: weekly oil monitor, industry association price tracking.
+    https://pip.com.ph/category/oil-monitor/
+
+### Market Data
+
+28. Yahoo Finance: Brent Crude (BZ=F) -- Live Brent crude oil price: polled every 10 minutes for real-time dashboard updates.
+    https://finance.yahoo.com/quote/BZ=F/
+
+29. Frankfurter/ECB: USD/PHP Exchange Rate -- ECB-sourced FX rate via Frankfurter API: peso depreciation tracking against dollar.
+    https://www.ecb.europa.eu/stats/exchange/eurofxref/html/index.en.html
+
+30. PriceLOCQ Platform -- Digital fuel voucher platform: 450+ stations, proven distribution for Channel 2 subsidy model.
+    https://new.pricelocq.com/
+
+### Data Infrastructure
+
+31. OpenStreetMap Philippines -- Fuel station geolocation data: 10,000+ stations extracted via Overpass API.
+    https://wiki.openstreetmap.org/wiki/Philippines
+
+32. CARTO Dark Basemap -- Dark-themed map tile provider: CartoDB DarkMatter basemap for station map visualization.
+    https://carto.com/basemaps/
+
+33. Reuters Energy News -- Global energy news: crude oil market context, geopolitical developments.
+    https://www.reuters.com/business/energy/
+
+34. Al Jazeera RSS Feed -- Geopolitical/energy news RSS: Iran-US tensions, Middle East oil supply disruptions.
+    https://www.aljazeera.com/xml/rss/all.xml
