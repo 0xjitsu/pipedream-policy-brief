@@ -146,6 +146,25 @@ All sources below are free and require no API keys.
 
 ---
 
+## Agent & AI Optimization
+
+This dashboard is designed to be machine-readable and AI-agent friendly:
+
+| Feature | Path | Purpose |
+|---------|------|---------|
+| `llms.txt` | [`/llms.txt`](https://pipedream-policy-brief.vercel.app/llms.txt) | Standard AI agent discovery file — site overview, key data, API endpoints |
+| `llms-full.txt` | [`/llms-full.txt`](https://pipedream-policy-brief.vercel.app/llms-full.txt) | Extended version with all policy recommendations, references, and API schemas |
+| JSON-LD | Embedded in page | Schema.org `Report` structured data with keywords, license, publisher |
+| Semantic HTML | Throughout | `aria-label`, `role="img"`, heading hierarchy, landmark regions |
+| Open APIs | `/api/market`, `/api/news` | JSON endpoints, no authentication required |
+| Data/render separation | `src/data/*.ts` | All content in typed TypeScript modules — easy to parse programmatically |
+
+**To cite this dashboard:**
+
+> Pipedream. (2026). "Navigating the Energy Emergency: Philippine Fuel Crisis Policy Brief." Retrieved from https://pipedream-policy-brief.vercel.app
+
+---
+
 ## Potential Upgrades
 
 The following data sources would significantly enhance the station tracker and price accuracy. They are documented here for potential sponsors or institutional partners.
@@ -187,7 +206,7 @@ This project is licensed under the **GNU Affero General Public License v3.0 (AGP
 
 <div align="center">
 
-Built for the UPLIFT Committee
+Built for the UPLIFT Committee · Agent-optimized with [llms.txt](https://pipedream-policy-brief.vercel.app/llms.txt)
 
 [Quick Start](#quick-start) · [Report a Bug](https://github.com/0xjitsu/pipedream-policy-brief/issues/new?labels=bug) · [Request a Feature](https://github.com/0xjitsu/pipedream-policy-brief/issues/new?labels=enhancement)
 
