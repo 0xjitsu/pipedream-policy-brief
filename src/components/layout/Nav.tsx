@@ -14,6 +14,7 @@ const sections = [
   { id: "tracker", label: "Station Tracker", short: "Tracker", icon: "📍" },
   { id: "news", label: "Live News", short: "News", icon: "📰" },
   { id: "references", label: "References", short: "Refs", icon: "📚" },
+  { id: "roadmap", label: "What's Next", short: "Next", icon: "🗺️" },
 ];
 
 export function Nav() {

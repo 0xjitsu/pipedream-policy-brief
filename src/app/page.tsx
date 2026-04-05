@@ -41,6 +41,10 @@ const References = dynamic(
   () => import("@/components/sections/References").then((m) => ({ default: m.References })),
   { loading: () => <div className="min-h-[300px] animate-pulse bg-white-05 rounded-2xl mx-4 sm:mx-6 lg:mx-8 my-12" /> }
 );
+const PublicRoadmap = dynamic(
+  () => import("@/components/sections/PublicRoadmap").then((m) => ({ default: m.PublicRoadmap })),
+  { loading: () => <div className="min-h-[300px] animate-pulse bg-white-05 rounded-2xl mx-4 sm:mx-6 lg:mx-8 my-12" /> }
+);
 
 export default function Home() {
   return (
@@ -119,6 +123,8 @@ export default function Home() {
         <NewsFeed />
         <div className="border-t border-white-08" />
         <References />
+        <div className="border-t border-white-08" />
+        <PublicRoadmap />
       </main>
 
       <Footer />
