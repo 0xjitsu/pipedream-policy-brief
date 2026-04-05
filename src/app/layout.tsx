@@ -23,7 +23,24 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Pipedream Policy Brief — Navigating the Energy Emergency",
   description:
-    "Policy recommendations for the Philippine fuel crisis. Submitted to UPLIFT Committee, DOE, and DOF.",
+    "Interactive policy dashboard for the Philippine fuel crisis. Live oil prices, station tracker, economic scenarios, and actionable recommendations for UPLIFT Committee, DOE, and DOF.",
+  openGraph: {
+    title: "Pipedream Policy Brief — Philippine Energy Crisis Dashboard",
+    description:
+      "Live oil prices, 10K+ station tracker, economic scenarios, and policy recommendations.",
+    type: "website",
+    locale: "en_PH",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Pipedream Policy Brief — Philippine Energy Crisis",
+    description:
+      "Interactive policy dashboard with live market data, station tracking, and economic modeling.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
