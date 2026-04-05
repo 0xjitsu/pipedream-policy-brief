@@ -29,7 +29,7 @@ export const antiRecommendations: AntiRecData[] = [
     id: 4,
     title: "Simultaneous removal of both excise tax and VAT",
     reason:
-      "Economic planning secretary warned of 'triple whammy': budget deficit + reduced spending + GDP contraction. As our chairman notes, broad tax relief has the same effect as a fuel subsidy — maintaining demand higher than it would otherwise be at a time when supply is in question. The companies we represent do not need subsidies; they need supply. Fiscal interventions must be sequenced, targeted, and reversible.",
+      "Economic planning secretary warned of 'triple whammy': budget deficit + reduced spending + GDP contraction. As MBC Chairman Edgar Chua notes, broad tax relief has the same effect as a fuel subsidy — maintaining demand higher than it would otherwise be at a time when supply is in question. The private sector does not need subsidies; it needs supply. Fiscal interventions must be sequenced, targeted, and reversible.",
     sourceUrl: "https://www.dof.gov.ph/govt-readies-plans-to-protect-filipinos-from-sudden-price-hikes-amid-conflict-in-the-middle-east/",
   },
 ];
