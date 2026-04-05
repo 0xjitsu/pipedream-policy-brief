@@ -4,16 +4,16 @@ import { useState } from "react";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
 
 const sections = [
-  { id: "crisis", label: "Crisis Overview" },
-  { id: "scenarios", label: "Scenarios" },
-  { id: "channels", label: "Distribution Channels" },
-  { id: "pillars", label: "Policy Pillars" },
-  { id: "anti-recs", label: "Not Recommended" },
-  { id: "timeline", label: "Action Timeline" },
-  { id: "infrastructure", label: "Infrastructure" },
-  { id: "tracker", label: "Station Tracker" },
-  { id: "news", label: "Live News" },
-  { id: "references", label: "References" },
+  { id: "crisis", label: "Crisis Overview", short: "Crisis", icon: "🚨" },
+  { id: "scenarios", label: "Scenarios", short: "Scenarios", icon: "📊" },
+  { id: "channels", label: "Distribution Channels", short: "Channels", icon: "🛢️" },
+  { id: "pillars", label: "Policy Pillars", short: "Pillars", icon: "🏛️" },
+  { id: "anti-recs", label: "Not Recommended", short: "Don'ts", icon: "⛔" },
+  { id: "timeline", label: "Action Timeline", short: "Timeline", icon: "📅" },
+  { id: "infrastructure", label: "Infrastructure", short: "Infra", icon: "🏗️" },
+  { id: "tracker", label: "Station Tracker", short: "Tracker", icon: "📍" },
+  { id: "news", label: "Live News", short: "News", icon: "📰" },
+  { id: "references", label: "References", short: "Refs", icon: "📚" },
 ];
 
 export function Nav() {
@@ -35,26 +35,27 @@ export function Nav() {
           </div>
 
           {/* Desktop nav */}
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden xl:flex items-center gap-1.5 overflow-x-auto scrollbar-none">
             {sections.map((s) => (
               <a
                 key={s.id}
                 href={`#${s.id}`}
-                className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${
+                className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md transition-colors whitespace-nowrap ${
                   activeId === s.id
                     ? "bg-white-10 text-white"
                     : "text-white-70 hover:text-white-90 hover:bg-white-05"
                 }`}
               >
-                {s.label}
+                <span aria-hidden="true" className="text-sm leading-none">{s.icon}</span>
+                {s.short}
               </a>
             ))}
           </div>
 
-          {/* Mobile hamburger */}
+          {/* Mobile/tablet hamburger */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden p-2.5 min-h-[44px] min-w-[44px] text-white-70 hover:text-white flex items-center justify-center"
+            className="xl:hidden p-2.5 min-h-[44px] min-w-[44px] text-white-70 hover:text-white flex items-center justify-center"
             aria-label="Toggle navigation"
           >
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
@@ -72,19 +73,22 @@ export function Nav() {
         </div>
       </div>
 
-      {/* Mobile dropdown */}
+      {/* Mobile/tablet dropdown */}
       {mobileOpen && (
-        <div className="lg:hidden border-t border-white-08 bg-navy/95 backdrop-blur-md">
+        <div className="xl:hidden border-t border-white-08 bg-navy/95 backdrop-blur-md">
           <div className="px-4 py-2 space-y-1">
             {sections.map((s) => (
               <a
                 key={s.id}
                 href={`#${s.id}`}
                 onClick={() => setMobileOpen(false)}
-                className={`block px-3 py-3 text-sm rounded-md ${
-                  activeId === s.id ? "bg-white-10 text-white" : "text-white-70"
+                className={`flex items-center gap-3 px-3 py-3 text-sm rounded-md transition-colors ${
+                  activeId === s.id
+                    ? "bg-white-10 text-white border-l-2 border-strategic"
+                    : "text-white-70 hover:text-white-90 hover:bg-white-05 border-l-2 border-transparent"
                 }`}
               >
+                <span aria-hidden="true" className="text-base leading-none">{s.icon}</span>
                 {s.label}
               </a>
             ))}

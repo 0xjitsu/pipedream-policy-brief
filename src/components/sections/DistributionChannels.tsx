@@ -18,6 +18,18 @@ const tagColorMap: Record<string, string> = {
   purple: "#8B5CF6",
 };
 
+const channelOneLiners: Record<number, string> = {
+  1: "Government buys fuel at scale and sells to distributors at subsidized prices",
+  2: "Digital fuel codes delivered to verified beneficiaries via existing PriceLOCQ platform",
+  3: "Direct free fuel distribution to households through physical or digital vouchers",
+};
+
+const channelEmojis: Record<number, string> = {
+  1: "🏭",
+  2: "📱",
+  3: "🎫",
+};
+
 function ChannelContent({ channel }: { channel: (typeof channels)[0] }) {
   const isTargeted = channel.id === 2;
 
@@ -148,7 +160,7 @@ export function DistributionChannels() {
       icon="🛢️"
       subtitle="How should the government deliver fuel relief to those who need it most?"
     >
-      {/* Context block — the problem */}
+      {/* 1. Problem statement + scale metrics */}
       <motion.div
         variants={fadeInUp}
         initial="hidden"
@@ -178,14 +190,127 @@ export function DistributionChannels() {
               </div>
             ))}
           </div>
+        </div>
+      </motion.div>
 
-          <p className="text-sm text-white-50 leading-relaxed border-t border-white-08 pt-4">
-            {channelContext.question}
+      {/* 2. The Central Question — prominent thesis callout */}
+      <motion.div
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="mb-8"
+      >
+        <div className="relative overflow-hidden rounded-xl border border-white-08 bg-gradient-to-br from-white/[0.06] to-white/[0.02] backdrop-blur-xl p-8 md:p-10">
+          {/* Decorative open-quote */}
+          <div
+            className="absolute top-3 left-4 md:top-4 md:left-6 font-serif text-[6rem] md:text-[8rem] leading-none text-white/[0.04] select-none pointer-events-none"
+            aria-hidden="true"
+          >
+            &ldquo;
+          </div>
+          {/* Accent bar left */}
+          <div
+            className="absolute left-0 top-0 bottom-0 w-1 rounded-l-xl"
+            style={{ background: "linear-gradient(to bottom, #F59E0B, #10B981, #8B5CF6)" }}
+            aria-hidden="true"
+          />
+          <p className="relative font-serif text-xl md:text-2xl lg:text-[1.75rem] text-white-90 leading-snug md:leading-relaxed tracking-tight text-center max-w-3xl mx-auto">
+            The central policy question is not whether to intervene, but{" "}
+            <span className="font-bold italic text-strategic">how</span>.
+          </p>
+          <p className="relative text-sm text-white-50 text-center mt-3 max-w-2xl mx-auto">
+            Three distribution mechanisms exist, each with fundamentally different trade-offs in speed, fiscal cost, targeting accuracy, and corruption risk.
           </p>
         </div>
       </motion.div>
 
-      {/* Comparison charts — zoom out view */}
+      {/* 3. Three Channels Overview — context before comparison */}
+      <motion.div
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="mb-2"
+      >
+        <h3 className="font-serif text-lg font-semibold text-white mb-1">Three Mechanisms Under Consideration</h3>
+        <p className="text-xs text-white-50 mb-4">
+          Each channel represents a distinct approach to fuel relief delivery, with different cost structures and implementation timelines.
+        </p>
+      </motion.div>
+
+      <motion.div
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="grid md:grid-cols-3 gap-4 mb-8"
+      >
+        {channels.map((channel) => {
+          const accentColor = tagColorMap[channel.tagColor];
+          const isRecommended = channel.id === 2;
+
+          return (
+            <motion.div
+              key={channel.id}
+              variants={fadeInUp}
+              className="relative glass p-5 flex flex-col"
+              style={{ borderTop: `3px solid ${accentColor}` }}
+            >
+              {/* Recommended indicator for Channel 2 */}
+              {isRecommended && (
+                <div className="absolute -top-px right-4 -translate-y-full">
+                  <span className="inline-flex items-center gap-1 bg-strategic/20 text-strategic text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-t-md border border-b-0 border-strategic/30">
+                    <span aria-hidden="true">★</span> Recommended
+                  </span>
+                </div>
+              )}
+
+              {/* Channel header */}
+              <div className="flex items-start justify-between mb-3">
+                <div className="flex items-center gap-2">
+                  <span className="text-2xl" aria-hidden="true">{channelEmojis[channel.id]}</span>
+                  <div>
+                    <div className="text-[10px] font-bold uppercase tracking-wider text-white-50">
+                      Channel {channel.id}
+                    </div>
+                    <div className="text-sm font-semibold text-white leading-tight">
+                      {channel.name}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* One-liner description */}
+              <p className="text-xs text-white-70 leading-relaxed mb-4 flex-1">
+                {channelOneLiners[channel.id]}
+              </p>
+
+              {/* Fiscal cost metric */}
+              <div className="glass p-3 mb-3">
+                <div className="text-[10px] font-bold uppercase tracking-wider text-white-50 mb-1">Fiscal Cost</div>
+                <div className="font-mono text-sm font-semibold text-white">{channel.fiscalEstimate}</div>
+              </div>
+
+              {/* Tag badge */}
+              <div className="flex items-center">
+                <span
+                  className="inline-flex items-center text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full"
+                  style={{
+                    color: accentColor,
+                    backgroundColor: `${accentColor}15`,
+                    border: `1px solid ${accentColor}30`,
+                  }}
+                >
+                  {channel.tag}
+                </span>
+              </div>
+            </motion.div>
+          );
+        })}
+      </motion.div>
+
+      {/* 4. Comparison charts — At a Glance */}
       <motion.div
         variants={fadeInUp}
         initial="hidden"
@@ -227,7 +352,7 @@ export function DistributionChannels() {
         </motion.div>
       </div>
 
-      {/* Channel detail cards — zoom in */}
+      {/* 5. Channel detail cards — zoom in */}
       <motion.div
         variants={fadeInUp}
         initial="hidden"
