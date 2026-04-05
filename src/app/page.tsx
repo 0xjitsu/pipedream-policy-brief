@@ -1,18 +1,38 @@
-"use client";
-
+import dynamic from "next/dynamic";
 import { Nav } from "@/components/layout/Nav";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import { Footer } from "@/components/layout/Footer";
-import { CrisisOverview } from "@/components/sections/CrisisOverview";
-import { EconomicScenarios } from "@/components/sections/EconomicScenarios";
-import { DistributionChannels } from "@/components/sections/DistributionChannels";
-import { PolicyPillars } from "@/components/sections/PolicyPillars";
-import { AntiRecommendations } from "@/components/sections/AntiRecommendations";
-import { ActionTimeline } from "@/components/sections/ActionTimeline";
-import { Infrastructure } from "@/components/sections/Infrastructure";
-import { NewsFeed } from "@/components/sections/NewsFeed";
-import { References } from "@/components/sections/References";
-import { StationTracker } from "@/components/sections/StationTracker";
+
+const CrisisOverview = dynamic(() =>
+  import("@/components/sections/CrisisOverview").then((m) => ({ default: m.CrisisOverview }))
+);
+const EconomicScenarios = dynamic(() =>
+  import("@/components/sections/EconomicScenarios").then((m) => ({ default: m.EconomicScenarios }))
+);
+const DistributionChannels = dynamic(() =>
+  import("@/components/sections/DistributionChannels").then((m) => ({ default: m.DistributionChannels }))
+);
+const PolicyPillars = dynamic(() =>
+  import("@/components/sections/PolicyPillars").then((m) => ({ default: m.PolicyPillars }))
+);
+const AntiRecommendations = dynamic(() =>
+  import("@/components/sections/AntiRecommendations").then((m) => ({ default: m.AntiRecommendations }))
+);
+const ActionTimeline = dynamic(() =>
+  import("@/components/sections/ActionTimeline").then((m) => ({ default: m.ActionTimeline }))
+);
+const Infrastructure = dynamic(() =>
+  import("@/components/sections/Infrastructure").then((m) => ({ default: m.Infrastructure }))
+);
+const StationTracker = dynamic(() =>
+  import("@/components/sections/StationTracker").then((m) => ({ default: m.StationTracker }))
+);
+const NewsFeed = dynamic(() =>
+  import("@/components/sections/NewsFeed").then((m) => ({ default: m.NewsFeed }))
+);
+const References = dynamic(() =>
+  import("@/components/sections/References").then((m) => ({ default: m.References }))
+);
 
 export default function Home() {
   return (
