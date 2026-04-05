@@ -10,6 +10,7 @@ export function AntiRecommendations() {
     <SectionWrapper
       id="anti-recs"
       title="What We Do Not Recommend"
+      icon="⛔"
       subtitle="Proposals considered and rejected on substantive grounds"
     >
       {/* Context paragraph */}

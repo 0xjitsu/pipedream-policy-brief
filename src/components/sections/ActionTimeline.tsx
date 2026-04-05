@@ -19,6 +19,7 @@ export function ActionTimeline() {
     <SectionWrapper
       id="timeline"
       title="Action Timeline"
+      icon="📅"
       subtitle="Phased execution schedule with agency accountability"
     >
       <motion.div

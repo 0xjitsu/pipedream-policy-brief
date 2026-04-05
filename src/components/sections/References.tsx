@@ -32,6 +32,7 @@ export function References() {
     <SectionWrapper
       id="references"
       title="References & Data Sources"
+      icon="📚"
       subtitle="All sources cited in this brief — verified as of March 30, 2026"
     >
       {/* Category filter pills */}

@@ -154,6 +154,7 @@ export function StationTracker() {
     <SectionWrapper
       id="tracker"
       title="Station Status Tracker"
+      icon="📍"
       subtitle={`Fuel availability across ${trackerStats.totalTracked.toLocaleString()} monitored stations \u00B7 Updated ${trackerStats.lastUpdated}`}
     >
       {/* Stat cards */}

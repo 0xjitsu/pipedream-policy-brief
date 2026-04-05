@@ -28,6 +28,7 @@ export function PolicyPillars() {
     <SectionWrapper
       id="pillars"
       title="Five Policy Pillars"
+      icon="🏛️"
       subtitle="Coordinated response framework for immediate, medium-term, and structural action"
     >
       <motion.div

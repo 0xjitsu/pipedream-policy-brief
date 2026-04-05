@@ -64,6 +64,7 @@ export function NewsFeed() {
     <SectionWrapper
       id="news"
       title="Live News Feed"
+      icon="📰"
       subtitle="Real-time energy crisis headlines from Philippine and global sources"
     >
       {/* Status + Filters */}

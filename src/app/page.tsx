@@ -65,8 +65,8 @@ export default function Home() {
           <p className="mt-4 text-base md:text-lg text-white-70 max-w-2xl mx-auto">
             Supply security, market stability, and targeted relief for the Philippine fuel crisis
           </p>
-          <p className="mt-3 text-xs text-white-20 font-mono">
-            March 30, 2026 · Submitted to UPLIFT Committee, DOE, and DOF
+          <p className="mt-3 text-xs text-white-30 font-mono">
+            Published March 30, 2026 · Prepared by Pipedream
           </p>
         </div>
       </header>

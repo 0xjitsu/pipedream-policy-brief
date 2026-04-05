@@ -48,7 +48,7 @@ export function CrisisOverview() {
   }, [oilPrice, pesoRate]);
 
   return (
-    <SectionWrapper id="crisis" title="Crisis Overview" subtitle={`Philippine fuel supply emergency — ${situationDate}`}>
+    <SectionWrapper id="crisis" title="Crisis Overview" icon="🚨" subtitle={`Philippine fuel supply emergency — ${situationDate}`}>
       {/* Metric cards */}
       <motion.div
         variants={staggerContainer}

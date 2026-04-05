@@ -145,6 +145,7 @@ export function DistributionChannels() {
     <SectionWrapper
       id="channels"
       title="Distribution Channels"
+      icon="🛢️"
       subtitle="How should the government deliver fuel relief to those who need it most?"
     >
       {/* Context block — the problem */}

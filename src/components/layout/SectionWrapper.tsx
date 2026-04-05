@@ -6,12 +6,13 @@ import { staggerContainer } from "@/lib/motion";
 interface SectionWrapperProps {
   id: string;
   title: string;
+  icon?: string;
   subtitle?: string;
   children: React.ReactNode;
   className?: string;
 }
 
-export function SectionWrapper({ id, title, subtitle, children, className = "" }: SectionWrapperProps) {
+export function SectionWrapper({ id, title, icon, subtitle, children, className = "" }: SectionWrapperProps) {
   return (
     <section id={id} className={`scroll-mt-20 py-12 md:py-16 ${className}`}>
       <motion.div
@@ -28,7 +29,10 @@ export function SectionWrapper({ id, title, subtitle, children, className = "" }
           transition={{ duration: 0.4 }}
           className="mb-8"
         >
-          <h2 className="font-serif text-2xl md:text-3xl font-bold text-white">{title}</h2>
+          <h2 className="font-serif text-2xl md:text-3xl font-bold text-white">
+            {icon && <span className="mr-3" aria-hidden="true">{icon}</span>}
+            {title}
+          </h2>
           {subtitle && <p className="mt-2 text-white-50 text-sm md:text-base">{subtitle}</p>}
         </motion.div>
         {children}
