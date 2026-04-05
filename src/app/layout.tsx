@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Playfair_Display, DM_Sans, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -20,14 +20,21 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#0F1B2D",
+};
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://pipedream-policy-brief.vercel.app"),
   title: "Pipedream Policy Brief — Navigating the Energy Emergency",
   description:
-    "Supply beyond May is unconfirmed. 98% Middle East dependence. One refinery. No strategic reserve. This dashboard arms Philippine policymakers with live market intelligence, economic scenario modeling, and actionable recommendations to navigate the worst energy crisis since the 1990s.",
+    "Live policy dashboard for the Philippine fuel crisis — supply analysis, economic scenarios, 10K+ station tracker, and recommendations for DOE, DOF, and UPLIFT.",
   openGraph: {
     title: "Pipedream — Navigating the Philippine Energy Emergency",
     description:
-      "Supply beyond May is unconfirmed. 98% Middle East dependence. One refinery. No strategic reserve. Live market data, 10K+ station tracker, and policy recommendations for the UPLIFT Committee, DOE, and DOF.",
+      "Supply beyond May is unconfirmed. Live market data, 10K+ station tracker, and policy recommendations for Philippine decision-makers.",
     type: "website",
     locale: "en_PH",
   },
@@ -53,6 +60,11 @@ export default function RootLayout({
       lang="en"
       className={`${playfair.variable} ${dmSans.variable} ${geistMono.variable} h-full antialiased`}
     >
+      <head>
+        <link rel="preconnect" href="https://basemaps.cartocdn.com" crossOrigin="" />
+        <link rel="dns-prefetch" href="https://query1.finance.yahoo.com" />
+        <link rel="dns-prefetch" href="https://api.frankfurter.dev" />
+      </head>
       <body className="min-h-full">{children}</body>
     </html>
   );

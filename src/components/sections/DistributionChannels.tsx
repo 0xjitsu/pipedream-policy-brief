@@ -54,7 +54,7 @@ function ChannelContent({ channel }: { channel: (typeof channels)[0] }) {
           <div className="grid md:grid-cols-2 gap-1.5 mb-3">
             {channel.provenPlatform.capabilities.map((cap, i) => (
               <div key={i} className="flex gap-2 text-xs text-white-50">
-                <svg width="12" height="12" viewBox="0 0 16 16" fill="none" className="shrink-0 mt-0.5">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none" className="shrink-0 mt-0.5" aria-hidden="true">
                   <rect width="16" height="16" rx="4" fill="rgba(16,185,129,0.15)" />
                   <path d="M4.5 8L7 10.5L11.5 5.5" stroke="#10B981" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
@@ -126,7 +126,7 @@ function ChannelContent({ channel }: { channel: (typeof channels)[0] }) {
           <div className="grid md:grid-cols-2 gap-2">
             {channel.platformRequirements.map((req, i) => (
               <div key={i} className="flex gap-2 text-sm text-white-70">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="shrink-0 mt-0.5">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="shrink-0 mt-0.5" aria-hidden="true">
                   <rect width="16" height="16" rx="4" fill="rgba(16,185,129,0.15)" />
                   <path d="M4.5 8L7 10.5L11.5 5.5" stroke="#10B981" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>

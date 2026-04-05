@@ -137,7 +137,7 @@ export function SupplyChart() {
     <div className="glass p-5">
       <h3 className="font-serif text-base font-semibold text-white mb-1">Supply Depletion Trajectory</h3>
       <p className="text-xs text-white-50 mb-4">Projected days of national fuel supply without new procurement</p>
-      <div className="h-[300px] md:h-[350px]">
+      <div className="h-[300px] md:h-[350px]" role="img" aria-label="Supply depletion forecast chart">
         <Line data={data} options={options} />
       </div>
       <p className="text-[10px] text-white-20 mt-3">

@@ -59,6 +59,7 @@ export function ExpandableCard({
           viewBox="0 0 20 20"
           fill="none"
           className="shrink-0 ml-4"
+          aria-hidden="true"
         >
           <path d="M5 7.5L10 12.5L15 7.5" stroke="rgba(255,255,255,0.5)" strokeWidth="1.5" strokeLinecap="round" />
         </motion.svg>

@@ -87,7 +87,7 @@ export function NewsFeed() {
             <button
               key={f.key}
               onClick={() => setSeverityFilter(f.key)}
-              className={`px-2.5 py-1 text-xs rounded-md transition-colors border ${
+              className={`px-2.5 py-1 text-xs rounded-md transition-colors border min-h-[44px] ${
                 severityFilter === f.key
                   ? "bg-white-10 border-white-20 text-white"
                   : "border-transparent text-white-50 hover:bg-white-05 hover:text-white-70"
@@ -108,7 +108,7 @@ export function NewsFeed() {
             <button
               key={f.key}
               onClick={() => setSourceFilter(f.key)}
-              className={`px-2.5 py-1 text-xs rounded-md transition-colors border ${
+              className={`px-2.5 py-1 text-xs rounded-md transition-colors border min-h-[44px] ${
                 sourceFilter === f.key
                   ? "bg-white-10 border-white-20 text-white"
                   : "border-transparent text-white-50 hover:bg-white-05 hover:text-white-70"

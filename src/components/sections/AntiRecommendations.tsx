@@ -40,7 +40,7 @@ export function AntiRecommendations() {
           >
             <div className="flex items-start gap-3">
               <div className="w-8 h-8 rounded-full bg-critical-bg flex items-center justify-center shrink-0">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                   <path d="M4 4L12 12M12 4L4 12" stroke="#EF4444" strokeWidth="2" strokeLinecap="round" />
                 </svg>
               </div>

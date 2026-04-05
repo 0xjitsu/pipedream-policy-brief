@@ -21,7 +21,7 @@ export function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-navy/90 backdrop-blur-md border-b border-white-08">
+    <nav aria-label="Primary navigation" className="fixed top-0 left-0 right-0 z-50 bg-navy/90 backdrop-blur-md border-b border-white-08">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14">
           {/* Logo */}
@@ -43,7 +43,7 @@ export function Nav() {
                 className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${
                   activeId === s.id
                     ? "bg-white-10 text-white"
-                    : "text-white-50 hover:text-white-90 hover:bg-white-05"
+                    : "text-white-70 hover:text-white-90 hover:bg-white-05"
                 }`}
               >
                 {s.label}
@@ -54,10 +54,10 @@ export function Nav() {
           {/* Mobile hamburger */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden p-2 text-white-70 hover:text-white"
+            className="lg:hidden p-2.5 min-h-[44px] min-w-[44px] text-white-70 hover:text-white flex items-center justify-center"
             aria-label="Toggle navigation"
           >
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
               {mobileOpen ? (
                 <path d="M5 5L15 15M15 5L5 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
               ) : (
@@ -81,8 +81,8 @@ export function Nav() {
                 key={s.id}
                 href={`#${s.id}`}
                 onClick={() => setMobileOpen(false)}
-                className={`block px-3 py-2 text-sm rounded-md ${
-                  activeId === s.id ? "bg-white-10 text-white" : "text-white-50"
+                className={`block px-3 py-3 text-sm rounded-md ${
+                  activeId === s.id ? "bg-white-10 text-white" : "text-white-70"
                 }`}
               >
                 {s.label}

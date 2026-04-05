@@ -203,7 +203,7 @@ export function StationTracker() {
         </span>
         <button
           onClick={() => setBrandFilter("all")}
-          className={`px-2.5 py-1 text-xs rounded-md transition-colors border ${
+          className={`px-2.5 py-1 text-xs rounded-md transition-colors border min-h-[44px] ${
             brandFilter === "all"
               ? "bg-white-10 border-white-20 text-white"
               : "border-transparent text-white-50 hover:bg-white-05 hover:text-white-70"
@@ -217,7 +217,7 @@ export function StationTracker() {
             onClick={() =>
               setBrandFilter(brandFilter === brand ? "all" : brand)
             }
-            className={`px-2.5 py-1 text-xs rounded-md transition-colors border flex items-center gap-1.5 ${
+            className={`px-2.5 py-1 text-xs rounded-md transition-colors border min-h-[44px] flex items-center gap-1.5 ${
               brandFilter === brand
                 ? "bg-white-10 border-white-20 text-white"
                 : "border-transparent text-white-50 hover:bg-white-05 hover:text-white-70"
@@ -247,7 +247,7 @@ export function StationTracker() {
           <button
             key={f.key}
             onClick={() => setStatusFilter(f.key)}
-            className={`px-2.5 py-1 text-xs rounded-md transition-colors border ${
+            className={`px-2.5 py-1 text-xs rounded-md transition-colors border min-h-[44px] ${
               statusFilter === f.key
                 ? "bg-white-10 border-white-20 text-white"
                 : "border-transparent text-white-50 hover:bg-white-05 hover:text-white-70"
@@ -264,6 +264,7 @@ export function StationTracker() {
         <select
           value={regionFilter}
           onChange={(e) => setRegionFilter(e.target.value)}
+          aria-label="Select region"
           className="text-xs bg-white-05 border border-white-08 text-white-70 rounded-md px-2 py-1 outline-none focus:border-white-20 transition-colors appearance-none cursor-pointer max-w-[200px]"
           style={{ backgroundImage: "none" }}
         >

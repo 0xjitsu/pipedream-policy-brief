@@ -9,6 +9,9 @@
   --white-90: rgba(255, 255, 255, 0.9);
   --white-70: rgba(255, 255, 255, 0.7);
   --white-50: rgba(255, 255, 255, 0.5);
+  --white-60: rgba(255, 255, 255, 0.6);
+  --white-40: rgba(255, 255, 255, 0.4);
+  --white-30: rgba(255, 255, 255, 0.3);
   --white-20: rgba(255, 255, 255, 0.2);
   --white-10: rgba(255, 255, 255, 0.1);
   --white-08: rgba(255, 255, 255, 0.08);
@@ -37,7 +40,10 @@
 
   --color-white-90: var(--white-90);
   --color-white-70: var(--white-70);
+  --color-white-60: var(--white-60);
   --color-white-50: var(--white-50);
+  --color-white-40: var(--white-40);
+  --color-white-30: var(--white-30);
   --color-white-20: var(--white-20);
   --color-white-10: var(--white-10);
   --color-white-08: var(--white-08);
@@ -64,6 +70,7 @@
 
 html {
   scroll-behavior: smooth;
+  color-scheme: dark;
 }
 
 body {
@@ -84,11 +91,22 @@ body {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+.glass-static {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
 @media (hover: hover) {
   .glass-hover:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   }
+}
+
+/* Firefox scrollbar support */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
 }
 
 /* Scrollbar styling */
@@ -112,6 +130,31 @@ body {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* Focus ring */
+:focus-visible {
+  outline: 2px solid #38BDF8;
+  outline-offset: 2px;
+}
+
+/* Text selection */
+::selection {
+  background: rgba(59, 130, 246, 0.3);
+  color: white;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 

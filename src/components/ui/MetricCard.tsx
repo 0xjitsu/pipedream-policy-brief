@@ -84,7 +84,7 @@ export function MetricCard({ data }: { data: MetricCardData }) {
   );
 
   return (
-    <motion.div variants={fadeInUp} className="glass glass-hover p-5 flex flex-col items-center text-center gap-2">
+    <motion.div variants={fadeInUp} className="glass p-5 flex flex-col items-center text-center gap-2">
       {data.type === "gauge" && data.gaugeMax && data.gaugeValue && data.gaugeColor ? (
         <RadialGauge value={data.gaugeValue} max={data.gaugeMax} color={data.gaugeColor} />
       ) : (

@@ -69,7 +69,7 @@ export function PolicyPillars() {
                       </span>
                       <div>
                         <div className="text-sm font-semibold text-white">{rec.title}</div>
-                        <p className="text-sm text-white-50 leading-relaxed mt-0.5">
+                        <p className="text-sm text-white-70 leading-relaxed mt-0.5">
                           {rec.detail}
                           {rec.sourceUrl && (
                             <a href={rec.sourceUrl} target="_blank" rel="noopener noreferrer"

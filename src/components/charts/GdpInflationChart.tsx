@@ -122,7 +122,7 @@ export function GdpInflationChart({ currentOilPrice }: { currentOilPrice?: numbe
     <div className="glass p-5">
       <h3 className="font-serif text-base font-semibold text-white mb-1">GDP Growth vs. Inflation</h3>
       <p className="text-xs text-white-50 mb-4">Crossover point at current oil prices signals stagflation risk</p>
-      <div className="h-[280px] md:h-[320px]">
+      <div className="h-[280px] md:h-[320px]" role="img" aria-label="GDP growth vs. inflation crossover chart">
         <Line data={data} options={options} />
       </div>
       {/* Sources & Methodology */}

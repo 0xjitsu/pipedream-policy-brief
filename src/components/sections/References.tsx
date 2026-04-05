@@ -43,7 +43,7 @@ export function References() {
             <button
               key={key}
               onClick={() => setFilter(key)}
-              className={`px-3 py-1.5 text-xs rounded-md transition-colors border ${
+              className={`px-3 py-1.5 text-xs rounded-md transition-colors border min-h-[44px] ${
                 isActive
                   ? "bg-white-10 border-white-20 text-white"
                   : "border-transparent text-white-50 hover:bg-white-05 hover:text-white-70"
@@ -68,19 +68,19 @@ export function References() {
           <table className="w-full text-left">
             <thead>
               <tr className="border-b border-white-08">
-                <th className="px-4 py-3 text-[10px] uppercase tracking-wider text-white-30 font-semibold w-10">
+                <th className="px-4 py-3 text-[10px] uppercase tracking-wider text-white-50 font-semibold w-10">
                   #
                 </th>
-                <th className="px-4 py-3 text-[10px] uppercase tracking-wider text-white-30 font-semibold">
+                <th className="px-4 py-3 text-[10px] uppercase tracking-wider text-white-50 font-semibold">
                   Source
                 </th>
-                <th className="px-4 py-3 text-[10px] uppercase tracking-wider text-white-30 font-semibold w-28">
+                <th className="px-4 py-3 text-[10px] uppercase tracking-wider text-white-50 font-semibold w-28">
                   Type
                 </th>
-                <th className="px-4 py-3 text-[10px] uppercase tracking-wider text-white-30 font-semibold">
+                <th className="px-4 py-3 text-[10px] uppercase tracking-wider text-white-50 font-semibold">
                   Used In
                 </th>
-                <th className="px-4 py-3 text-[10px] uppercase tracking-wider text-white-30 font-semibold hidden lg:table-cell">
+                <th className="px-4 py-3 text-[10px] uppercase tracking-wider text-white-50 font-semibold hidden lg:table-cell">
                   Description
                 </th>
               </tr>
