@@ -23,19 +23,19 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Pipedream Policy Brief — Navigating the Energy Emergency",
   description:
-    "Interactive policy dashboard for the Philippine fuel crisis. Live oil prices, station tracker, economic scenarios, and actionable recommendations for UPLIFT Committee, DOE, and DOF.",
+    "Supply beyond May is unconfirmed. 98% Middle East dependence. One refinery. No strategic reserve. This dashboard arms Philippine policymakers with live market intelligence, economic scenario modeling, and actionable recommendations to navigate the worst energy crisis since the 1990s.",
   openGraph: {
-    title: "Pipedream Policy Brief — Philippine Energy Crisis Dashboard",
+    title: "Pipedream — Navigating the Philippine Energy Emergency",
     description:
-      "Live oil prices, 10K+ station tracker, economic scenarios, and policy recommendations.",
+      "Supply beyond May is unconfirmed. 98% Middle East dependence. One refinery. No strategic reserve. Live market data, 10K+ station tracker, and policy recommendations for the UPLIFT Committee, DOE, and DOF.",
     type: "website",
     locale: "en_PH",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pipedream Policy Brief — Philippine Energy Crisis",
+    title: "Pipedream — Navigating the Philippine Energy Emergency",
     description:
-      "Interactive policy dashboard with live market data, station tracking, and economic modeling.",
+      "Supply beyond May is unconfirmed. 98% Middle East dependence. One refinery. No strategic reserve. Live intelligence and policy recommendations for Philippine decision-makers.",
   },
   robots: {
     index: true,
