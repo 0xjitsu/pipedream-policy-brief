@@ -352,3 +352,15 @@ On error, returns fallback curated news events with 60-second cache.
 
 34. Al Jazeera RSS Feed -- Geopolitical/energy news RSS: Iran-US tensions, Middle East oil supply disruptions.
     https://www.aljazeera.com/xml/rss/all.xml
+
+## Roadmap
+
+See the full roadmap at docs/ROADMAP.md or https://github.com/0xjitsu/pipedream-policy-brief/blob/main/docs/ROADMAP.md
+
+Upcoming priorities:
+- Phase 1: Data Credibility (DOE price integration, station status verification, historical price tracking)
+- Phase 2: Reach & Accessibility (Filipino translation, PDF export, embeddable widgets, PWA)
+- Phase 3: Analytical Depth (interactive scenario builder, supply chain simulation, sentiment analysis)
+- Phase 4: Institutional Platform (multi-stakeholder dashboards, public API, automated intelligence briefs)
+
+Sponsorship and partnership opportunities are documented in the roadmap.

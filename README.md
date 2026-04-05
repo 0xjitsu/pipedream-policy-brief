@@ -11,7 +11,7 @@
 [![Deployed on Vercel](https://img.shields.io/badge/Deployed_on-Vercel-black?logo=vercel)](https://vercel.com)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
-[Quick Start](#quick-start) · [Features](#whats-inside) · [Data Sources](#live-data-sources) · [Contributing](CONTRIBUTING.md)
+[Quick Start](#quick-start) · [Features](#whats-inside) · [Data Sources](#live-data-sources) · [Roadmap](docs/ROADMAP.md) · [Contributing](CONTRIBUTING.md)
 
 </div>
 
