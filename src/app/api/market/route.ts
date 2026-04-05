@@ -116,6 +116,11 @@ export async function GET() {
       },
     });
   } catch {
-    return NextResponse.json({ oilPrice: null, pesoRate: null });
+    return NextResponse.json(
+      { oilPrice: null, pesoRate: null },
+      {
+        headers: { "Cache-Control": "s-maxage=60, stale-while-revalidate=120" },
+      },
+    );
   }
 }
