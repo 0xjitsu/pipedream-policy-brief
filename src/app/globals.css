@@ -145,6 +145,25 @@ body {
   color: white;
 }
 
+/* Ticker marquee animation */
+@keyframes ticker-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.ticker-mask {
+  mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+}
+
+.ticker-animate {
+  animation: ticker-scroll 45s linear infinite;
+}
+
+.ticker-mask:hover .ticker-animate {
+  animation-play-state: paused;
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -155,6 +174,9 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+  .ticker-animate {
+    animation: none !important;
   }
 }
 

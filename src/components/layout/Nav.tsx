@@ -32,6 +32,14 @@ export function Nav() {
             </span>
             <span className="hidden sm:inline text-white-20">|</span>
             <span className="hidden sm:inline text-xs text-white-50">Policy Brief</span>
+            {/* LIVE badge -- shows when market data is streaming */}
+            <span className="hidden sm:inline-flex items-center gap-1.5 ml-2 rounded-md border border-[#10B981]/20 bg-[#10B981]/10 px-2 py-0.5 text-[10px] font-mono tracking-wider text-[#10B981]">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#10B981] opacity-75" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#10B981]" />
+              </span>
+              LIVE
+            </span>
           </div>
 
           {/* Desktop nav */}

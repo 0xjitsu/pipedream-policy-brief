@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 import { Nav } from "@/components/layout/Nav";
+import { Ticker } from "@/components/ui/Ticker";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import { Footer } from "@/components/layout/Footer";
 import { CrisisOverview } from "@/components/sections/CrisisOverview";
@@ -52,6 +53,7 @@ export default function Home() {
       </a>
       <ScrollProgress />
       <Nav />
+      <Ticker />
 
       {/* Hero header */}
       <header className="pt-24 pb-8 md:pt-28 md:pb-12 border-b border-white-08">
