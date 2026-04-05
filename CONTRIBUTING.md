@@ -6,7 +6,7 @@ energy crisis and informs policy recommendations for government officials.
 ## Getting Started
 
 1. Fork the repository
-2. Clone your fork: `git clone https://github.com/<you>/mbc_policy_brief.git`
+2. Clone your fork: `git clone https://github.com/<you>/pipedream-policy-brief.git`
 3. Install dependencies: `npm install`
 4. Start dev server: `npm run dev`
 5. Create a feature branch: `git checkout -b feature/your-feature`

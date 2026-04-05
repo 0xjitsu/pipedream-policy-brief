@@ -2,11 +2,11 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Add a dedicated "Live News" section to the MBC policy brief that pulls real-time energy crisis headlines from RSS feeds and Reddit, with severity-based filtering and source type badges — mirroring the EventTimeline from the oil-intel dashboard but adapted to the MBC glass morphism design system.
+**Goal:** Add a dedicated "Live News" section to the Pipedream policy brief that pulls real-time energy crisis headlines from RSS feeds and Reddit, with severity-based filtering and source type badges — mirroring the EventTimeline from the oil-intel dashboard but adapted to the Pipedream glass morphism design system.
 
 **Architecture:** Server-side API route (`/api/news`) fetches 4 RSS feeds + 2 Reddit searches, filters for PH energy keywords, estimates severity, deduplicates, and returns top 40 events. Client-side `useNewsFeed` hook polls every 5 minutes with static fallback. New `NewsFeed` section renders a filterable vertical timeline with severity + source type filters, glass cards, and Framer Motion animations.
 
-**Tech Stack:** Next.js 16 Route Handler (server-side RSS parsing), `rss-parser` (npm), client-side polling hook, Framer Motion animations, existing MBC design tokens.
+**Tech Stack:** Next.js 16 Route Handler (server-side RSS parsing), `rss-parser` (npm), client-side polling hook, Framer Motion animations, existing Pipedream design tokens.
 
 ---
 
@@ -186,7 +186,7 @@ bun add rss-parser
 
 This is adapted from `/Users/bbmisa/oil_energy_map/src/app/api/events/route.ts` with these changes:
 - Tailored keyword filter for PH energy crisis
-- MBC's `NewsEvent` type instead of `TimelineEvent`
+- Pipedream's `NewsEvent` type instead of `TimelineEvent`
 - `headline` field instead of `event`
 - Same RSS sources + Reddit search pattern
 
@@ -241,7 +241,7 @@ async function fetchRedditPosts(
   try {
     const url = `https://www.reddit.com/r/${subreddit}/search.json?q=${encodeURIComponent(query)}&sort=new&restrict_sr=on&limit=5&t=week`;
     const res = await fetch(url, {
-      headers: { "User-Agent": "mbc-policy-brief/1.0" },
+      headers: { "User-Agent": "pipedream-policy-brief/1.0" },
       signal: AbortSignal.timeout(5000),
     });
     if (!res.ok) return [];
@@ -423,7 +423,7 @@ This is the biggest task. The component includes:
 - Source type filter pills (All / News / Gov / Social / Market)
 - Live indicator (green pulsing dot when live, grey when static)
 - Vertical timeline with color-coded severity dots, source badges, linked headlines
-- Glass card styling matching the MBC design system
+- Glass card styling matching the Pipedream design system
 - Framer Motion `fadeInUp` entrance animations
 
 - [ ] **Step 1: Write the component**
@@ -700,7 +700,7 @@ Expected: New deployment in `READY` state.
 
 - [ ] **Step 3: Verify live site**
 
-Visit `https://mbc-policy-brief.vercel.app/#news` and confirm:
+Visit `https://pipedream-policy-brief.vercel.app/#news` and confirm:
 - Live News section appears at the bottom
 - Nav shows "Live News" tab
 - Green pulsing dot shows "Live" status

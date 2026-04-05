@@ -2,10 +2,14 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "mbc-dashboard",
-      "runtimeExecutable": "bun",
-      "runtimeArgs": ["run", "dev"],
-      "port": 3000
+      "name": "pipedream-dashboard",
+      "runtimeExecutable": "/opt/homebrew/bin/node",
+      "runtimeArgs": ["/Users/bbmisa/mbc-policy-brief/node_modules/next/dist/bin/next", "dev", "-p", "3008"],
+      "port": 3008,
+      "cwd": "/Users/bbmisa/mbc-policy-brief",
+      "env": {
+        "PATH": "/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin"
+      }
     }
   ]
 }

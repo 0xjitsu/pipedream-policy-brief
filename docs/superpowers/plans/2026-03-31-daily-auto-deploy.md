@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Ensure the MBC policy brief website rebuilds and deploys automatically every day so content changes are always live.
+**Goal:** Ensure the Pipedream policy brief website rebuilds and deploys automatically every day so content changes are always live.
 
 **Architecture:** Create a Vercel Deploy Hook (webhook URL) and trigger it daily via GitHub Actions cron. This is zero-dependency, works with the existing static architecture, and costs nothing on GitHub's free tier. No code changes to the Next.js app are needed.
 

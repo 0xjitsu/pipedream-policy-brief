@@ -4,7 +4,7 @@
 
 **Goal:** Integrate Edgar Chua's market-stability framing into the policy brief and add a map-based gas station status tracker (out-of-supply stations) seeded from news data, designed for future crowd-sourced citizen reporting.
 
-**Architecture:** Three parallel workstreams — (A) content pivot to reflect EOC/MBC revised framing across pillars, anti-recs, and channels, (B) new `StationTracker` map section using Leaflet + CartoDB DarkMatter tiles with station status data, (C) wire into page layout and deploy.
+**Architecture:** Three parallel workstreams — (A) content pivot to reflect EOC/Pipedream revised framing across pillars, anti-recs, and channels, (B) new `StationTracker` map section using Leaflet + CartoDB DarkMatter tiles with station status data, (C) wire into page layout and deploy.
 
 **Tech Stack:** Next.js 16 App Router, Tailwind CSS v4, Leaflet (zero API keys, ~140KB gzipped) + CartoDB DarkMatter dark tiles, existing glass-morphism dark theme.
 
@@ -12,7 +12,7 @@
 
 ## Workstream A: Content Pivot — EOC Market-Stability Framing
 
-The MBC revised statement (with EOC interview inputs) fundamentally shifts the argument:
+The Pipedream revised statement (with EOC interview inputs) fundamentally shifts the argument:
 
 1. **Excise taxes are a demand signal**, not just revenue — suspending them overstimulates demand when supply is scarce
 2. **This is a supply crisis, not just a price crisis** — availability at any price > affordability
@@ -112,7 +112,7 @@ Update reason to:
 
 Update reason to:
 ```
-"Economic planning secretary warned of 'triple whammy': budget deficit + reduced spending + GDP contraction. As MBC Chairman Edgar Chua notes, broad tax relief has the same effect as a fuel subsidy — maintaining demand higher than it would otherwise be at a time when supply is in question. The companies MBC represents do not need subsidies; they need supply. Fiscal interventions must be sequenced, targeted, and reversible."
+"Economic planning secretary warned of 'triple whammy': budget deficit + reduced spending + GDP contraction. As MBC Chairman Edgar Chua notes, broad tax relief has the same effect as a fuel subsidy — maintaining demand higher than it would otherwise be at a time when supply is in question. The private sector do not need subsidies; they need supply. Fiscal interventions must be sequenced, targeted, and reversible."
 ```
 
 - [ ] **Step 3: Verify build passes**
@@ -454,7 +454,7 @@ Check Vercel deployment status and preview URL.
 
 ### EOC Framing — Key Quotes to Reference
 
-These quotes from the revised MBC statement should be woven naturally into the data files (not displayed as block quotes unless explicitly appropriate):
+These quotes from the revised Pipedream statement should be woven naturally into the data files (not displayed as block quotes unless explicitly appropriate):
 
 1. "Suspending excise taxes has the same effect as a broad fuel subsidy that will maintain demand levels higher than they otherwise would be"
 2. "The companies we represent do not need subsidies — those should be directed to jeepney drivers, etc — but we do need supply"

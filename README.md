@@ -28,8 +28,8 @@ Policymakers are making decisions with fragmented information — DOE data in on
 ## Quick Start
 
 ```bash
-git clone https://github.com/0xjitsu/mbc-policy-brief.git
-cd mbc-policy-brief
+git clone https://github.com/0xjitsu/pipedream-policy-brief.git
+cd pipedream-policy-brief
 npm install
 npm run dev       # http://localhost:3000
 npm run build     # verify production build
@@ -189,6 +189,6 @@ This project is licensed under the **GNU Affero General Public License v3.0 (AGP
 
 Built for the UPLIFT Committee
 
-[Quick Start](#quick-start) · [Report a Bug](https://github.com/0xjitsu/mbc-policy-brief/issues/new?labels=bug) · [Request a Feature](https://github.com/0xjitsu/mbc-policy-brief/issues/new?labels=enhancement)
+[Quick Start](#quick-start) · [Report a Bug](https://github.com/0xjitsu/pipedream-policy-brief/issues/new?labels=bug) · [Request a Feature](https://github.com/0xjitsu/pipedream-policy-brief/issues/new?labels=enhancement)
 
 </div>
