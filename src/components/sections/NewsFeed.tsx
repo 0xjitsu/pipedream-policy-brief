@@ -74,7 +74,7 @@ export function NewsFeed() {
           <span>{isLive ? "Live" : "Static"}</span>
           {lastUpdated && (
             <span className="text-white-30">
-              · Updated {lastUpdated.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" })}
+              · Updated {lastUpdated.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })} · {lastUpdated.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" })}
             </span>
           )}
           <span className="text-white-30">· {filtered.length} events</span>

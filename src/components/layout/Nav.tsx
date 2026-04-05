@@ -13,6 +13,7 @@ const sections = [
   { id: "infrastructure", label: "Infrastructure" },
   { id: "tracker", label: "Station Tracker" },
   { id: "news", label: "Live News" },
+  { id: "references", label: "References" },
 ];
 
 export function Nav() {
@@ -27,7 +28,7 @@ export function Nav() {
           <div className="flex items-center gap-3 shrink-0">
             <div className="w-2 h-2 rounded-full bg-strategic" />
             <span className="text-xs font-semibold tracking-[0.2em] uppercase text-white-70">
-              Makati Business Club
+              Pipedream
             </span>
             <span className="hidden sm:inline text-white-20">|</span>
             <span className="hidden sm:inline text-xs text-white-50">Policy Brief</span>

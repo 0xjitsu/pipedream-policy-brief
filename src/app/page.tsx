@@ -11,6 +11,7 @@ import { AntiRecommendations } from "@/components/sections/AntiRecommendations";
 import { ActionTimeline } from "@/components/sections/ActionTimeline";
 import { Infrastructure } from "@/components/sections/Infrastructure";
 import { NewsFeed } from "@/components/sections/NewsFeed";
+import { References } from "@/components/sections/References";
 import { StationTracker } from "@/components/sections/StationTracker";
 
 export default function Home() {
@@ -23,7 +24,7 @@ export default function Home() {
       <header className="pt-24 pb-8 md:pt-28 md:pb-12 border-b border-white-08">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-xs font-semibold tracking-[0.3em] uppercase text-white-50 mb-4">
-            Makati Business Club · Policy Brief
+            Pipedream · Policy Brief
           </p>
           <h1 className="font-serif text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
             Navigating the Energy Emergency
@@ -55,6 +56,8 @@ export default function Home() {
         <StationTracker />
         <div className="border-t border-white-08" />
         <NewsFeed />
+        <div className="border-t border-white-08" />
+        <References />
       </main>
 
       <Footer />

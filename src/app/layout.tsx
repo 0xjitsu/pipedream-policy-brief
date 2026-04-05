@@ -21,7 +21,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MBC Policy Brief — Navigating the Energy Emergency",
+  title: "Pipedream Policy Brief — Navigating the Energy Emergency",
   description:
     "Policy recommendations for the Philippine fuel crisis. Submitted to UPLIFT Committee, DOE, and DOF.",
 };

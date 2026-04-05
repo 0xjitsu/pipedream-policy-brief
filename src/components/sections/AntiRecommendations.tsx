@@ -9,7 +9,7 @@ export function AntiRecommendations() {
   return (
     <SectionWrapper
       id="anti-recs"
-      title="What MBC Does Not Recommend"
+      title="What We Do Not Recommend"
       subtitle="Proposals considered and rejected on substantive grounds"
     >
       {/* Context paragraph */}

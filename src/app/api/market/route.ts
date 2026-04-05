@@ -19,7 +19,7 @@ async function fetchOilPrice(): Promise<MarketDataField | null> {
     const res = await fetch(
       "https://query1.finance.yahoo.com/v8/finance/chart/BZ=F?range=5d&interval=1d",
       {
-        headers: { "User-Agent": "mbc-policy-brief/1.0" },
+        headers: { "User-Agent": "pipedream-policy-brief/1.0" },
         signal: AbortSignal.timeout(8000),
       },
     );

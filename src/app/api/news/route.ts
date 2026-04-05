@@ -48,7 +48,7 @@ async function fetchRedditPosts(
   try {
     const url = `https://www.reddit.com/r/${subreddit}/search.json?q=${encodeURIComponent(query)}&sort=new&restrict_sr=on&limit=5&t=week`;
     const res = await fetch(url, {
-      headers: { "User-Agent": "mbc-policy-brief/1.0" },
+      headers: { "User-Agent": "pipedream-policy-brief/1.0" },
       signal: AbortSignal.timeout(5000),
     });
     if (!res.ok) return [];

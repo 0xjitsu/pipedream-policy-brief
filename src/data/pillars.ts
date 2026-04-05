@@ -39,7 +39,7 @@ export const pillars: PillarData[] = [
     title: "Accelerate fiscal intervention",
     urgency: "urgent",
     rationale:
-      "Maintaining fuel excise taxes is not merely a fiscal necessity — it is a critical market signal. RA 12316 authorizes suspension, but as MBC Chairman Edgar Chua emphasizes, suspending these taxes creates a broad artificial subsidy that overstimulates demand when global supplies are precarious. Depressing prices artificially risks triggering the very shortages we seek to avoid by masking true scarcity. The ₱20B+ annual excise revenue also funds the targeted relief and infrastructure programs that are the real solutions.",
+      "Maintaining fuel excise taxes is not merely a fiscal necessity — it is a critical market signal. RA 12316 authorizes suspension, but as our chairman emphasizes, suspending these taxes creates a broad artificial subsidy that overstimulates demand when global supplies are precarious. Depressing prices artificially risks triggering the very shortages we seek to avoid by masking true scarcity. The ₱20B+ annual excise revenue also funds the targeted relief and infrastructure programs that are the real solutions.",
     recommendations: [
       {
         title: "Guard excise revenue for hyper-targeted digital relief",
