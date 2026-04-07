@@ -344,6 +344,37 @@ export function StationTracker() {
           Last updated: {new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
         </div>
       </motion.div>
+
+      {/* Operational definitions legend */}
+      <details className="mt-6 glass p-4" open>
+        <summary className="text-xs font-medium text-white-70 cursor-pointer hover:text-white transition-colors select-none">
+          Status Definitions &amp; Data Sources
+        </summary>
+        <div className="mt-3 space-y-2">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {[
+              { color: "#10B981", label: "Operational", desc: "Station is open and has fuel in stock" },
+              { color: "#F59E0B", label: "Low Stock", desc: "Station is open but running low on one or more fuel types" },
+              { color: "#EF4444", label: "Dry / Closed", desc: "Station has run dry or suspended operations" },
+              { color: "#6B7280", label: "Unknown", desc: "Status not confirmed in latest DOE report" },
+            ].map((s) => (
+              <div key={s.label} className="flex items-start gap-2">
+                <span
+                  className="mt-1 w-2.5 h-2.5 rounded-full shrink-0"
+                  style={{ backgroundColor: s.color }}
+                />
+                <div>
+                  <p className="text-xs font-medium text-white-70">{s.label}</p>
+                  <p className="text-[10px] text-white-30 leading-snug">{s.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="text-[10px] text-white-30 pt-2 border-t border-white-08">
+            Station status sourced from DOE weekly monitoring reports. Location data from OpenStreetMap contributors via Overpass API.
+          </p>
+        </div>
+      </details>
     </SectionWrapper>
   );
 }
