@@ -136,3 +136,17 @@ export interface TrackedStation {
   sourceUrl?: string;
   details?: string;
 }
+
+export interface LegislationItem {
+  id: string;
+  title: string;
+  author: string;
+  status: string;
+  statusColor: string;
+  category: string;
+  categoryIcon: string;
+  position: "supported" | "opposed" | "conditional";
+  description: string;
+  sourceUrl: string;
+  lastUpdated: string;
+}

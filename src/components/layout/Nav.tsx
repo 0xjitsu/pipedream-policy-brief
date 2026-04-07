@@ -2,13 +2,16 @@
 
 import { useState } from "react";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
+import { AudienceToggle } from "@/components/ui/AudienceToggle";
 
 const sections = [
   { id: "crisis", label: "Crisis Overview", short: "Crisis", icon: "🚨" },
+  { id: "impact", label: "Human Impact", short: "Impact", icon: "👤" },
   { id: "scenarios", label: "Scenarios", short: "Scenarios", icon: "📊" },
   { id: "channels", label: "Distribution Channels", short: "Channels", icon: "🛢️" },
   { id: "pillars", label: "Policy Pillars", short: "Pillars", icon: "🏛️" },
   { id: "anti-recs", label: "Not Recommended", short: "Don'ts", icon: "⛔" },
+  { id: "legislation", label: "Legislative Tracker", short: "Bills", icon: "⚖️" },
   { id: "timeline", label: "Action Timeline", short: "Timeline", icon: "📅" },
   { id: "infrastructure", label: "Infrastructure", short: "Infra", icon: "🏗️" },
   { id: "tracker", label: "Station Tracker", short: "Tracker", icon: "📍" },
@@ -41,6 +44,11 @@ export function Nav() {
               </span>
               LIVE
             </span>
+          </div>
+
+          {/* Audience mode toggle */}
+          <div className="hidden md:block shrink-0">
+            <AudienceToggle />
           </div>
 
           {/* Desktop nav */}

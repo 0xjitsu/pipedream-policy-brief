@@ -4,6 +4,9 @@ import { Ticker } from "@/components/ui/Ticker";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import { Footer } from "@/components/layout/Footer";
 import { CrisisOverview } from "@/components/sections/CrisisOverview";
+import { SupplyCountdown } from "@/components/ui/SupplyCountdown";
+import { AudienceProvider } from "@/contexts/AudienceContext";
+import { AudienceMain } from "@/components/layout/AudienceMain";
 
 const EconomicScenarios = dynamic(
   () => import("@/components/sections/EconomicScenarios").then((m) => ({ default: m.EconomicScenarios })),
@@ -45,6 +48,14 @@ const PublicRoadmap = dynamic(
   () => import("@/components/sections/PublicRoadmap").then((m) => ({ default: m.PublicRoadmap })),
   { loading: () => <div className="min-h-[300px] animate-pulse bg-white-05 rounded-2xl mx-4 sm:mx-6 lg:mx-8 my-12" /> }
 );
+const PersonaImpact = dynamic(
+  () => import("@/components/sections/PersonaImpact").then((m) => ({ default: m.PersonaImpact })),
+  { loading: () => <div className="min-h-[300px] animate-pulse bg-white-05 rounded-2xl mx-4 sm:mx-6 lg:mx-8 my-12" /> }
+);
+const LegislativeTracker = dynamic(
+  () => import("@/components/sections/LegislativeTracker").then((m) => ({ default: m.LegislativeTracker })),
+  { loading: () => <div className="min-h-[300px] animate-pulse bg-white-05 rounded-2xl mx-4 sm:mx-6 lg:mx-8 my-12" /> }
+);
 
 export default function Home() {
   return (
@@ -65,6 +76,7 @@ export default function Home() {
           <p className="text-xs font-semibold tracking-[0.3em] uppercase text-white-50 mb-4">
             Pipedream · Policy Brief
           </p>
+          <SupplyCountdown />
           <h1 className="font-serif text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
             Navigating the Energy Emergency
           </h1>
@@ -77,55 +89,93 @@ export default function Home() {
         </div>
       </header>
 
-      <main>
-        <script
-          type="application/ld+json"
-          // skipcq: JS-0440 — static JSON-LD structured data, no user input
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Report",
-              name: "Pipedream Policy Brief — Navigating the Energy Emergency",
-              description: "Interactive policy dashboard for the Philippine fuel crisis with live market data, economic scenarios, and policy recommendations.",
-              datePublished: "2026-03-30",
-              url: "https://pipedream-policy-brief.vercel.app",
-              inLanguage: "en",
-              license: "https://www.gnu.org/licenses/agpl-3.0.html",
-              isAccessibleForFree: true,
-              author: { "@type": "Organization", name: "Pipedream", url: "https://github.com/0xjitsu/pipedream-policy-brief" },
-              publisher: { "@type": "Organization", name: "Pipedream", url: "https://github.com/0xjitsu" },
-              mainEntityOfPage: { "@type": "WebPage", "@id": "https://pipedream-policy-brief.vercel.app" },
-              keywords: ["Philippine energy crisis", "fuel supply", "policy brief", "oil prices", "fuel subsidy", "PriceLOCQ"],
-              about: {
-                "@type": "Event",
-                name: "Philippine Energy Crisis 2026",
-                location: { "@type": "Country", name: "Philippines" },
-              },
-            }),
-          }}
-        />
-        <CrisisOverview />
-        <div className="border-t border-white-08" />
-        <EconomicScenarios />
-        <div className="border-t border-white-08" />
-        <DistributionChannels />
-        <div className="border-t border-white-08" />
-        <PolicyPillars />
-        <div className="border-t border-white-08" />
-        <AntiRecommendations />
-        <div className="border-t border-white-08" />
-        <ActionTimeline />
-        <div className="border-t border-white-08" />
-        <Infrastructure />
-        <div className="border-t border-white-08" />
-        <StationTracker />
-        <div className="border-t border-white-08" />
-        <NewsFeed />
-        <div className="border-t border-white-08" />
-        <References />
-        <div className="border-t border-white-08" />
-        <PublicRoadmap />
-      </main>
+      <AudienceProvider>
+        <AudienceMain>
+          <script
+            type="application/ld+json"
+            // skipcq: JS-0440 — static JSON-LD structured data, no user input
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Report",
+                name: "Pipedream Policy Brief — Navigating the Energy Emergency",
+                description: "Interactive policy dashboard for the Philippine fuel crisis with live market data, economic scenarios, and policy recommendations.",
+                datePublished: "2026-03-30",
+                url: "https://pipedream-policy-brief.vercel.app",
+                inLanguage: "en",
+                license: "https://www.gnu.org/licenses/agpl-3.0.html",
+                isAccessibleForFree: true,
+                author: { "@type": "Organization", name: "Pipedream", url: "https://github.com/0xjitsu/pipedream-policy-brief" },
+                publisher: { "@type": "Organization", name: "Pipedream", url: "https://github.com/0xjitsu" },
+                mainEntityOfPage: { "@type": "WebPage", "@id": "https://pipedream-policy-brief.vercel.app" },
+                keywords: ["Philippine energy crisis", "fuel supply", "policy brief", "oil prices", "fuel subsidy", "PriceLOCQ"],
+                about: {
+                  "@type": "Event",
+                  name: "Philippine Energy Crisis 2026",
+                  location: { "@type": "Country", name: "Philippines" },
+                },
+              }),
+            }}
+          />
+
+          {/* === PROBLEM BLOCK === */}
+          <div data-audience="analyst executive public">
+            <CrisisOverview />
+          </div>
+          <div className="border-t border-white-08" />
+          <div data-audience="analyst public">
+            <PersonaImpact />
+          </div>
+          <div className="border-t border-white-08" />
+          <div data-audience="analyst executive">
+            <EconomicScenarios />
+          </div>
+
+          {/* === SOLUTION BLOCK === */}
+          <div className="border-t border-white-08" />
+          <div data-audience="analyst executive">
+            <DistributionChannels />
+          </div>
+          <div className="border-t border-white-08" />
+          <div data-audience="analyst executive">
+            <PolicyPillars />
+          </div>
+          <div className="border-t border-white-08" />
+          <div data-audience="analyst executive">
+            <AntiRecommendations />
+          </div>
+          <div className="border-t border-white-08" />
+          <div data-audience="analyst executive public">
+            <LegislativeTracker />
+          </div>
+
+          {/* === EXECUTION BLOCK === */}
+          <div className="border-t border-white-08" />
+          <div data-audience="analyst executive">
+            <ActionTimeline />
+          </div>
+          <div className="border-t border-white-08" />
+          <div data-audience="analyst">
+            <Infrastructure />
+          </div>
+          <div className="border-t border-white-08" />
+          <div data-audience="analyst public">
+            <StationTracker />
+          </div>
+          <div className="border-t border-white-08" />
+          <div data-audience="analyst public">
+            <NewsFeed />
+          </div>
+          <div className="border-t border-white-08" />
+          <div data-audience="analyst">
+            <References />
+          </div>
+          <div className="border-t border-white-08" />
+          <div data-audience="analyst executive public">
+            <PublicRoadmap />
+          </div>
+        </AudienceMain>
+      </AudienceProvider>
 
       <Footer />
     </>

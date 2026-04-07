@@ -164,6 +164,15 @@ body {
   animation-play-state: paused;
 }
 
+/* Audience mode visibility */
+main[data-mode="executive"] [data-audience]:not([data-audience*="executive"]) {
+  display: none !important;
+}
+main[data-mode="public"] [data-audience]:not([data-audience*="public"]) {
+  display: none !important;
+}
+/* Analyst mode shows everything — no hiding rules needed */
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   html {
