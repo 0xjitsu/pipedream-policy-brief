@@ -10,6 +10,10 @@ import { AudienceMain } from "@/components/layout/AudienceMain";
 import { BackToTop } from "@/components/ui/BackToTop";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { ReadingGuide } from "@/components/ui/ReadingGuide";
+import { ExecutiveSummary } from "@/components/ui/ExecutiveSummary";
+import { KeyInsight } from "@/components/ui/KeyInsight";
+import { INSIGHTS } from "@/data/insights";
+import { ShareBar } from "@/components/ui/ShareBar";
 
 const EconomicScenarios = dynamic(
   () => import("@/components/sections/EconomicScenarios").then((m) => ({ default: m.EconomicScenarios })),
@@ -81,10 +85,10 @@ export default function Home() {
           </p>
           <SupplyCountdown />
           <h1 className="font-serif text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-            Navigating the Energy Emergency
+            The Philippines Has 45 Days of Fuel Left
           </h1>
           <p className="mt-4 text-base md:text-lg text-white-70 max-w-2xl mx-auto">
-            Supply security, market stability, and targeted relief for the Philippine fuel crisis
+            98% import-dependent. One refinery. No strategic reserve. Here&apos;s what must happen before supply runs out.
           </p>
           <p className="mt-3 text-xs text-white-30 font-mono">
             Published March 30, 2026 · Prepared by Pipedream
@@ -95,6 +99,10 @@ export default function Home() {
       <AudienceMain>
           <div data-audience="analyst">
             <ReadingGuide />
+          </div>
+
+          <div data-audience="analyst executive public">
+            <ExecutiveSummary />
           </div>
 
           <script
@@ -128,19 +136,28 @@ export default function Home() {
           <div data-audience="analyst executive public">
             <CrisisOverview />
           </div>
+          <div data-audience="analyst executive public">
+            <KeyInsight {...INSIGHTS.crisisOverview} />
+          </div>
           <div className="border-t border-white-08" />
           <div data-audience="analyst public">
             <PersonaImpact />
           </div>
-          <SectionDivider variant="solution" />
+          <SectionDivider variant="solution" prose="The crisis is quantified. Here's what the evidence says works." />
           <div data-audience="analyst executive">
             <EconomicScenarios />
+          </div>
+          <div data-audience="analyst executive">
+            <KeyInsight {...INSIGHTS.economicScenarios} />
           </div>
 
           {/* === SOLUTION BLOCK === */}
           <div className="border-t border-white-08" />
           <div data-audience="analyst executive">
             <DistributionChannels />
+          </div>
+          <div data-audience="analyst executive">
+            <KeyInsight {...INSIGHTS.distributionChannels} />
           </div>
           <div className="border-t border-white-08" />
           <div data-audience="analyst executive">
@@ -156,7 +173,7 @@ export default function Home() {
           </div>
 
           {/* === EXECUTION BLOCK === */}
-          <SectionDivider variant="execution" />
+          <SectionDivider variant="execution" prose="Policy without implementation is theater. Here's the operational plan." />
           <div data-audience="analyst executive">
             <ActionTimeline />
           </div>
@@ -182,6 +199,7 @@ export default function Home() {
           </div>
         </AudienceMain>
 
+      <ShareBar />
       <BackToTop />
       <Footer />
     </AudienceProvider>

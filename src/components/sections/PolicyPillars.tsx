@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { SectionWrapper } from "@/components/layout/SectionWrapper";
 import { ExpandableCard } from "@/components/ui/ExpandableCard";
+import { SectionCTA } from "@/components/ui/SectionCTA";
 import { pillars } from "@/data/pillars";
 import { staggerContainer } from "@/lib/motion";
 import type { Urgency } from "@/data/types";
@@ -88,6 +89,8 @@ export function PolicyPillars() {
           </ExpandableCard>
         ))}
       </motion.div>
+
+      <SectionCTA text="How do we actually implement this? →" href="#timeline" />
     </SectionWrapper>
   );
 }

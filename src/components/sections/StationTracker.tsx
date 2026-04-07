@@ -13,6 +13,7 @@ import {
 } from "@/data/all-stations";
 import { fadeInUp, staggerContainer } from "@/lib/motion";
 import type { StationStatus } from "@/data/types";
+import { SectionCTA } from "@/components/ui/SectionCTA";
 
 // Dynamically import the map to avoid SSR issues with Leaflet
 const StationMap = dynamic(
@@ -375,6 +376,8 @@ export function StationTracker() {
           </p>
         </div>
       </details>
+
+      <SectionCTA text="Share this brief with a decision-maker" href="#" variant="share" />
     </SectionWrapper>
   );
 }

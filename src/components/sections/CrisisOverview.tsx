@@ -8,6 +8,7 @@ import { SupplyChart } from "@/components/charts/SupplyChart";
 import { GdpInflationChart } from "@/components/charts/GdpInflationChart";
 import { AseanComparisonChart } from "@/components/charts/AseanComparisonChart";
 import { metrics, senateFindings, senateVerdict } from "@/data/crisis-overview";
+import { SectionCTA } from "@/components/ui/SectionCTA";
 import { useMarketData } from "@/hooks/useMarketData";
 import { staggerContainer, fadeInUp } from "@/lib/motion";
 import type { MetricCardData } from "@/data/types";
@@ -133,6 +134,8 @@ export function CrisisOverview() {
           </a>
         </footer>
       </motion.blockquote>
+
+      <SectionCTA text="See what this means for real Filipinos →" href="#impact" />
     </SectionWrapper>
   );
 }
