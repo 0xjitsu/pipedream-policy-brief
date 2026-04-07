@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { fadeInUp } from "@/lib/motion";
 import { AnimatedCounter } from "./AnimatedCounter";
+import { MetricTooltip } from "./MetricTooltip";
 import type { MetricCardData } from "@/data/types";
 
 function RadialGauge({ value, max, color }: { value: number; max: number; color: string }) {
@@ -92,13 +93,15 @@ export function MetricCard({ data }: { data: MetricCardData }) {
       )}
       <div className="flex items-center gap-1.5">
         <div className="text-sm text-white-70 font-medium">
-          {data.sourceUrl ? (
-            <a href={data.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-white-70">
-              {labelContent}
-            </a>
-          ) : (
-            labelContent
-          )}
+          <MetricTooltip term={data.label}>
+            {data.sourceUrl ? (
+              <a href={data.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-white-70">
+                {labelContent}
+              </a>
+            ) : (
+              labelContent
+            )}
+          </MetricTooltip>
         </div>
         {data.isLive && <LiveBadge />}
       </div>
