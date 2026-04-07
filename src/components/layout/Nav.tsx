@@ -25,19 +25,24 @@ export function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <nav aria-label="Primary navigation" className="fixed top-0 left-0 right-0 z-50 bg-navy/90 backdrop-blur-md border-b border-white-08">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-14">
-          {/* Logo */}
-          <div className="flex items-center gap-3 shrink-0">
+    <nav
+      aria-label="Primary navigation"
+      className="fixed top-0 left-0 right-0 z-50 bg-navy/90 backdrop-blur-md border-b border-white-08"
+    >
+      <div className="max-w-[1600px] mx-auto px-3 sm:px-4 lg:px-6">
+        <div className="flex items-center h-14 gap-3">
+
+          {/* ─── Logo ─── */}
+          <div className="flex items-center gap-2.5 shrink-0">
             <div className="w-2 h-2 rounded-full bg-strategic" />
-            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-white-70">
+            <span className="text-[11px] font-semibold tracking-[0.2em] uppercase text-white-70">
               Pipedream
             </span>
-            <span className="hidden sm:inline text-white-20">|</span>
-            <span className="hidden sm:inline text-xs text-white-50">Policy Brief</span>
-            {/* LIVE badge -- shows when market data is streaming */}
-            <span className="hidden sm:inline-flex items-center gap-1.5 ml-2 rounded-md border border-[#10B981]/20 bg-[#10B981]/10 px-2 py-0.5 text-[10px] font-mono tracking-wider text-[#10B981]">
+            <span className="hidden sm:inline text-white-20 text-xs">|</span>
+            <span className="hidden sm:inline text-[11px] text-white-50">Policy Brief</span>
+
+            {/* LIVE badge */}
+            <span className="hidden sm:inline-flex items-center gap-1.5 ml-1 rounded-md border border-[#10B981]/20 bg-[#10B981]/10 px-1.5 py-0.5 text-[9px] font-mono tracking-wider text-[#10B981]">
               <span className="relative flex h-1.5 w-1.5">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#10B981] opacity-75" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#10B981]" />
@@ -46,36 +51,42 @@ export function Nav() {
             </span>
           </div>
 
-          {/* Audience mode toggle */}
+          {/* ─── Separator ─── */}
+          <div className="hidden lg:block w-px h-6 bg-white-10 shrink-0" />
+
+          {/* ─── Audience toggle (desktop) ─── */}
           <div className="hidden md:block shrink-0">
             <AudienceToggle />
           </div>
 
-          {/* Desktop nav */}
-          <div className="hidden xl:flex items-center gap-1.5 overflow-x-auto scrollbar-none">
+          {/* ─── Separator ─── */}
+          <div className="hidden xl:block w-px h-6 bg-white-10 shrink-0" />
+
+          {/* ─── Section links (desktop — scrollable) ─── */}
+          <div className="hidden xl:flex nav-sections flex-1 min-w-0">
             {sections.map((s) => (
               <a
                 key={s.id}
                 href={`#${s.id}`}
-                className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md transition-colors whitespace-nowrap ${
-                  activeId === s.id
-                    ? "bg-white-10 text-white"
-                    : "text-white-70 hover:text-white-90 hover:bg-white-05"
-                }`}
+                className={`nav-link ${activeId === s.id ? "nav-link--active" : ""}`}
               >
-                <span aria-hidden="true" className="text-sm leading-none">{s.icon}</span>
+                <span aria-hidden="true" className="nav-link-icon">{s.icon}</span>
                 {s.short}
               </a>
             ))}
           </div>
 
-          {/* Mobile/tablet hamburger */}
+          {/* ─── Spacer (pushes hamburger right) ─── */}
+          <div className="flex-1 xl:hidden" />
+
+          {/* ─── Mobile hamburger ─── */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="xl:hidden p-2.5 min-h-[44px] min-w-[44px] text-white-70 hover:text-white flex items-center justify-center"
+            className="xl:hidden p-2.5 min-h-[44px] min-w-[44px] text-white-70 hover:text-white flex items-center justify-center rounded-lg hover:bg-white-05 transition-colors"
             aria-label="Toggle navigation"
+            aria-expanded={mobileOpen}
           >
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
               {mobileOpen ? (
                 <path d="M5 5L15 15M15 5L5 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
               ) : (
@@ -90,22 +101,29 @@ export function Nav() {
         </div>
       </div>
 
-      {/* Mobile/tablet dropdown */}
+      {/* ─── Mobile/tablet dropdown ─── */}
       {mobileOpen && (
-        <div className="xl:hidden border-t border-white-08 bg-navy/95 backdrop-blur-md">
-          <div className="px-4 py-2 space-y-1">
+        <div className="xl:hidden border-t border-white-08 bg-navy/95 backdrop-blur-md max-h-[70vh] overflow-y-auto">
+          {/* Audience toggle (mobile) */}
+          <div className="px-4 pt-3 pb-2 border-b border-white-08">
+            <p className="text-[10px] font-mono uppercase tracking-widest text-white-30 mb-2">View Mode</p>
+            <AudienceToggle />
+          </div>
+
+          {/* Section links */}
+          <div className="px-3 py-2 space-y-0.5">
             {sections.map((s) => (
               <a
                 key={s.id}
                 href={`#${s.id}`}
                 onClick={() => setMobileOpen(false)}
-                className={`flex items-center gap-3 px-3 py-3 text-sm rounded-md transition-colors ${
+                className={`flex items-center gap-3 px-3 py-2.5 text-sm rounded-lg transition-colors ${
                   activeId === s.id
                     ? "bg-white-10 text-white border-l-2 border-strategic"
-                    : "text-white-70 hover:text-white-90 hover:bg-white-05 border-l-2 border-transparent"
+                    : "text-white-60 hover:text-white-90 hover:bg-white-05 border-l-2 border-transparent"
                 }`}
               >
-                <span aria-hidden="true" className="text-base leading-none">{s.icon}</span>
+                <span aria-hidden="true" className="text-sm leading-none">{s.icon}</span>
                 {s.label}
               </a>
             ))}

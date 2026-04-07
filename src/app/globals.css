@@ -164,6 +164,124 @@ body {
   animation-play-state: paused;
 }
 
+/* ─── Audience toggle component ─── */
+.audience-toggle {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 3px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.audience-toggle-pill {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: calc((100% - 6px) / 3);
+  height: calc(100% - 6px);
+  border-radius: 7px;
+  border: 1px solid transparent;
+  transform: translateX(calc(var(--toggle-index, 1) * 100%));
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              background 0.35s ease,
+              border-color 0.35s ease,
+              box-shadow 0.35s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.audience-toggle-btn {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 5px 10px;
+  border-radius: 7px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  min-height: 30px;
+  color: rgba(255, 255, 255, 0.38);
+  transition: color 0.25s ease;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.audience-toggle-btn:hover:not(.audience-toggle-btn--active) {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.audience-toggle-btn--active {
+  font-weight: 600;
+}
+
+.audience-toggle-icon {
+  font-size: 12px;
+  line-height: 1;
+}
+
+.audience-toggle-label {
+  display: none;
+}
+
+/* Show labels at sm+ */
+@media (min-width: 640px) {
+  .audience-toggle-label {
+    display: inline;
+  }
+}
+
+/* ─── Nav scrollable section links ─── */
+.nav-sections {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  mask-image: linear-gradient(to right, transparent 0%, black 2%, black 98%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 2%, black 98%, transparent 100%);
+  padding: 0 4px;
+}
+
+.nav-sections::-webkit-scrollbar {
+  display: none;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: 500;
+  border-radius: 6px;
+  white-space: nowrap;
+  transition: color 0.2s ease, background-color 0.2s ease;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-link--active {
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-link-icon {
+  font-size: 11px;
+  line-height: 1;
+}
+
 /* Audience mode visibility */
 main[data-mode="executive"] [data-audience]:not([data-audience*="executive"]) {
   display: none !important;

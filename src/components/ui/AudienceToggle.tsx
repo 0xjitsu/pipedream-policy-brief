@@ -2,37 +2,53 @@
 
 import { useAudience, type AudienceMode } from "@/contexts/AudienceContext";
 
-const MODES: { key: AudienceMode; icon: string; label: string }[] = [
-  { key: "executive", icon: "👔", label: "Exec" },
-  { key: "analyst", icon: "📊", label: "Analyst" },
-  { key: "public", icon: "🏠", label: "Public" },
+const MODES: { key: AudienceMode; icon: string; label: string; accent: string }[] = [
+  { key: "executive", icon: "👔", label: "Exec", accent: "#F59E0B" },
+  { key: "analyst", icon: "📊", label: "Analyst", accent: "#3B82F6" },
+  { key: "public", icon: "🏠", label: "Public", accent: "#10B981" },
 ];
 
 export function AudienceToggle() {
   const { mode, setMode } = useAudience();
 
+  const activeIndex = MODES.findIndex((m) => m.key === mode);
+  const activeAccent = MODES[activeIndex]?.accent ?? "#3B82F6";
+
   return (
     <div
-      className="inline-flex items-center rounded-lg bg-white-05 border border-white-08 p-0.5"
+      className="audience-toggle"
       role="radiogroup"
       aria-label="Content detail level"
+      style={{ "--toggle-accent": activeAccent, "--toggle-index": activeIndex } as React.CSSProperties}
     >
-      {MODES.map((m) => (
-        <button
-          key={m.key}
-          role="radio"
-          aria-checked={mode === m.key}
-          onClick={() => setMode(m.key)}
-          className={`flex items-center gap-1 px-2 py-1 rounded-md text-[10px] font-medium transition-all duration-200 min-h-[32px] ${
-            mode === m.key
-              ? "bg-white-10 text-white shadow-sm"
-              : "text-white-50 hover:text-white-70"
-          }`}
-        >
-          <span aria-hidden="true" className="text-xs leading-none">{m.icon}</span>
-          <span className="hidden sm:inline">{m.label}</span>
-        </button>
-      ))}
+      {/* Sliding pill — CSS-only positioning via --toggle-index */}
+      <div
+        className="audience-toggle-pill"
+        aria-hidden="true"
+        style={{
+          background: `linear-gradient(135deg, ${activeAccent}25, ${activeAccent}12)`,
+          borderColor: `${activeAccent}50`,
+          boxShadow: `0 0 16px ${activeAccent}20, inset 0 1px 0 ${activeAccent}15`,
+        }}
+      />
+
+      {MODES.map((m) => {
+        const isActive = mode === m.key;
+        return (
+          <button
+            key={m.key}
+            role="radio"
+            aria-checked={isActive}
+            aria-label={`Switch to ${m.label} view`}
+            onClick={() => setMode(m.key)}
+            className={`audience-toggle-btn ${isActive ? "audience-toggle-btn--active" : ""}`}
+            style={isActive ? { color: m.accent } : undefined}
+          >
+            <span aria-hidden="true" className="audience-toggle-icon">{m.icon}</span>
+            <span className="audience-toggle-label">{m.label}</span>
+          </button>
+        );
+      })}
     </div>
   );
 }

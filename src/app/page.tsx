@@ -59,7 +59,7 @@ const LegislativeTracker = dynamic(
 
 export default function Home() {
   return (
-    <>
+    <AudienceProvider>
       <a
         href="#crisis"
         className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-navy focus:text-white focus:border focus:border-white-20 focus:text-sm"
@@ -89,8 +89,7 @@ export default function Home() {
         </div>
       </header>
 
-      <AudienceProvider>
-        <AudienceMain>
+      <AudienceMain>
           <script
             type="application/ld+json"
             // skipcq: JS-0440 — static JSON-LD structured data, no user input
@@ -175,9 +174,8 @@ export default function Home() {
             <PublicRoadmap />
           </div>
         </AudienceMain>
-      </AudienceProvider>
 
       <Footer />
-    </>
+    </AudienceProvider>
   );
 }
