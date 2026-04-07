@@ -305,16 +305,16 @@ export function StationTracker() {
         viewport={{ once: true }}
         className="glass p-6 border-l-3 border-l-info bg-info/5"
       >
-        <h4 className="text-xs font-semibold uppercase tracking-wider text-info mb-3">
+        <h3 className="text-xs font-semibold uppercase tracking-wider text-info mb-3">
           Data Sources & Attribution
-        </h4>
+        </h3>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-white-08">
-                <th className="text-left text-[10px] uppercase tracking-wider text-white-30 font-semibold pb-2 pr-4">Category</th>
-                <th className="text-left text-[10px] uppercase tracking-wider text-white-30 font-semibold pb-2 pr-4">Source</th>
-                <th className="text-left text-[10px] uppercase tracking-wider text-white-30 font-semibold pb-2">Details</th>
+                <th className="text-left text-[10px] uppercase tracking-wider text-white-50 font-semibold pb-2 pr-4">Category</th>
+                <th className="text-left text-[10px] uppercase tracking-wider text-white-50 font-semibold pb-2 pr-4">Source</th>
+                <th className="text-left text-[10px] uppercase tracking-wider text-white-50 font-semibold pb-2">Details</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-white-05">
@@ -332,7 +332,7 @@ export function StationTracker() {
                         {src.source} <span className="text-white-20">→</span>
                       </a>
                     ) : (
-                      <span className="text-white-30 italic">{src.source}</span>
+                      <span className="text-white-50 italic">{src.source}</span>
                     )}
                   </td>
                   <td className="py-2.5 text-white-40 text-xs">{src.details}</td>
@@ -341,7 +341,7 @@ export function StationTracker() {
             </tbody>
           </table>
         </div>
-        <div className="mt-3 pt-3 border-t border-white-05 text-[10px] text-white-30">
+        <div className="mt-3 pt-3 border-t border-white-05 text-[10px] text-white-50">
           Last updated: {new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
         </div>
       </motion.div>
@@ -366,12 +366,12 @@ export function StationTracker() {
                 />
                 <div>
                   <p className="text-xs font-medium text-white-70">{s.label}</p>
-                  <p className="text-[10px] text-white-30 leading-snug">{s.desc}</p>
+                  <p className="text-[10px] text-white-40 leading-snug">{s.desc}</p>
                 </div>
               </div>
             ))}
           </div>
-          <p className="text-[10px] text-white-30 pt-2 border-t border-white-08">
+          <p className="text-[10px] text-white-50 pt-2 border-t border-white-08">
             Station status sourced from DOE weekly monitoring reports. Location data from OpenStreetMap contributors via Overpass API.
           </p>
         </div>

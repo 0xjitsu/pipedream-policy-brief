@@ -79,7 +79,7 @@ export function SupplyCountdown() {
             }}
           />
         </div>
-        <div className="flex justify-between mt-1.5 text-[10px] font-mono text-white-30">
+        <div className="flex justify-between mt-1.5 text-[10px] font-mono text-white-50">
           <span>0 days</span>
           <span>DOE min: 15</span>
           <span>{max} days</span>

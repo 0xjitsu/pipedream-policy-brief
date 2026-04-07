@@ -11,7 +11,7 @@ interface ProcessFlowProps {
 export function ProcessFlow({ steps, accentColor }: ProcessFlowProps) {
   return (
     <div>
-      <h4 className="text-xs font-semibold uppercase tracking-wider text-white-50 mb-3">How it works</h4>
+      <h3 className="text-xs font-semibold uppercase tracking-wider text-white-50 mb-3">How it works</h3>
 
       {/* Desktop: horizontal flow */}
       <motion.div

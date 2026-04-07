@@ -15,7 +15,7 @@ export function ProsConsChart({ advantages, risks, accentColor }: ProsConsChartP
   return (
     <div>
       <div className="flex items-center justify-between mb-3">
-        <h4 className="text-xs font-semibold uppercase tracking-wider text-white-50">Advantages vs Risks</h4>
+        <h3 className="text-xs font-semibold uppercase tracking-wider text-white-50">Advantages vs Risks</h3>
         <div className="flex gap-3 text-[10px] text-white-50">
           <span className="flex items-center gap-1">
             <span className="w-2.5 h-2.5 rounded-sm" style={{ backgroundColor: accentColor + "80" }} />

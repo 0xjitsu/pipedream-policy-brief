@@ -74,16 +74,16 @@ export function NewsFeed() {
           <div className={`w-2 h-2 rounded-full ${isLive ? "bg-[#10B981] animate-pulse" : "bg-white-20"}`} />
           <span>{isLive ? "Live" : "Static"}</span>
           {lastUpdated && (
-            <span className="text-white-30">
+            <span className="text-white-50">
               · Updated {lastUpdated.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })} · {lastUpdated.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" })}
             </span>
           )}
-          <span className="text-white-30">· {filtered.length} events</span>
+          <span className="text-white-50">· {filtered.length} events</span>
         </div>
 
         {/* Severity filters */}
         <div className="flex flex-wrap gap-1.5">
-          <span className="text-[10px] uppercase tracking-wider text-white-30 font-semibold self-center mr-1">Severity</span>
+          <span className="text-[10px] uppercase tracking-wider text-white-50 font-semibold self-center mr-1">Severity</span>
           {SEVERITY_FILTERS.map((f) => (
             <button
               key={f.key}
@@ -104,7 +104,7 @@ export function NewsFeed() {
 
         {/* Source type filters */}
         <div className="flex flex-wrap gap-1.5">
-          <span className="text-[10px] uppercase tracking-wider text-white-30 font-semibold self-center mr-1">Source</span>
+          <span className="text-[10px] uppercase tracking-wider text-white-50 font-semibold self-center mr-1">Source</span>
           {SOURCE_FILTERS.map((f) => (
             <button
               key={f.key}
@@ -153,7 +153,7 @@ export function NewsFeed() {
                     </a>
                   </div>
                   <div className="flex flex-col items-end gap-1 shrink-0">
-                    <span className="font-mono text-[10px] text-white-30">{event.date}</span>
+                    <span className="font-mono text-[10px] text-white-50">{event.date}</span>
                     <span className={`text-[10px] px-1.5 py-0.5 rounded border ${SOURCE_BG[event.sourceType]} ${SOURCE_COLORS[event.sourceType]}`}>
                       {event.source}
                     </span>
@@ -164,7 +164,7 @@ export function NewsFeed() {
           ))}
 
           {filtered.length === 0 && (
-            <p className="text-sm text-white-30 text-center py-8">No events match the selected filters.</p>
+            <p className="text-sm text-white-50 text-center py-8">No events match the selected filters.</p>
           )}
         </div>
       </div>
@@ -180,13 +180,13 @@ export function NewsFeed() {
             Stories are tagged by severity (red/yellow/green) based on keyword matching against a curated list
             of crisis-related terms. The feed refreshes every 5 minutes.
           </p>
-          <p className="text-white-30">
+          <p className="text-white-50">
             Stories are not editorially curated — this is an automated aggregation for situational awareness.
           </p>
           <div className="flex flex-wrap gap-2 pt-2 border-t border-white-08">
-            <a href="https://www.aljazeera.com/xml/rss/all.xml" target="_blank" rel="noopener noreferrer" className="text-[10px] text-white-30 underline underline-offset-2 decoration-white-10 hover:text-white-50 transition-colors">Al Jazeera RSS</a>
-            <a href="https://news.google.com/rss/search?q=philippines+fuel+oil+crisis" target="_blank" rel="noopener noreferrer" className="text-[10px] text-white-30 underline underline-offset-2 decoration-white-10 hover:text-white-50 transition-colors">Google News RSS</a>
-            <a href="https://www.reddit.com/r/Philippines/.rss" target="_blank" rel="noopener noreferrer" className="text-[10px] text-white-30 underline underline-offset-2 decoration-white-10 hover:text-white-50 transition-colors">r/Philippines RSS</a>
+            <a href="https://www.aljazeera.com/xml/rss/all.xml" target="_blank" rel="noopener noreferrer" className="text-[10px] text-white-50 underline underline-offset-2 decoration-white-10 hover:text-white-50 transition-colors">Al Jazeera RSS</a>
+            <a href="https://news.google.com/rss/search?q=philippines+fuel+oil+crisis" target="_blank" rel="noopener noreferrer" className="text-[10px] text-white-50 underline underline-offset-2 decoration-white-10 hover:text-white-50 transition-colors">Google News RSS</a>
+            <a href="https://www.reddit.com/r/Philippines/.rss" target="_blank" rel="noopener noreferrer" className="text-[10px] text-white-50 underline underline-offset-2 decoration-white-10 hover:text-white-50 transition-colors">r/Philippines RSS</a>
           </div>
         </div>
       </details>

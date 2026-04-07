@@ -77,9 +77,9 @@ export function Infrastructure() {
         viewport={{ once: true }}
         className="glass p-6 border-l-3 border-l-info bg-info/5"
       >
-        <h4 className="text-xs font-semibold uppercase tracking-wider text-info mb-2">
+        <h3 className="text-xs font-semibold uppercase tracking-wider text-info mb-2">
           Why This Infrastructure Matters
-        </h4>
+        </h3>
         <p className="text-sm text-white-70 leading-relaxed">{infrastructureCallout}</p>
       </motion.div>
 

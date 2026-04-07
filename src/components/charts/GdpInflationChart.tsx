@@ -129,19 +129,19 @@ export function GdpInflationChart({ currentOilPrice }: { currentOilPrice?: numbe
       <div className="mt-4 pt-3 border-t border-white-05">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5 text-[10px]">
           <div className="flex justify-between">
-            <span className="text-white-30">GDP projections</span>
+            <span className="text-white-40">GDP projections</span>
             <a href="https://business.inquirer.net/567526/dbcc-cuts-targets-gdp-for-2026-now-at-5-6" target="_blank" rel="noopener noreferrer" className="text-white-40 hover:text-white-60 underline underline-offset-2 transition-colors">DBCC/NEDA →</a>
           </div>
           <div className="flex justify-between">
-            <span className="text-white-30">Inflation model</span>
+            <span className="text-white-40">Inflation model</span>
             <a href="https://www.bsp.gov.ph/Price%20Stability/MonetaryPolicyReport/EconomicOutlook-February2026.pdf" target="_blank" rel="noopener noreferrer" className="text-white-40 hover:text-white-60 underline underline-offset-2 transition-colors">BSP MPR Feb 2026 →</a>
           </div>
           <div className="flex justify-between">
-            <span className="text-white-30">Impact analysis</span>
+            <span className="text-white-40">Impact analysis</span>
             <a href="https://think.ing.com/articles/oil-price-shock-raises-inflation-and-policy-risks-in-philippines/" target="_blank" rel="noopener noreferrer" className="text-white-40 hover:text-white-60 underline underline-offset-2 transition-colors">ING Research →</a>
           </div>
           <div className="flex justify-between">
-            <span className="text-white-30">Oil price data</span>
+            <span className="text-white-40">Oil price data</span>
             <a href="https://finance.yahoo.com/quote/BZ=F/" target="_blank" rel="noopener noreferrer" className="text-white-40 hover:text-white-60 underline underline-offset-2 transition-colors">Yahoo Finance (live) →</a>
           </div>
         </div>

@@ -48,7 +48,7 @@ export function RoadmapGantt({ items, accentColor }: RoadmapGanttProps) {
 
   return (
     <div>
-      <h4 className="text-xs font-semibold uppercase tracking-wider text-white-50 mb-3">Implementation Roadmap</h4>
+      <h3 className="text-xs font-semibold uppercase tracking-wider text-white-50 mb-3">Implementation Roadmap</h3>
 
       {/* Desktop: Gantt chart */}
       <div className="hidden md:block">

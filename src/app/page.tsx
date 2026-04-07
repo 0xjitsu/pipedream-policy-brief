@@ -90,7 +90,7 @@ export default function Home() {
           <p className="mt-4 text-base md:text-lg text-white-70 max-w-2xl mx-auto">
             98% import-dependent. One refinery. No strategic reserve. Here&apos;s what must happen before supply runs out.
           </p>
-          <p className="mt-3 text-xs text-white-30 font-mono">
+          <p className="mt-3 text-xs text-white-50 font-mono">
             Published March 30, 2026 · Prepared by Pipedream
           </p>
         </div>
@@ -112,17 +112,22 @@ export default function Home() {
               __html: JSON.stringify({
                 "@context": "https://schema.org",
                 "@type": "Report",
-                name: "Pipedream Policy Brief — Navigating the Energy Emergency",
-                description: "Interactive policy dashboard for the Philippine fuel crisis with live market data, economic scenarios, and policy recommendations.",
+                name: "Pipedream Policy Brief — The Philippines Has 45 Days of Fuel Left",
+                headline: "The Philippines Has 45 Days of Fuel Left",
+                description: "Interactive policy dashboard for the Philippine fuel crisis with live market data, economic scenarios, 10K+ station tracker, and policy recommendations for DOE, DOF, and UPLIFT.",
                 datePublished: "2026-03-30",
+                dateModified: "2026-04-08",
                 url: "https://pipedream-policy-brief.vercel.app",
                 inLanguage: "en",
                 license: "https://www.gnu.org/licenses/agpl-3.0.html",
                 isAccessibleForFree: true,
+                thumbnailUrl: "https://pipedream-policy-brief.vercel.app/opengraph-image",
+                image: "https://pipedream-policy-brief.vercel.app/opengraph-image",
                 author: { "@type": "Organization", name: "Pipedream", url: "https://github.com/0xjitsu/pipedream-policy-brief" },
                 publisher: { "@type": "Organization", name: "Pipedream", url: "https://github.com/0xjitsu" },
                 mainEntityOfPage: { "@type": "WebPage", "@id": "https://pipedream-policy-brief.vercel.app" },
-                keywords: ["Philippine energy crisis", "fuel supply", "policy brief", "oil prices", "fuel subsidy", "PriceLOCQ"],
+                keywords: ["Philippine energy crisis", "fuel supply", "policy brief", "oil prices", "fuel subsidy", "PriceLOCQ", "strategic petroleum reserve", "DOE Philippines", "UPLIFT"],
+                countryOfOrigin: { "@type": "Country", name: "Philippines" },
                 about: {
                   "@type": "Event",
                   name: "Philippine Energy Crisis 2026",

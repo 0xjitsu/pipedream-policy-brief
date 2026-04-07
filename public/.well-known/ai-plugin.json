@@ -1,0 +1,19 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Pipedream Policy Brief",
+  "name_for_model": "pipedream_policy_brief",
+  "description_for_human": "Interactive policy dashboard for the Philippine fuel crisis with live market data, economic scenarios, and recommendations.",
+  "description_for_model": "Philippine energy crisis policy brief with live Brent crude prices, USD/PHP rates, 10K+ fuel station tracker, economic scenario modeling, and policy recommendations for DOE, DOF, and UPLIFT Committee. Data updated every 10 minutes.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://pipedream-policy-brief.vercel.app/api"
+  },
+  "logo_url": "https://pipedream-policy-brief.vercel.app/icon",
+  "contact_email": "",
+  "legal_info_url": "https://www.gnu.org/licenses/agpl-3.0.html",
+  "llms_txt": "https://pipedream-policy-brief.vercel.app/llms.txt",
+  "llms_full_txt": "https://pipedream-policy-brief.vercel.app/llms-full.txt"
+}

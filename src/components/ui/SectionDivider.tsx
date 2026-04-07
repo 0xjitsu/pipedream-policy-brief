@@ -14,7 +14,7 @@ export function SectionDivider({ variant, prose }: SectionDividerProps) {
   return (
     <div className="py-10 md:py-14">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-white-30 mb-3">
+        <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-white-50 mb-3">
           {label}
         </p>
         <div

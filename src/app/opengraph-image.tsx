@@ -76,16 +76,16 @@ export default function OGImage() {
         {/* Title */}
         <h1
           style={{
-            fontSize: "52px",
+            fontSize: "50px",
             fontWeight: 700,
             color: "white",
             textAlign: "center",
             lineHeight: 1.2,
-            margin: "0 0 24px 0",
+            margin: "0 0 16px 0",
             fontFamily: "Georgia, serif",
           }}
         >
-          Navigating the Energy Emergency
+          The Philippines Has 45 Days of Fuel Left
         </h1>
 
         {/* Subtitle */}
@@ -99,7 +99,7 @@ export default function OGImage() {
             maxWidth: "800px",
           }}
         >
-          Supply security, market stability, and targeted relief for the Philippine fuel crisis
+          98% import-dependent. One refinery. No strategic reserve.
         </p>
 
         {/* Stats bar */}

@@ -291,6 +291,12 @@ main[data-mode="public"] [data-audience]:not([data-audience*="public"]) {
 }
 /* Analyst mode shows everything — no hiding rules needed */
 
+/* Off-screen section rendering optimization (rendering-content-visibility) */
+section[id] {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 800px;
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   html {

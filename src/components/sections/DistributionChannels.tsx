@@ -85,7 +85,7 @@ function ChannelContent({ channel }: { channel: (typeof channels)[0] }) {
         <ProcessFlow steps={channel.how} accentColor={tagColorMap[channel.tagColor]} />
       ) : (
         <div>
-          <h4 className="text-xs font-semibold uppercase tracking-wider text-white-50 mb-2">How it works</h4>
+          <h3 className="text-xs font-semibold uppercase tracking-wider text-white-50 mb-2">How it works</h3>
           <p className="text-sm text-white-70 leading-relaxed">{channel.how}</p>
         </div>
       )}
@@ -107,7 +107,7 @@ function ChannelContent({ channel }: { channel: (typeof channels)[0] }) {
       {/* Prerequisites */}
       {channel.prerequisites && (
         <div>
-          <h4 className="text-xs font-semibold uppercase tracking-wider text-white-50 mb-2">Prerequisites</h4>
+          <h3 className="text-xs font-semibold uppercase tracking-wider text-white-50 mb-2">Prerequisites</h3>
           <ul className="space-y-1.5">
             {channel.prerequisites.map((p, i) => (
               <li key={i} className="flex gap-2 text-sm text-white-70">
@@ -134,7 +134,7 @@ function ChannelContent({ channel }: { channel: (typeof channels)[0] }) {
       {/* Platform Requirements — Channel 2 only */}
       {isTargeted && channel.platformRequirements && (
         <div>
-          <h4 className="text-xs font-semibold uppercase tracking-wider text-white-50 mb-3">Platform Capabilities (Operational)</h4>
+          <h3 className="text-xs font-semibold uppercase tracking-wider text-white-50 mb-3">Platform Capabilities (Operational)</h3>
           <div className="grid md:grid-cols-2 gap-2">
             {channel.platformRequirements.map((req, i) => (
               <div key={i} className="flex gap-2 text-sm text-white-70">
@@ -395,9 +395,9 @@ export function DistributionChannels() {
         viewport={{ once: true }}
         className="glass p-6 border-l-3 border-l-strategic bg-strategic/5"
       >
-        <h4 className="text-xs font-semibold uppercase tracking-wider text-strategic mb-2">
+        <h3 className="text-xs font-semibold uppercase tracking-wider text-strategic mb-2">
           Sequencing Recommendation
-        </h4>
+        </h3>
         <p className="text-sm text-white-70 leading-relaxed">{sequencingRecommendation}</p>
         <p className="text-[10px] text-white-20 mt-3">
           Sources:{" "}

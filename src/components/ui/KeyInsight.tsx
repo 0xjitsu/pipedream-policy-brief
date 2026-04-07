@@ -8,7 +8,7 @@ export function KeyInsight({ text, source, sourceUrl }: InsightData) {
         <div>
           <p className="text-sm text-white-70 leading-relaxed">{text}</p>
           {source && (
-            <p className="mt-2 text-[10px] text-white-30">
+            <p className="mt-2 text-[10px] text-white-50">
               Source:{" "}
               {sourceUrl ? (
                 <a

@@ -122,7 +122,7 @@ export function CrisisOverview() {
         <p className="text-base font-serif italic text-white-70 leading-relaxed">
           &ldquo;{senateVerdict.text}&rdquo;
         </p>
-        <footer className="mt-3 text-xs text-white-30">
+        <footer className="mt-3 text-xs text-white-40">
           &mdash;{" "}
           <a
             href={senateVerdict.sourceUrl}

@@ -56,7 +56,7 @@ export function PolicyPillars() {
 
               {/* Recommendations */}
               <div>
-                <h4 className="text-xs font-semibold uppercase tracking-wider text-white-50 mb-3">Recommendations</h4>
+                <h3 className="text-xs font-semibold uppercase tracking-wider text-white-50 mb-3">Recommendations</h3>
                 <div className="space-y-3">
                   {pillar.recommendations.map((rec, i) => (
                     <div key={i} className="flex gap-3">

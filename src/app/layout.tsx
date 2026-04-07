@@ -28,25 +28,50 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://pipedream-policy-brief.vercel.app"),
-  title: "Pipedream Policy Brief — Navigating the Energy Emergency",
+  title: "Pipedream Policy Brief — The Philippines Has 45 Days of Fuel Left",
   description:
-    "Live policy dashboard for the Philippine fuel crisis — supply analysis, economic scenarios, 10K+ station tracker, and recommendations for DOE, DOF, and UPLIFT.",
+    "Live policy dashboard for the Philippine fuel crisis: supply countdown, economic scenarios, 10K+ station tracker, and recommendations for DOE, DOF, and UPLIFT.",
+  keywords: [
+    "Philippine energy crisis",
+    "fuel supply",
+    "oil prices Philippines",
+    "DOE Philippines",
+    "fuel subsidy",
+    "PriceLOCQ",
+    "strategic petroleum reserve",
+    "UPLIFT",
+    "Brent crude",
+    "policy brief",
+    "fuel station tracker",
+    "Middle East oil dependence",
+  ],
+  alternates: {
+    canonical: "https://pipedream-policy-brief.vercel.app",
+  },
   openGraph: {
-    title: "Pipedream — Navigating the Philippine Energy Emergency",
+    title: "The Philippines Has 45 Days of Fuel Left — Pipedream Policy Brief",
     description:
       "Supply beyond May is unconfirmed. Live market data, 10K+ station tracker, and policy recommendations for Philippine decision-makers.",
     type: "website",
     locale: "en_PH",
+    url: "https://pipedream-policy-brief.vercel.app",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pipedream — Navigating the Philippine Energy Emergency",
+    title: "The Philippines Has 45 Days of Fuel Left — Pipedream Policy Brief",
     description:
-      "Supply beyond May is unconfirmed. 98% Middle East dependence. One refinery. No strategic reserve. Live intelligence and policy recommendations for Philippine decision-makers.",
+      "98% Middle East dependence. One refinery. No strategic reserve. Live intelligence and policy recommendations for Philippine decision-makers.",
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 
