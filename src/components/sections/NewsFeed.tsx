@@ -168,6 +168,28 @@ export function NewsFeed() {
           )}
         </div>
       </div>
+
+      {/* Editorial methodology */}
+      <details className="mt-6 glass p-4">
+        <summary className="text-xs font-medium text-white-70 cursor-pointer hover:text-white transition-colors select-none">
+          How we select stories
+        </summary>
+        <div className="mt-3 space-y-2 text-xs text-white-50 leading-relaxed">
+          <p>
+            This feed aggregates headlines from Al Jazeera, Google News, and Reddit energy communities via RSS.
+            Stories are tagged by severity (red/yellow/green) based on keyword matching against a curated list
+            of crisis-related terms. The feed refreshes every 5 minutes.
+          </p>
+          <p className="text-white-30">
+            Stories are not editorially curated — this is an automated aggregation for situational awareness.
+          </p>
+          <div className="flex flex-wrap gap-2 pt-2 border-t border-white-08">
+            <a href="https://www.aljazeera.com/xml/rss/all.xml" target="_blank" rel="noopener noreferrer" className="text-[10px] text-white-30 underline underline-offset-2 decoration-white-10 hover:text-white-50 transition-colors">Al Jazeera RSS</a>
+            <a href="https://news.google.com/rss/search?q=philippines+fuel+oil+crisis" target="_blank" rel="noopener noreferrer" className="text-[10px] text-white-30 underline underline-offset-2 decoration-white-10 hover:text-white-50 transition-colors">Google News RSS</a>
+            <a href="https://www.reddit.com/r/Philippines/.rss" target="_blank" rel="noopener noreferrer" className="text-[10px] text-white-30 underline underline-offset-2 decoration-white-10 hover:text-white-50 transition-colors">r/Philippines RSS</a>
+          </div>
+        </div>
+      </details>
     </SectionWrapper>
   );
 }
