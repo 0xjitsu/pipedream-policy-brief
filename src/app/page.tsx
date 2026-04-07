@@ -7,6 +7,9 @@ import { CrisisOverview } from "@/components/sections/CrisisOverview";
 import { SupplyCountdown } from "@/components/ui/SupplyCountdown";
 import { AudienceProvider } from "@/contexts/AudienceContext";
 import { AudienceMain } from "@/components/layout/AudienceMain";
+import { BackToTop } from "@/components/ui/BackToTop";
+import { SectionDivider } from "@/components/ui/SectionDivider";
+import { ReadingGuide } from "@/components/ui/ReadingGuide";
 
 const EconomicScenarios = dynamic(
   () => import("@/components/sections/EconomicScenarios").then((m) => ({ default: m.EconomicScenarios })),
@@ -90,6 +93,10 @@ export default function Home() {
       </header>
 
       <AudienceMain>
+          <div data-audience="analyst">
+            <ReadingGuide />
+          </div>
+
           <script
             type="application/ld+json"
             // skipcq: JS-0440 — static JSON-LD structured data, no user input
@@ -125,7 +132,7 @@ export default function Home() {
           <div data-audience="analyst public">
             <PersonaImpact />
           </div>
-          <div className="border-t border-white-08" />
+          <SectionDivider variant="solution" />
           <div data-audience="analyst executive">
             <EconomicScenarios />
           </div>
@@ -149,7 +156,7 @@ export default function Home() {
           </div>
 
           {/* === EXECUTION BLOCK === */}
-          <div className="border-t border-white-08" />
+          <SectionDivider variant="execution" />
           <div data-audience="analyst executive">
             <ActionTimeline />
           </div>
@@ -175,6 +182,7 @@ export default function Home() {
           </div>
         </AudienceMain>
 
+      <BackToTop />
       <Footer />
     </AudienceProvider>
   );
