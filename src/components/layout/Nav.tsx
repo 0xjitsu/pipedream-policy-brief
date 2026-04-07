@@ -103,10 +103,10 @@ export function Nav() {
 
       {/* ─── Mobile/tablet dropdown ─── */}
       {mobileOpen && (
-        <div className="xl:hidden border-t border-white-08 bg-navy/95 backdrop-blur-md max-h-[70vh] overflow-y-auto">
+        <div className="xl:hidden border-t border-white-08 bg-navy/95 backdrop-blur-md max-h-[70vh] overflow-y-auto relative z-50">
           {/* Audience toggle (mobile) */}
           <div className="px-4 pt-3 pb-2 border-b border-white-08">
-            <p className="text-[10px] font-mono uppercase tracking-widest text-white-30 mb-2">View Mode</p>
+            <p className="text-[10px] font-mono uppercase tracking-widest text-white-50 mb-2">View Mode</p>
             <AudienceToggle />
           </div>
 
