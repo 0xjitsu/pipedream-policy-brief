@@ -7,7 +7,7 @@ import { MetricCard } from "@/components/ui/MetricCard";
 import { SupplyChart } from "@/components/charts/SupplyChart";
 import { GdpInflationChart } from "@/components/charts/GdpInflationChart";
 import { AseanComparisonChart } from "@/components/charts/AseanComparisonChart";
-import { metrics, senateFindings } from "@/data/crisis-overview";
+import { metrics, senateFindings, senateVerdict } from "@/data/crisis-overview";
 import { useMarketData } from "@/hooks/useMarketData";
 import { staggerContainer, fadeInUp } from "@/lib/motion";
 import type { MetricCardData } from "@/data/types";
@@ -109,6 +109,30 @@ export function CrisisOverview() {
           ))}
         </motion.div>
       </motion.div>
+
+      {/* Senate verdict */}
+      <motion.blockquote
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="mt-8 glass border-l-3 border-l-critical p-5"
+      >
+        <p className="text-base font-serif italic text-white-70 leading-relaxed">
+          &ldquo;{senateVerdict.text}&rdquo;
+        </p>
+        <footer className="mt-3 text-xs text-white-30">
+          &mdash;{" "}
+          <a
+            href={senateVerdict.sourceUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-2 decoration-white-20 hover:text-white-50 transition-colors"
+          >
+            {senateVerdict.resolution}
+          </a>
+        </footer>
+      </motion.blockquote>
     </SectionWrapper>
   );
 }

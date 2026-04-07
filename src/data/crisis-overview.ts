@@ -129,3 +129,9 @@ export const senateFindings: SenateFindings[] = [
   { text: "Replacement cost methodology drives current pump prices", source: "Petron, Chevron", sourceUrl: "https://www.philstar.com/headlines/2026/03/28/2517316/senators-hold-abusive-oil-companies-accountable", critical: true },
   { text: "DOE issued show-cause orders for suspected profiteering", source: "DOE", sourceUrl: "https://doe.gov.ph/articles/group/liquid-fuels?category=Oil+Monitor&display_type=Card", critical: false },
 ];
+
+export const senateVerdict = {
+  text: "The Senate Committee on Energy concluded: the Philippines is structurally unprepared for a sustained supply disruption.",
+  resolution: "Senate Resolution No. 1052",
+  sourceUrl: "https://www.philstar.com/business/2026/03/27/2517009/philippines-fuel-supply-guaranteed-only-until-may-oil-firms-say",
+};
