@@ -4,6 +4,7 @@ import { useState } from "react";
 import { SectionWrapper } from "@/components/layout/SectionWrapper";
 import { useNewsFeed } from "@/hooks/useNewsFeed";
 import type { NewsSeverity, NewsSourceType } from "@/data/types";
+import { FreshnessBadge } from "@/components/ui/FreshnessBadge";
 
 const SEVERITY_COLORS: Record<NewsSeverity, string> = {
   red: "bg-[#EF4444]",
@@ -71,13 +72,7 @@ export function NewsFeed() {
       <div className="mb-6 space-y-3">
         {/* Live status */}
         <div className="flex items-center gap-2 text-xs text-white-50">
-          <div className={`w-2 h-2 rounded-full ${isLive ? "bg-[#10B981] animate-pulse" : "bg-white-20"}`} />
-          <span>{isLive ? "Live" : "Static"}</span>
-          {lastUpdated && (
-            <span className="text-white-50">
-              · Updated {lastUpdated.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })} · {lastUpdated.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" })}
-            </span>
-          )}
+          <FreshnessBadge tier={isLive ? "live" : "static"} timestamp={lastUpdated} size="sm" />
           <span className="text-white-50">· {filtered.length} events</span>
         </div>
 

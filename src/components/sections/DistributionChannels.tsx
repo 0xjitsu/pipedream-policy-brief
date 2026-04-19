@@ -159,6 +159,7 @@ export function DistributionChannels() {
       title="Distribution Channels"
       icon="🛢️"
       subtitle="How should the government deliver fuel relief to those who need it most?"
+      tier="static"
     >
       {/* 1. Problem statement + scale metrics */}
       <motion.div

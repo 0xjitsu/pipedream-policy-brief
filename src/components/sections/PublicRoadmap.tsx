@@ -23,6 +23,7 @@ export function PublicRoadmap() {
       title="What's Next"
       icon="🗺️"
       subtitle="Key deliverables and partnership opportunities"
+      tier="static"
     >
       {/* Deliverable cards */}
       <motion.div

@@ -35,6 +35,7 @@ export function LegislativeTracker() {
       title="Legislative Tracker"
       icon="⚖️"
       subtitle="Status of key bills, orders, and agency actions"
+      tier="weekly"
     >
       {/* Context */}
       <motion.div

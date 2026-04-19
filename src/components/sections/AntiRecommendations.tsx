@@ -12,6 +12,7 @@ export function AntiRecommendations() {
       title="What We Do Not Recommend"
       icon="⛔"
       subtitle="Proposals considered and rejected on substantive grounds"
+      tier="static"
     >
       {/* Context paragraph */}
       <motion.div

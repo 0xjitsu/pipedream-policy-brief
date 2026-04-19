@@ -1,3 +1,5 @@
+import type { FreshnessTier } from "./freshness";
+
 export type Urgency = "critical" | "urgent" | "important" | "info" | "strategic";
 
 export interface MetricCardData {
@@ -10,7 +12,12 @@ export interface MetricCardData {
   gaugeValue?: number;
   gaugeColor?: string;
   sourceUrl?: string;
+  /** @deprecated prefer `tier: "live"` */
   isLive?: boolean;
+  /** Data freshness tier — determines the badge rendered on the card */
+  tier?: FreshnessTier;
+  /** Timestamp of the last update for this metric */
+  tierTimestamp?: Date;
 }
 
 export interface SenateFindings {

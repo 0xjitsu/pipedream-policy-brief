@@ -20,6 +20,7 @@ export function Infrastructure() {
       title="Infrastructure & Station Coverage"
       icon="🏗️"
       subtitle="450+ PriceLOCQ-equipped stations powering targeted fuel distribution"
+      tier="static"
     >
       <div className="grid lg:grid-cols-2 gap-6 mb-8">
         {/* Station bar chart */}

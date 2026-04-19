@@ -20,7 +20,7 @@ const situationDate = new Date().toLocaleDateString("en-US", {
 });
 
 export function CrisisOverview() {
-  const { oilPrice, pesoRate } = useMarketData();
+  const { oilPrice, pesoRate, lastUpdated } = useMarketData();
 
   const liveMetrics: MetricCardData[] = useMemo(() => {
     return metrics.map((m) => {
@@ -31,7 +31,8 @@ export function CrisisOverview() {
           delta: oilPrice.delta || m.delta,
           deltaLabel: `via ${oilPrice.source}`,
           sourceUrl: oilPrice.sourceUrl,
-          isLive: true,
+          tier: "live" as const,
+          tierTimestamp: lastUpdated ?? undefined,
         };
       }
       if (m.label === "Peso Rate" && pesoRate) {
@@ -41,12 +42,15 @@ export function CrisisOverview() {
           delta: pesoRate.delta || m.delta,
           deltaLabel: `via ${pesoRate.source}`,
           sourceUrl: pesoRate.sourceUrl,
-          isLive: true,
+          tier: "live" as const,
+          tierTimestamp: lastUpdated ?? undefined,
         };
       }
-      return m;
+      // Static-tier metrics (pump price, stations closed, supply days) will
+      // become "daily" tier once Phase 2 lands the cron pipeline.
+      return { ...m, tier: "daily" as const };
     });
-  }, [oilPrice, pesoRate]);
+  }, [oilPrice, pesoRate, lastUpdated]);
 
   return (
     <SectionWrapper id="crisis" title="Crisis Overview" icon="🚨" subtitle={`Philippine fuel supply emergency — ${situationDate}`}>

@@ -34,6 +34,7 @@ export function References() {
       title="References & Data Sources"
       icon="📚"
       subtitle="All sources cited in this brief — verified as of March 30, 2026"
+      tier="static"
     >
       {/* Category filter pills */}
       <div className="flex flex-wrap gap-1.5 mb-6">

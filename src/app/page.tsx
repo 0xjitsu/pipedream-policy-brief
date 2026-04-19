@@ -14,6 +14,7 @@ import { ExecutiveSummary } from "@/components/ui/ExecutiveSummary";
 import { KeyInsight } from "@/components/ui/KeyInsight";
 import { INSIGHTS } from "@/data/insights";
 import { ShareBar } from "@/components/ui/ShareBar";
+import { FreshnessBanner } from "@/components/ui/FreshnessBanner";
 
 const EconomicScenarios = dynamic(
   () => import("@/components/sections/EconomicScenarios").then((m) => ({ default: m.EconomicScenarios })),
@@ -76,9 +77,10 @@ export default function Home() {
       <ScrollProgress />
       <Nav />
       <Ticker />
+      <FreshnessBanner />
 
       {/* Hero header */}
-      <header className="pt-[88px] pb-8 md:pt-[96px] md:pb-12 border-b border-white-08">
+      <header className="pt-[120px] pb-8 md:pt-[128px] md:pb-12 border-b border-white-08">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-xs font-semibold tracking-[0.3em] uppercase text-white-50 mb-4">
             Pipedream · Policy Brief

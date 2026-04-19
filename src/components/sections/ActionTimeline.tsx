@@ -21,6 +21,7 @@ export function ActionTimeline() {
       title="Action Timeline"
       icon="📅"
       subtitle="Phased execution schedule with agency accountability"
+      tier="static"
     >
       <motion.div
         variants={staggerContainer}

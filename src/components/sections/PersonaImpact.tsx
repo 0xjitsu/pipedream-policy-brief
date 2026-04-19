@@ -12,6 +12,7 @@ export function PersonaImpact() {
       title="What This Means for You"
       icon="👤"
       subtitle="How the fuel crisis affects everyday Filipinos"
+      tier="static"
     >
       <motion.div
         variants={staggerContainer}

@@ -38,6 +38,7 @@ export function EconomicScenarios() {
       title="Economic Impact Scenarios"
       icon="📊"
       subtitle="How oil price levels translate to GDP growth and inflation outcomes"
+      tier="static"
     >
       {/* Context */}
       <motion.div

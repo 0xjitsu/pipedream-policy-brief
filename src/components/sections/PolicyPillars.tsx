@@ -31,6 +31,7 @@ export function PolicyPillars() {
       title="Five Policy Pillars"
       icon="🏛️"
       subtitle="Coordinated response framework for immediate, medium-term, and structural action"
+      tier="static"
     >
       <motion.div
         variants={staggerContainer}

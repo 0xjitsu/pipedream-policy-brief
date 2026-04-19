@@ -14,6 +14,7 @@ import {
 import { fadeInUp, staggerContainer } from "@/lib/motion";
 import type { StationStatus } from "@/data/types";
 import { SectionCTA } from "@/components/ui/SectionCTA";
+import { FreshnessBadge } from "@/components/ui/FreshnessBadge";
 
 // Dynamically import the map to avoid SSR issues with Leaflet
 const StationMap = dynamic(
@@ -156,7 +157,17 @@ export function StationTracker() {
       id="tracker"
       title="Station Status Tracker"
       icon="📍"
-      subtitle={`Fuel availability across ${trackerStats.totalTracked.toLocaleString()} monitored stations \u00B7 Updated ${trackerStats.lastUpdated}`}
+      subtitle={
+        <span className="inline-flex flex-wrap items-center gap-x-2 gap-y-1">
+          <span>Fuel availability across {trackerStats.totalTracked.toLocaleString()} monitored stations</span>
+          <span className="text-white-30" aria-hidden="true">·</span>
+          <FreshnessBadge
+            tier="daily"
+            timestamp={new Date(trackerStats.lastUpdated)}
+            size="sm"
+          />
+        </span>
+      }
     >
       {/* Stat cards */}
       <motion.div
