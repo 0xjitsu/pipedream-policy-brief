@@ -76,46 +76,60 @@ async function tryDirect(): Promise<AseanPriceRow[]> {
 }
 
 /**
- * GPP's page structure:
- *   1. Country navigation (names only, no prices)
- *   2. "Diesel prices per liter" heading
- *   3. Two tables — one in USD, one in local-currency equivalents
+ * GPP's page structure (as of April 2026):
+ *   1. A block of country links in rank order (cheapest first)
+ *   2. Lower in the page, a separate block of numeric prices in the same order
  *
- * We skip the nav by starting the scan after the first "Diesel prices" heading
- * marker. Within that section, country names appear adjacent to numeric values
- * in "N.NNN" format (USD per liter with 3 decimals).
+ * The two blocks pair by index: countries[i] <-> prices[i]. We extract each
+ * list independently, then pair and filter to ASEAN.
+ *
+ * Accepts either raw HTML (with `<a href="/Country/diesel_prices/">Name</a>`
+ * anchors) or firecrawl markdown (with `[Name](/Country/diesel_prices/)` links).
  */
 function extractRows(text: string): AseanPriceRow[] {
-  const anchors = [
-    "Diesel prices, liter",
-    "Diesel prices per liter",
-    "USD per liter",
-    "diesel prices around the world",
-    "Diesel prices",
-  ];
-  let tableStart = -1;
-  for (const anchor of anchors) {
-    const idx = text.toLowerCase().indexOf(anchor.toLowerCase());
-    if (idx >= 0) {
-      tableStart = idx;
-      break;
+  // 1. Extract ordered country names. Works on both HTML and markdown
+  //    because both reference `/Country/diesel_prices/` links.
+  const countryLinkPattern = /\/([A-Za-z_\-]+)\/diesel_prices\//g;
+  const countryOrder: string[] = [];
+  const seen = new Set<string>();
+  let cm: RegExpExecArray | null;
+  while ((cm = countryLinkPattern.exec(text)) !== null) {
+    const name = cm[1].replace(/_/g, " ").replace(/-/g, " ").trim();
+    // Normalize capitalization: first occurrence wins
+    if (!seen.has(name.toLowerCase())) {
+      seen.add(name.toLowerCase());
+      countryOrder.push(name);
     }
   }
-  if (tableStart < 0) return [];
+  if (countryOrder.length < 20) return [];
 
-  const tableText = text.slice(tableStart);
+  // 2. Extract ordered numeric prices (N.NNN format). The first block of
+  //    N.NNN values matching the country list length is the USD price list.
+  //    We collect every N.NNN token from the tail of the document — the
+  //    price list is always after the country link list.
+  const firstCountryEnd =
+    countryLinkPattern.lastIndex > 0
+      ? text.indexOf(countryOrder[countryOrder.length - 1]) + countryOrder[countryOrder.length - 1].length
+      : 0;
+  const tail = text.slice(Math.max(firstCountryEnd, 0));
+  const priceMatches = Array.from(tail.matchAll(/(?<![.\d])(\d\.\d{3})(?!\d)/g));
+  const prices = priceMatches.map((m) => parseFloat(m[1])).filter((n) => Number.isFinite(n) && n > 0 && n < 10);
 
+  // We need at least as many prices as countries. If fewer, the page
+  // structure has changed — return nothing and let the caller handle it.
+  if (prices.length < countryOrder.length) return [];
+
+  // 3. Pair by index, filter to ASEAN
+  const aseanLower = new Set(ASEAN.map((c) => c.toLowerCase()));
   const rows: AseanPriceRow[] = [];
-  for (const country of ASEAN) {
-    const rel = tableText.indexOf(country);
-    if (rel < 0) continue;
-    const window = tableText.slice(rel, rel + 200);
-    const afterName = window.slice(country.length);
-    const match = afterName.match(/(\d\.\d{3})/);
-    if (!match) continue;
-    const price = parseFloat(match[1]);
+  for (let i = 0; i < countryOrder.length; i++) {
+    const name = countryOrder[i];
+    if (!aseanLower.has(name.toLowerCase())) continue;
+    const price = prices[i];
     if (!Number.isFinite(price) || price <= 0 || price > 10) continue;
-    rows.push({ country, price, rank: 0 });
+    // Canonicalize casing back to the ASEAN constant
+    const canonical = ASEAN.find((c) => c.toLowerCase() === name.toLowerCase()) ?? name;
+    rows.push({ country: canonical, price, rank: 0 });
   }
 
   rows.sort((a, b) => a.price - b.price);
