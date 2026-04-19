@@ -132,3 +132,18 @@ Every commit should maintain these standards. Run `/web-design-guidelines` befor
 | MetroFuel Tracker API | 3,757 station prices (NCR) | Free (contact dev) | API planned by developer |
 | GlobalPetrolPrices XML | National price benchmarks | Paid subscription | Weekly updates |
 | PriceLOCQ partner API | 450+ station availability | Partnership required | SEAOIL network only |
+
+### Performance optimizations (2026-04-19)
+
+- Playfair Display (hero title) + DM Sans (hero subtitle/LCP) preloaded, `adjustFontFallback` on both
+- Chart.js components (Supply, GDP/Inflation, ASEAN) dynamic-imported from CrisisOverview
+- Client hooks (useMarketData, useNewsFeed, useDailyData) defer initial fetch via `requestIdleCallback`
+- Section header fade uses CSS-first `FadeInOnView` (IntersectionObserver) instead of framer-motion
+- `MetricCard` also uses FadeInOnView (dropped framer-motion)
+- Preconnect hint for Supabase origin
+- Reference section favicons set to `loading="lazy"` + `decoding="async"` to avoid competing with LCP
+
+**Lighthouse baseline (production build):**
+- Desktop preset: perf **98**, LCP **1.2s**, TBT **30ms**, TTI **1.6s**
+- Mobile simulated (default, 4x CPU throttle, 1.6Mbps): perf **~75**, LCP **4.1s**, TBT **440ms**, TTI **8.4s**
+- The mobile simulation is conservative; real-world mobile performance sits between these two.
