@@ -94,6 +94,11 @@ export default function RootLayout({
         <link rel="preconnect" href="https://basemaps.cartocdn.com" crossOrigin="" />
         <link rel="dns-prefetch" href="https://query1.finance.yahoo.com" />
         <link rel="dns-prefetch" href="https://api.frankfurter.dev" />
+        <link
+          rel="preconnect"
+          href="https://ciuklhiswctbnffqvlhs.supabase.co"
+          crossOrigin=""
+        />
       </head>
       <body className="min-h-full">{children}</body>
     </html>
