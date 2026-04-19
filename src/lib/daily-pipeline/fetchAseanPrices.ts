@@ -75,18 +75,49 @@ async function tryDirect(): Promise<AseanPriceRow[]> {
   }
 }
 
+/**
+ * GPP's page structure:
+ *   1. Country navigation (names only, no prices)
+ *   2. "Diesel prices per liter" heading
+ *   3. Two tables — one in USD, one in local-currency equivalents
+ *
+ * We skip the nav by starting the scan after the first "Diesel prices" heading
+ * marker. Within that section, country names appear adjacent to numeric values
+ * in "N.NNN" format (USD per liter with 3 decimals).
+ */
 function extractRows(text: string): AseanPriceRow[] {
+  const anchors = [
+    "Diesel prices, liter",
+    "Diesel prices per liter",
+    "USD per liter",
+    "diesel prices around the world",
+    "Diesel prices",
+  ];
+  let tableStart = -1;
+  for (const anchor of anchors) {
+    const idx = text.toLowerCase().indexOf(anchor.toLowerCase());
+    if (idx >= 0) {
+      tableStart = idx;
+      break;
+    }
+  }
+  if (tableStart < 0) return [];
+
+  const tableText = text.slice(tableStart);
+
   const rows: AseanPriceRow[] = [];
   for (const country of ASEAN) {
-    const idx = text.indexOf(country);
-    if (idx < 0) continue;
-    const window = text.slice(idx, idx + 800);
-    const match = window.match(/(\d\.\d{3})/);
+    const rel = tableText.indexOf(country);
+    if (rel < 0) continue;
+    const window = tableText.slice(rel, rel + 200);
+    const afterName = window.slice(country.length);
+    const match = afterName.match(/(\d\.\d{3})/);
     if (!match) continue;
     const price = parseFloat(match[1]);
     if (!Number.isFinite(price) || price <= 0 || price > 10) continue;
     rows.push({ country, price, rank: 0 });
   }
+
   rows.sort((a, b) => a.price - b.price);
   rows.forEach((r, i) => {
     r.rank = i + 1;
