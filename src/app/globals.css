@@ -335,3 +335,23 @@ section[id] {
     max-height: 300px !important;
   }
 }
+
+/* ─── Fade-in-on-view (CSS + IO, replaces framer-motion whileInView) ─── */
+.fade-in-view {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+  will-change: opacity, transform;
+}
+.fade-in-view.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-view {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
