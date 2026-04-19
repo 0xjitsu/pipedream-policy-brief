@@ -2,6 +2,56 @@ import type { FreshnessTier } from "./freshness";
 
 export type Urgency = "critical" | "urgent" | "important" | "info" | "strategic";
 
+// ─── Daily snapshot shape (persisted in Supabase daily_snapshot table) ───
+
+export interface PumpPriceSnapshot {
+  value: number;         // PHP per liter
+  delta: string;         // e.g. "+2.3% WoW" — filled by orchestrator
+  source: string;
+  sourceUrl: string;
+}
+
+export interface AseanPriceRow {
+  country: string;
+  price: number;         // USD per liter
+  rank: number;          // 1 = cheapest in ASEAN
+}
+
+export interface StationCounts {
+  operational: number;
+  lowStock: number;
+  closed: number;
+  total: number;
+  asOf: string;          // ISO timestamp
+}
+
+export interface SupplyDaysComputation {
+  value: number;
+  delta: number;         // change vs previous day, signed
+  basis: string;         // human-readable explanation of the calc
+}
+
+export interface DailyNarrativeSignal {
+  metric: "crude" | "peso" | "pump" | "supply";
+  direction: "up" | "down" | "stable";
+}
+
+export interface DailyNarrativePayload {
+  headline: string;
+  body: string;
+  signals: DailyNarrativeSignal[];
+}
+
+export interface DailySnapshot {
+  snapshotDate: string;         // "YYYY-MM-DD"
+  generatedAt: string;          // ISO timestamp
+  pumpPrice: PumpPriceSnapshot | null;
+  aseanPrices: AseanPriceRow[];
+  stations: StationCounts | null;
+  supplyDays: SupplyDaysComputation | null;
+  narrative: DailyNarrativePayload | null;
+}
+
 export interface MetricCardData {
   label: string;
   value: string;

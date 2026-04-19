@@ -10,6 +10,7 @@ import { AseanComparisonChart } from "@/components/charts/AseanComparisonChart";
 import { metrics, senateFindings, senateVerdict } from "@/data/crisis-overview";
 import { SectionCTA } from "@/components/ui/SectionCTA";
 import { useMarketData } from "@/hooks/useMarketData";
+import { useDailyData } from "@/hooks/useDailyData";
 import { staggerContainer, fadeInUp } from "@/lib/motion";
 import type { MetricCardData } from "@/data/types";
 
@@ -21,9 +22,11 @@ const situationDate = new Date().toLocaleDateString("en-US", {
 
 export function CrisisOverview() {
   const { oilPrice, pesoRate, lastUpdated } = useMarketData();
+  const { snapshot, lastUpdated: dailyTs } = useDailyData();
 
   const liveMetrics: MetricCardData[] = useMemo(() => {
     return metrics.map((m) => {
+      // ─── Live tier (market data polled every 10min) ───
       if (m.label === "Crude Oil" && oilPrice) {
         return {
           ...m,
@@ -46,11 +49,48 @@ export function CrisisOverview() {
           tierTimestamp: lastUpdated ?? undefined,
         };
       }
-      // Static-tier metrics (pump price, stations closed, supply days) will
-      // become "daily" tier once Phase 2 lands the cron pipeline.
+
+      // ─── Daily tier (Supabase snapshot, refreshed via Vercel Cron) ───
+      if (m.label === "Diesel Pump Price" && snapshot?.pumpPrice) {
+        return {
+          ...m,
+          value: `₱${snapshot.pumpPrice.value}/L`,
+          delta: snapshot.pumpPrice.delta || m.delta,
+          deltaLabel: `via ${snapshot.pumpPrice.source}`,
+          sourceUrl: snapshot.pumpPrice.sourceUrl,
+          tier: "daily" as const,
+          tierTimestamp: dailyTs ?? undefined,
+        };
+      }
+      if (m.label === "Stations Closed" && snapshot?.stations) {
+        const pct = ((snapshot.stations.closed / snapshot.stations.total) * 100).toFixed(2);
+        return {
+          ...m,
+          value: snapshot.stations.closed.toLocaleString(),
+          delta: `${pct}%`,
+          deltaLabel: `of ${snapshot.stations.total.toLocaleString()} total`,
+          tier: "daily" as const,
+          tierTimestamp: dailyTs ?? undefined,
+        };
+      }
+      if (m.label === "Days of Supply" && snapshot?.supplyDays) {
+        const d = snapshot.supplyDays.delta;
+        return {
+          ...m,
+          value: `~${snapshot.supplyDays.value}`,
+          gaugeValue: snapshot.supplyDays.value,
+          delta: d !== 0 ? `${d > 0 ? "+" : ""}${d}` : m.delta,
+          deltaLabel: snapshot.supplyDays.basis,
+          tier: "daily" as const,
+          tierTimestamp: dailyTs ?? undefined,
+        };
+      }
+
+      // Fallback: static values from crisis-overview.ts, tagged daily (will
+      // flip to real data once the cron has run at least once).
       return { ...m, tier: "daily" as const };
     });
-  }, [oilPrice, pesoRate, lastUpdated]);
+  }, [oilPrice, pesoRate, lastUpdated, snapshot, dailyTs]);
 
   return (
     <SectionWrapper id="crisis" title="Crisis Overview" icon="🚨" subtitle={`Philippine fuel supply emergency — ${situationDate}`}>

@@ -15,6 +15,7 @@ import { fadeInUp, staggerContainer } from "@/lib/motion";
 import type { StationStatus } from "@/data/types";
 import { SectionCTA } from "@/components/ui/SectionCTA";
 import { FreshnessBadge } from "@/components/ui/FreshnessBadge";
+import { useDailyData } from "@/hooks/useDailyData";
 
 // Dynamically import the map to avoid SSR issues with Leaflet
 const StationMap = dynamic(
@@ -133,6 +134,7 @@ export function StationTracker() {
   const [statusFilter, setStatusFilter] = useState<StatusFilter>("all");
   const [brandFilter, setBrandFilter] = useState<string>("all");
   const [regionFilter, setRegionFilter] = useState<string>("all");
+  const { snapshot, lastUpdated: dailyTs } = useDailyData();
 
   const filteredStations = useMemo(() => {
     let result = stations;
@@ -159,11 +161,15 @@ export function StationTracker() {
       icon="📍"
       subtitle={
         <span className="inline-flex flex-wrap items-center gap-x-2 gap-y-1">
-          <span>Fuel availability across {trackerStats.totalTracked.toLocaleString()} monitored stations</span>
+          <span>
+            Fuel availability across{" "}
+            {(snapshot?.stations?.total ?? trackerStats.totalTracked).toLocaleString()}{" "}
+            monitored stations
+          </span>
           <span className="text-white-30" aria-hidden="true">·</span>
           <FreshnessBadge
             tier="daily"
-            timestamp={new Date(trackerStats.lastUpdated)}
+            timestamp={dailyTs ?? new Date(trackerStats.lastUpdated)}
             size="sm"
           />
         </span>
