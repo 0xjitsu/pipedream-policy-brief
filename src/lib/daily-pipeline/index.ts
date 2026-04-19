@@ -5,6 +5,8 @@ import { fetchStationSnapshot } from "./fetchStationSnapshot";
 import { computeSupplyDays } from "./computeSupplyDays";
 import { readLatestSnapshot } from "./readSnapshot";
 import { writeSnapshot } from "./writeSnapshot";
+import { synthesizeNarrative } from "./synthesizeNarrative";
+import { fallbackNewsEvents } from "@/data/news-events";
 
 /**
  * Runs all independent fetchers in parallel, computes derived values,
@@ -31,7 +33,7 @@ export async function runDailyPipeline(): Promise<DailySnapshot> {
 
   const supplyDays = computeSupplyDays(previous?.supplyDays?.value ?? null);
 
-  const snapshot: DailySnapshot = {
+  const baseSnapshot: DailySnapshot = {
     snapshotDate: new Date().toISOString().slice(0, 10),
     generatedAt: new Date().toISOString(),
     pumpPrice,
@@ -41,6 +43,16 @@ export async function runDailyPipeline(): Promise<DailySnapshot> {
     narrative: null,
   };
 
+  // Synthesize narrative using current + previous snapshot + recent headlines
+  const recentHeadlines = fallbackNewsEvents.slice(0, 6).map((e) => e.headline);
+
+  const narrative = await synthesizeNarrative({
+    snapshot: baseSnapshot,
+    previous,
+    recentHeadlines,
+  });
+
+  const snapshot: DailySnapshot = { ...baseSnapshot, narrative };
   await writeSnapshot(snapshot);
   return snapshot;
 }

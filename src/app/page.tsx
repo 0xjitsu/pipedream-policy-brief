@@ -15,6 +15,7 @@ import { KeyInsight } from "@/components/ui/KeyInsight";
 import { INSIGHTS } from "@/data/insights";
 import { ShareBar } from "@/components/ui/ShareBar";
 import { FreshnessBanner } from "@/components/ui/FreshnessBanner";
+import { DailyNarrative } from "@/components/sections/DailyNarrative";
 
 const EconomicScenarios = dynamic(
   () => import("@/components/sections/EconomicScenarios").then((m) => ({ default: m.EconomicScenarios })),
@@ -99,6 +100,10 @@ export default function Home() {
       </header>
 
       <AudienceMain>
+          <div data-audience="analyst executive public">
+            <DailyNarrative />
+          </div>
+
           <div data-audience="analyst">
             <ReadingGuide />
           </div>
