@@ -1,12 +1,23 @@
 "use client";
 
 import { useMemo } from "react";
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import { SectionWrapper } from "@/components/layout/SectionWrapper";
 import { MetricCard } from "@/components/ui/MetricCard";
-import { SupplyChart } from "@/components/charts/SupplyChart";
-import { GdpInflationChart } from "@/components/charts/GdpInflationChart";
-import { AseanComparisonChart } from "@/components/charts/AseanComparisonChart";
+
+const SupplyChart = dynamic(
+  () => import("@/components/charts/SupplyChart").then((m) => ({ default: m.SupplyChart })),
+  { loading: () => <div className="min-h-[320px] rounded-xl animate-pulse bg-white-05" /> }
+);
+const GdpInflationChart = dynamic(
+  () => import("@/components/charts/GdpInflationChart").then((m) => ({ default: m.GdpInflationChart })),
+  { loading: () => <div className="min-h-[280px] rounded-xl animate-pulse bg-white-05" /> }
+);
+const AseanComparisonChart = dynamic(
+  () => import("@/components/charts/AseanComparisonChart").then((m) => ({ default: m.AseanComparisonChart })),
+  { loading: () => <div className="min-h-[280px] rounded-xl animate-pulse bg-white-05" /> }
+);
 import { metrics, senateFindings, senateVerdict } from "@/data/crisis-overview";
 import { SectionCTA } from "@/components/ui/SectionCTA";
 import { useMarketData } from "@/hooks/useMarketData";
