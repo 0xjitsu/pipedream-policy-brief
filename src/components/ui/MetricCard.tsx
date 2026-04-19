@@ -1,7 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { fadeInUp } from "@/lib/motion";
+import { FadeInOnView } from "./FadeInOnView";
 import { AnimatedCounter } from "./AnimatedCounter";
 import { MetricTooltip } from "./MetricTooltip";
 import { FreshnessBadge } from "./FreshnessBadge";
@@ -77,7 +76,7 @@ export function MetricCard({ data }: { data: MetricCardData }) {
   );
 
   return (
-    <motion.div variants={fadeInUp} className="glass p-5 flex flex-col items-center text-center gap-2">
+    <FadeInOnView className="glass p-5 flex flex-col items-center text-center gap-2">
       {data.type === "gauge" && data.gaugeMax && data.gaugeValue && data.gaugeColor ? (
         <RadialGauge value={data.gaugeValue} max={data.gaugeMax} color={data.gaugeColor} />
       ) : (
@@ -110,6 +109,6 @@ export function MetricCard({ data }: { data: MetricCardData }) {
           {data.deltaLabel && <span className="text-white-50">{data.deltaLabel}</span>}
         </div>
       )}
-    </motion.div>
+    </FadeInOnView>
   );
 }
