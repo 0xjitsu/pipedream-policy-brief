@@ -15,8 +15,11 @@ import { KeyInsight } from "@/components/ui/KeyInsight";
 import { INSIGHTS } from "@/data/insights";
 import { ShareBar } from "@/components/ui/ShareBar";
 import { FreshnessBanner } from "@/components/ui/FreshnessBanner";
-import { DailyNarrative } from "@/components/sections/DailyNarrative";
 
+const DailyNarrative = dynamic(
+  () => import("@/components/sections/DailyNarrative").then((m) => ({ default: m.DailyNarrative })),
+  { loading: () => <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-4 mb-12"><div className="min-h-[140px] animate-pulse bg-white-05 rounded-2xl" /></div> }
+);
 const EconomicScenarios = dynamic(
   () => import("@/components/sections/EconomicScenarios").then((m) => ({ default: m.EconomicScenarios })),
   { loading: () => <div className="min-h-[500px] animate-pulse bg-white-05 rounded-2xl mx-4 sm:mx-6 lg:mx-8 my-12" /> }
