@@ -107,6 +107,8 @@ export function References() {
                           alt=""
                           width={14}
                           height={14}
+                          loading="lazy"
+                          decoding="async"
                           className="opacity-60 shrink-0"
                         />
                         <a
@@ -171,6 +173,8 @@ export function References() {
                     alt=""
                     width={14}
                     height={14}
+                    loading="lazy"
+                    decoding="async"
                     className="opacity-60 shrink-0"
                   />
                   <a

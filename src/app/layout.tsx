@@ -15,7 +15,8 @@ const dmSans = DM_Sans({
   variable: "--font-dm-sans",
   subsets: ["latin"],
   display: "swap",
-  preload: false,
+  preload: true, // LCP element (hero subtitle) uses this font
+  adjustFontFallback: true,
 });
 
 const geistMono = Geist_Mono({
