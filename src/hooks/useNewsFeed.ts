@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import { useDeferredMount } from "./useDeferredMount";
 import { fallbackNewsEvents } from "@/data/news-events";
 import type { NewsEvent } from "@/data/types";
 
@@ -26,8 +27,11 @@ export function useNewsFeed() {
       });
   }, []);
 
-  useEffect(() => {
+  useDeferredMount(() => {
     fetchNews();
+  }, [fetchNews]);
+
+  useEffect(() => {
     const id = setInterval(fetchNews, POLL_INTERVAL);
     return () => clearInterval(id);
   }, [fetchNews]);

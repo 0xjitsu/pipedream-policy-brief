@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { useDeferredMount } from "./useDeferredMount";
 import type { DailySnapshot } from "@/data/types";
 
 interface UseDailyDataState {
@@ -34,8 +35,11 @@ export function useDailyData(): UseDailyDataState {
       .finally(() => setIsLoading(false));
   }, []);
 
-  useEffect(() => {
+  useDeferredMount(() => {
     fetchSnapshot();
+  }, [fetchSnapshot]);
+
+  useEffect(() => {
     const id = setInterval(fetchSnapshot, POLL_INTERVAL_MS);
     return () => clearInterval(id);
   }, [fetchSnapshot]);

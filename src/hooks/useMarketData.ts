@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import { useDeferredMount } from "./useDeferredMount";
 
 interface MarketDataField {
   value: number;
@@ -46,8 +47,11 @@ export function useMarketData(): MarketDataState {
       });
   }, []);
 
-  useEffect(() => {
+  useDeferredMount(() => {
     fetchMarket();
+  }, [fetchMarket]);
+
+  useEffect(() => {
     const id = setInterval(fetchMarket, POLL_INTERVAL);
     return () => clearInterval(id);
   }, [fetchMarket]);
