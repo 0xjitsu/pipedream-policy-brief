@@ -1,13 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { metrics } from "@/data/crisis-overview";
 
 const SUPPLY = metrics[0]; // Days of Supply metric
 
 export function SupplyCountdown() {
   const [count, setCount] = useState(0);
-  const ref = useRef<HTMLDivElement>(null);
   const target = SUPPLY.gaugeValue ?? 45;
   const max = SUPPLY.gaugeMax ?? 65;
   const pct = Math.round((target / max) * 100);
@@ -36,23 +35,13 @@ export function SupplyCountdown() {
       if (progress < 1) requestAnimationFrame(animate);
     }
 
-    // Use IntersectionObserver to trigger on visibility
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          requestAnimationFrame(animate);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.5 }
-    );
-
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
+    // Fire immediately on mount (LCP element — no gating)
+    const raf = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(raf);
   }, [target]);
 
   return (
-    <div ref={ref} className="mb-6">
+    <div className="mb-6">
       {/* Large countdown number */}
       <div className="flex items-baseline justify-center gap-2">
         <span
