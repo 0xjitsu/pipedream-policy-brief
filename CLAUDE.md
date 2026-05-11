@@ -124,6 +124,51 @@ Every commit should maintain these standards. Run `/web-design-guidelines` befor
 - **What struggled:** `text-white-50` used pervasively for body text — WCAG AA failure not caught until audit
 - **Rules added:** Never use `text-white-50` for readable body text. Static import for LCP sections. Always include robots.ts + sitemap.ts from day one. Define ALL color tokens upfront — don't let undefined tokens accumulate.
 
+#### 2026-04-19 — Daily pipeline + AI synthesis + perf push + docs archive
+
+- **What worked:**
+  - Subagent-driven development for pure-code tasks (font preload, dynamic
+    imports, FadeInOnView, fetcher rewrites). Fast iteration, clean commits.
+  - Hybrid execution: MCP-heavy or secret-handling tasks inline,
+    code-heavy tasks dispatched to subagents.
+  - CSS-first `FadeInOnView` replaced framer-motion in 13+ section wrappers
+    and dropped script-evaluation from 3.9s to 2.2s.
+  - Two-tier data freshness UI (FreshnessBadge + FreshnessBanner) unified
+    the visual language without needing per-section design work.
+  - HuggingFace Inference free tier + deterministic template fallback gave
+    us zero-cost AI synthesis with a hallucination guard.
+  - **Hoisting the hero above AudienceProvider** unlocked a big mobile LCP
+    win: perf 37→56, LCP 6.9s→3.8s, TBT 4540ms→3650ms. The hero is purely
+    presentational and doesn't need the client context boundary.
+
+- **What struggled:**
+  - Supabase free-tier projects auto-pause after ~7 days of inactivity.
+    The `daily_snapshot` survives the pause but the project ref is
+    unreachable until `restore_project` is called and the Postgres pooler
+    comes back online (60–90s).
+  - DOE oil-monitor page is fully behind Cloudflare; even firecrawl gets
+    the challenge page. Google News RSS works as a noisy tertiary fallback.
+  - Subagent dispatch can hit the 200K token limit when too many MCP tools
+    are in scope. Workaround: load only the tools the subagent needs;
+    fall back to direct execution if the limit is hit.
+  - Mobile Lighthouse simulated mode on this codebase is noisy: numbers
+    bounce ±20 perf points depending on system load and Supabase warmth.
+    Trust the delta, not the absolute.
+
+- **Rules added:**
+  - When DOE is blocked, fall through to firecrawl, then Google News RSS.
+  - For Overpass, always cycle three endpoints with the same query.
+  - **Never wrap the hero/LCP element in a client-only context provider**;
+    keep client providers tight around the components that actually use
+    them.
+  - When a Supabase project has been idle for days, call `restore_project`
+    BEFORE retrying `apply_migration` (which otherwise reports
+    `Connection terminated due to connection timeout`).
+  - Conventional-commits is NOT adopted — keep prose-style commit messages
+    that explain the **why**.
+  - Pre-publish PII sweep + commit-history check before pushing the brief
+    public.
+
 ## Potential Data Source Upgrades (require API keys or partnerships)
 
 | Source | Data | Cost | Notes |
