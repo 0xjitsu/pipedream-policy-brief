@@ -71,7 +71,7 @@ const LegislativeTracker = dynamic(
 
 export default function Home() {
   return (
-    <AudienceProvider>
+    <>
       <a
         href="#crisis"
         className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-navy focus:text-white focus:border focus:border-white-20 focus:text-sm"
@@ -79,11 +79,8 @@ export default function Home() {
         Skip to content
       </a>
       <ScrollProgress />
-      <Nav />
-      <Ticker />
-      <FreshnessBanner />
 
-      {/* Hero header */}
+      {/* Hero header — pure SSR, outside AudienceProvider client boundary */}
       <header className="pt-[120px] pb-8 md:pt-[128px] md:pb-12 border-b border-white-08">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-xs font-semibold tracking-[0.3em] uppercase text-white-50 mb-4">
@@ -102,7 +99,12 @@ export default function Home() {
         </div>
       </header>
 
-      <AudienceMain>
+      <AudienceProvider>
+        <Nav />
+        <Ticker />
+        <FreshnessBanner />
+
+        <AudienceMain>
           <div data-audience="analyst executive public">
             <DailyNarrative />
           </div>
@@ -214,9 +216,10 @@ export default function Home() {
           </div>
         </AudienceMain>
 
-      <ShareBar />
-      <BackToTop />
-      <Footer />
-    </AudienceProvider>
+        <ShareBar />
+        <BackToTop />
+        <Footer />
+      </AudienceProvider>
+    </>
   );
 }
