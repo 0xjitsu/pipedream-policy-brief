@@ -68,6 +68,10 @@ const LegislativeTracker = dynamic(
   () => import("@/components/sections/LegislativeTracker").then((m) => ({ default: m.LegislativeTracker })),
   { loading: () => <div className="min-h-[300px] animate-pulse bg-white-05 rounded-2xl mx-4 sm:mx-6 lg:mx-8 my-12" /> }
 );
+const MethodologyAndSources = dynamic(
+  () => import("@/components/sections/MethodologyAndSources").then((m) => ({ default: m.MethodologyAndSources })),
+  { loading: () => <div className="min-h-[600px] mx-4 sm:mx-6 lg:mx-8 my-12 animate-pulse bg-white-05 rounded-2xl" /> }
+);
 
 export default function Home() {
   return (
@@ -206,6 +210,8 @@ export default function Home() {
           <div data-audience="analyst public">
             <NewsFeed />
           </div>
+          <div className="border-t border-white-08" />
+          <MethodologyAndSources />
           <div className="border-t border-white-08" />
           <div data-audience="analyst">
             <References />

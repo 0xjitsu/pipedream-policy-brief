@@ -16,6 +16,7 @@ const sections = [
   { id: "infrastructure", label: "Infrastructure", short: "Infra", icon: "🏗️" },
   { id: "tracker", label: "Station Tracker", short: "Tracker", icon: "📍" },
   { id: "news", label: "Live News", short: "News", icon: "📰" },
+  { id: "methodology", label: "Methodology & Sources", short: "Methodology", icon: "🔬" },
   { id: "references", label: "References", short: "Refs", icon: "📚" },
   { id: "roadmap", label: "What's Next", short: "Next", icon: "🗺️" },
 ];
