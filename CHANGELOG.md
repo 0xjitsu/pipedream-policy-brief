@@ -9,7 +9,28 @@ shipped on that day.
 
 ## [Unreleased]
 
-_Add new entries here as work lands. Move to a dated section on release._
+### Added — Documentation completeness (2026-04-19)
+- `CHANGELOG`, `ARCHITECTURE`, `AGENTS`, `SECURITY`, `CODE_OF_CONDUCT` at repo root.
+- Expanded `CONTRIBUTING.md` from 53 → 146 lines with full dev workflow + PR checklist.
+- `docs/RUNBOOK.md` with operational playbooks for the daily pipeline,
+  per-source debug paths, and migration-recovery instructions.
+- In-page "Methodology & Sources" section between News and References,
+  fed by `src/data/methodology.ts`, surfacing data freshness tiers,
+  source matrix, AI synthesis explainer, and contribute callout.
+- Dynamic `/llms.txt` and `/llms-full.txt` route handlers
+  (`src/app/llms.txt/route.ts`, `src/app/llms-full.txt/route.ts`)
+  replacing the static `public/llms*.txt` files. Generated from
+  `methodology.ts` and `freshness.ts` so they auto-update.
+
+### Changed — Mobile LCP refactor
+- Hoisted hero `<header>` above `<AudienceProvider>` boundary so the hero
+  is pure SSR. Mobile-simulated Lighthouse: perf 37 → 56, LCP 6.9s → 3.8s,
+  TBT 4540ms → 3650ms (single-run deltas). `Nav`, `Ticker`,
+  `FreshnessBanner`, and `AudienceMain` remain inside the provider.
+
+### Added — Diagnostic table
+- `public.fetch_log` Supabase table (per-source/strategy diagnostic log)
+  applied. Already wired in `fetchLog.ts` — table existence now matches.
 
 ---
 
