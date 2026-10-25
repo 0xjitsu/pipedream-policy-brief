@@ -61,9 +61,26 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_PH",
     url: "https://pipedream-policy-brief.vercel.app",
+    videos: [
+      {
+        url: "https://pipedream-policy-brief.vercel.app/og/preview.mp4",
+        secureUrl: "https://pipedream-policy-brief.vercel.app/og/preview.mp4",
+        type: "video/mp4",
+        width: 1200,
+        height: 630,
+      },
+    ],
   },
   twitter: {
-    card: "summary_large_image",
+    card: "player",
+    players: [
+      {
+        playerUrl: "https://pipedream-policy-brief.vercel.app/og/player.html",
+        streamUrl: "https://pipedream-policy-brief.vercel.app/og/preview.mp4",
+        width: 1200,
+        height: 630,
+      },
+    ],
     title: "The Philippines Has 45 Days of Fuel Left — Pipedream Policy Brief",
     description:
       "98% Middle East dependence. One refinery. No strategic reserve. Live intelligence and policy recommendations for Philippine decision-makers.",
