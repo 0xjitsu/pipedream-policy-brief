@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "check:og-video": "node scripts/check-og-video.mjs"
   },
   "dependencies": {
     "@mendable/firecrawl-js": "^4.18.3",
